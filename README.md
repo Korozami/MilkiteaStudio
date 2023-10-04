@@ -1,6 +1,6 @@
-# MilkiteaStudio :carrot: :rabbit:
+# Milki Tea Studios :carrot: :rabbit:
 
-Milkitea Studio operates as an e-commerce platform specializing in facilitating business-to-consumer transactions. Our website serves as a marketing where Milkitea Studio showcases and offers its range of products for purchase, providing users with the opportunity to acquire high-quality goods crafted by Milkitea Studio.
+Milki Tea Studios operates as an e-commerce platform specializing in facilitating business-to-consumer transactions. Our website serves as a marketing where Milki Tea Studios showcases and offers its range of products for purchase, providing users with the opportunity to acquire high-quality goods crafted by Milkitea Studio.
 
 ## Table Of Contents :scroll:
 * :rabbit2: [Introduction](#Introduction)
@@ -17,7 +17,7 @@ Milkitea Studio operates as an e-commerce platform specializing in facilitating 
 
 ### <a name="Introduction"></a>Introduction :rabbit:
 
-Hello! I'm Sena, the creator of milkiteastudios, and I am here to share my art + my love for creating. 
+Hello! I'm Sena, the creator of Milki Tea Studios, and I am here to share my art + my love for creating. 
 Floating somewhere between cute and unsettling, my current work involves bunnies in strange, dream-like worlds, along with other funky things. Besides my digital illustration work, I also make handmade items that reps my current obsession with making shy bunnies. :carrot: :rabbit2: 🎨
 * :rabbit2: Artistic Wonderland: Dive into a world where creativity knows no bounds. Explore a unique collection of digital artworks, each brimming with imaginative storytelling.
 * :rabbit2: Handmade Treasures: Discover an assortment of meticulously crafted items that embody the essence of charming and shy bunnies, each one handcrafted with love and care. 🥕🐰
@@ -149,20 +149,20 @@ Remove Search
 ### <a name="MVP-List"></a>MVP List :rabbit:
 
 *	New account creation, log in, log out, and guest/demo login
- *	Users can sign up, log in, and log out
- *	Users can use a Guest log in to try the site (checkout as guest)
- *	Users can’t use certain features without logging in (like checking out)
-   *	Users can’t use features like selling goods unless they are admin like Milkitea’s Studio 
-   *	Logged in users are directed to the homepage where all the items are located.
+ 	*	Users can sign up, log in, and log out
+  *	Users can use a Guest log in to try the site (checkout as guest)
+  *	Users can’t use certain features without logging in (like checking out)
+    *	Users can’t use features like selling goods unless they are admin like Milkitea’s Studio 
+    *	Logged in users are directed to the homepage where all the items are located.
 
 *	Store / Products (if admin)
- *	Admin should be able to create a product in their store (CREATE)
- *	Admin should be able to view all their products in their store (READ)
- *	Admin should be able to update their products in their store (UPDATE)
- *	Admin should be able to delete a product in their store (DELETE)
+ 	*	Admin should be able to create a product in their store (CREATE)
+ 	*	Admin should be able to view all their products in their store (READ)
+  *	Admin should be able to update their products in their store (UPDATE)
+  *	Admin should be able to delete a product in their store (DELETE)
 
 *	User’s Cart
-  *	User should be able to add an item to their cart (CREATE)
+ 	*	User should be able to add an item to their cart (CREATE)
   *	User should be able to view all the items in their cart (READ)
   *	User should be able to update the number of items in their cart (UPDATE)
   *	User should be able to delete an item from their cart (DELETE)
