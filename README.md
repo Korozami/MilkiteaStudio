@@ -7,7 +7,7 @@ Milkitea Studio operates as an e-commerce platform specializing in facilitating 
 * :rabbit2: [Features](#Features)
 * :rabbit2: [User Story](#User-Story)
   * 🥕 [Users](#Users-🐰)
-  * 🥕 [Store / Products](#Products-Store-(if-Sena-or-admin)-🐰)
+  * 🥕 [Store / Products](#Products/Store)
   * 🥕 [User's Cart](### User's Cart (Online Shopper) 🐰)
   * 🥕 [User's payment](### User's Payment Information (Online Shopper) 🐰)
   * 🥕 [User's shipping address](### User's Address Information (Online Shopper) 🐰)
