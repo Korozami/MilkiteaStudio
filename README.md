@@ -51,3 +51,16 @@ Log In
           * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries (except my password).
                * So that I can try again without needing to refill forms I entered valid data into.
 
+Demo User
+* As an unregistered and unauthorized user, I would like an easy to find and clear button on both the /signup and /login pages to allow me to visit the site as a guest without signing up or logging in.
+   * When I'm on either the /signup or /login pages:
+       * I can click on a Demo User button to log me in and allow me access as a normal user.
+          * So that I can test the site's features and functionality without needing to stop and enter credentials.
+
+Log Out
+* As a logged in user, I want to log out via an easy to find log out button on the navigation bar.
+   * While on any page of the site:
+       * I can log out of my account and be redirected to the homepage.
+          * So that I can easily log out to keep my information secure.
+        
+### Products / Store (if Sena or admin) 🐰
