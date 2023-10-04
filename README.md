@@ -3,33 +3,33 @@
 Milkitea Studio operates as an e-commerce platform specializing in facilitating business-to-consumer transactions. Our website serves as a marketing where Milkitea Studio showcases and offers its range of products for purchase, providing users with the opportunity to acquire high-quality goods crafted by Milkitea Studio.
 
 ## Table Of Contents :scroll:
-* :rabbit2: [Introduction](#introduction)
-* :rabbit2: [Features](#features)
-* :rabbit2: [User Story](#user-story)
+* :rabbit2: [Introduction](#Introduction)
+* :rabbit2: [Features](#Features)
+* :rabbit2: [User Story](#User-Story)
   * 🥕 Users
   * 🥕 Store / Products
   * 🥕 User's Cart
   * 🥕 User's payment
   * 🥕 User's shipping address
   * 🥕 Search
-* :rabbit2: [MVP List](#mvp-list)
-* :rabbit2: [Schema](#schema)
+* :rabbit2: [MVP List](#MVP-List)
+* :rabbit2: [Schema](#Schema)
 
-### Introduction :rabbit:
+### <a name="Introduction"></a>Introduction :rabbit:
 
 Hello! I'm Sena, the creator of milkiteastudios, and I am here to share my art + my love for creating. 
 Floating somewhere between cute and unsettling, my current work involves bunnies in strange, dream-like worlds, along with other funky things. Besides my digital illustration work, I also make handmade items that reps my current obsession with making shy bunnies. :carrot: :rabbit2: 🎨
 * :rabbit2: Artistic Wonderland: Dive into a world where creativity knows no bounds. Explore a unique collection of digital artworks, each brimming with imaginative storytelling.
 * :rabbit2: Handmade Treasures: Discover an assortment of meticulously crafted items that embody the essence of charming and shy bunnies, each one handcrafted with love and care. 🥕🐰
 
-### Features :art:
+### <a name="Features"></a>Features :art:
 
 * :rabbit2: Create an account and add your payment and shipping info for easy checkout :money_with_wings: :money_with_wings: :money_with_wings:
 * :rabbit2: Browse an eclectic array of thoughtfully crafted artworks and creations, each capturing the captivating essence of shy bunnies and other enchanting characters, lovingly shaped with care and precision 🎨🥕🐰🌟
 * :rabbit2: Why pause now? Expedite the process by placing these captivating goods into your cart, and they'll soon be in your possession. 🛒🌟
 
 
-### User Story :rabbit:
+### <a name="User-Story"></a>User Story :rabbit:
 
 #### Users 🐰
 
@@ -146,7 +146,7 @@ Ability to Search for Specific Items
 Remove Search
 * This can be achieved through a clear and easily accessible option that allows me to clear my search query and return to browsing the entire product catalog.
 
-### MVP List :rabbit:
+### <a name="MVP-List"></a>MVP List :rabbit:
 
 •	New account creation, log in, log out, and guest/demo login
  o	Users can sign up, log in, and log out
@@ -184,6 +184,6 @@ Remove Search
  o	User should be able to search the item (UPDATE)
  o	User should be able to remove their search (DELETE)
 
-### Schema :rabbit:
+### <a name="Schema"></a>Schema :rabbit:
 
 ![MilkiTea Studio](https://github.com/Korozami/MilkiteaStudio/assets/104758287/6ec52bbd-3484-4d0e-8ed2-98ea42d5174b)
