@@ -63,7 +63,7 @@ Log Out
        * I can log out of my account and be redirected to the homepage.
           * So that I can easily log out to keep my information secure.
         
-### Products / Store (if Sena or admin) 🐰
+### Products / Store (Sena or Admin) 🐰
 
 Create a New Product Listing
 * When creating a product, I should be able to input essential details such as the product name, description, price, available quantity, and upload images to showcase the item's features.
