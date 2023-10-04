@@ -15,23 +15,23 @@ Milki Tea Studios operates as an e-commerce platform specializing in facilitatin
 * :rabbit2: [MVP List](#MVP-List)
 * :rabbit2: [Schema](#Schema)
 
-### <a name="Introduction"></a>Introduction :rabbit:
+## <a name="Introduction"></a>Introduction :rabbit:
 
 Hello! I'm Sena, the creator of Milki Tea Studios, and I am here to share my art + my love for creating. 
 Floating somewhere between cute and unsettling, my current work involves bunnies in strange, dream-like worlds, along with other funky things. Besides my digital illustration work, I also make handmade items that reps my current obsession with making shy bunnies. :carrot: :rabbit2: 🎨
 * :rabbit2: Artistic Wonderland: Dive into a world where creativity knows no bounds. Explore a unique collection of digital artworks, each brimming with imaginative storytelling.
 * :rabbit2: Handmade Treasures: Discover an assortment of meticulously crafted items that embody the essence of charming and shy bunnies, each one handcrafted with love and care. 🥕🐰
 
-### <a name="Features"></a>Features :art:
+## <a name="Features"></a>Features :art:
 
 * :rabbit2: Create an account and add your payment and shipping info for easy checkout :money_with_wings: :money_with_wings: :money_with_wings:
 * :rabbit2: Browse an eclectic array of thoughtfully crafted artworks and creations, each capturing the captivating essence of shy bunnies and other enchanting characters, lovingly shaped with care and precision 🎨🥕🐰🌟
 * :rabbit2: Why pause now? Expedite the process by placing these captivating goods into your cart, and they'll soon be in your possession. 🛒🌟
 
 
-### <a name="User-Story"></a>User Story :rabbit:
+## <a name="User-Story"></a>User Story :rabbit:
 
-#### Users 🐰
+### Users 🐰
 
 Sign Up
 * As an unregistered and unauthorized user, I want to be able to sign up for the website via a sign-up form
@@ -63,7 +63,7 @@ Log Out
        * I can log out of my account and be redirected to the homepage.
           * So that I can easily log out to keep my information secure.
         
-#### Products / Store (if Sena or admin) 🐰
+### Products / Store (if Sena or admin) 🐰
 
 Create a New Product Listing
 * When creating a product, I should be able to input essential details such as the product name, description, price, available quantity, and upload images to showcase the item's features.
@@ -82,7 +82,7 @@ Ability to Remove Product From Store
 * To achieve this, I should be able to select a product and initiate the deletion process.
 * Upon confirmation, the product should be permanently removed from my store, ensuring that customers can no longer view or purchase it.
 
-#### User's Cart (Online Shopper) 🐰
+### User's Cart (Online Shopper) 🐰
 
 Add Item to My Cart
 * Adding the item to my cart should be a simple and intuitive process, allowing me to specify the quantity if needed.
@@ -98,7 +98,7 @@ Adjust the Quantity of Specific Items
 Remove Item From My Cart
 * This action should be straightforward and efficient, allowing me to declutter my cart and finalize my purchase with confidence.
 
-#### User's Payment Information (Online Shopper) 🐰
+### User's Payment Information (Online Shopper) 🐰
 
 Add a Payment Method
 * Adding a payment method should involve providing the necessary information, such as credit card details or other payment credentials.
@@ -115,7 +115,7 @@ View a Comprehensive List of All the Payment Methods Associated with My Account
 Ability to Delete Payment Methods
 * The process of deleting a payment method should be secure and straightforward, with appropriate confirmation steps to prevent accidental removal.
 
-#### User's Address Information (Online Shopper) 🐰
+### User's Address Information (Online Shopper) 🐰
 
 Add a New Shipping Address
 * Adding a shipping address should involve providing essential information such as my address, city, postal code, and any additional details to ensure accurate delivery.
@@ -132,7 +132,7 @@ Ability to Update My Shipping Address
 Ability to Delete Shipping Address
 * The process of deleting a shipping address should be secure and straightforward, with appropriate confirmation steps to prevent accidental removal.
 
-#### Search (Online Shopper) 🐰
+### Search (Online Shopper) 🐰
 
 Search Bar Prominently Displayed, Where I can easily View the Item Names
 * This search bar should be intuitive, inviting me to enter keywords, product names, or relevant terms to discover items of interest.
@@ -146,7 +146,7 @@ Ability to Search for Specific Items
 Remove Search
 * This can be achieved through a clear and easily accessible option that allows me to clear my search query and return to browsing the entire product catalog.
 
-### <a name="MVP-List"></a>MVP List :rabbit:
+## <a name="MVP-List"></a>MVP List :rabbit:
 
 *	New account creation, log in, log out, and guest/demo login
  	*	Users can sign up, log in, and log out
@@ -184,6 +184,6 @@ Remove Search
     *	User should be able to search the item (UPDATE)
     *	User should be able to remove their search (DELETE)
 
-### <a name="Schema"></a>Schema :rabbit:
+## <a name="Schema"></a>Schema :rabbit:
 
 ![MilkiTea Studio](https://github.com/Korozami/MilkiteaStudio/assets/104758287/6ec52bbd-3484-4d0e-8ed2-98ea42d5174b)
