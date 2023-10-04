@@ -149,40 +149,40 @@ Remove Search
 ### <a name="MVP-List"></a>MVP List :rabbit:
 
 *	New account creation, log in, log out, and guest/demo login
-  *	Users can sign up, log in, and log out
-  *	Users can use a Guest log in to try the site (checkout as guest)
-  *	Users can’t use certain features without logging in (like checking out)
-    *	Users can’t use features like selling goods unless they are admin like Milkitea’s Studio 
-    *	Logged in users are directed to the homepage where all the items are located.
+   *	Users can sign up, log in, and log out
+   *	Users can use a Guest log in to try the site (checkout as guest)
+   *	Users can’t use certain features without logging in (like checking out)
+     *	Users can’t use features like selling goods unless they are admin like Milkitea’s Studio 
+     *	Logged in users are directed to the homepage where all the items are located.
 
 *	Store / Products (if admin)
-  *	Admin should be able to create a product in their store (CREATE)
-  *	Admin should be able to view all their products in their store (READ)
-  *	Admin should be able to update their products in their store (UPDATE)
-  *	Admin should be able to delete a product in their store (DELETE)
+   *	Admin should be able to create a product in their store (CREATE)
+   *	Admin should be able to view all their products in their store (READ)
+   *	Admin should be able to update their products in their store (UPDATE)
+   *	Admin should be able to delete a product in their store (DELETE)
 
 *	User’s Cart
-  *	User should be able to add an item to their cart (CREATE)
-  *	User should be able to view all the items in their cart (READ)
-  *	User should be able to update the number of items in their cart (UPDATE)
-  *	User should be able to delete an item from their cart (DELETE)
+   *	User should be able to add an item to their cart (CREATE)
+   *	User should be able to view all the items in their cart (READ)
+   *	User should be able to update the number of items in their cart (UPDATE)
+   *	User should be able to delete an item from their cart (DELETE)
 
 *	User’s payment
   *	User should be able to add a payment method in their account (CREATE)
   *	User should be able to view all their payment method in their account (READ)
   *	User should be able to update their payment method in their account (UPDATE)
   *	User should be able to delete a payment method in their account (DELETE)
-
-*	User’s address / shipping address
-  *	User should be able to add a shipping address to their account (CREATE)
-  *	User should be able to view all their addresses added in their account (READ)
-  *	User should be able to update their shipping address in their account (UPDATE)
-  *	User should be able to delete a shipping address in their account (DELETE)
+ 
+ *	User’s address / shipping address
+   *	User should be able to add a shipping address to their account (CREATE)
+   *	User should be able to view all their addresses added in their account (READ)
+   *	User should be able to update their shipping address in their account (UPDATE)
+   *	User should be able to delete a shipping address in their account (DELETE)
 
 *	Search
-  *	User should be able to view the item name (READ)
-  *	User should be able to search the item (UPDATE)
-  *	User should be able to remove their search (DELETE)
+   *	User should be able to view the item name (READ)
+   *	User should be able to search the item (UPDATE)
+   *	User should be able to remove their search (DELETE)
 
 ### <a name="Schema"></a>Schema :rabbit:
 
