@@ -34,20 +34,20 @@ Floating somewhere between cute and unsettling, my current work involves bunnies
 ### Users 🐰
 
 Sign Up
-      * As an unregistered and unauthorized user, I want to be able to sign up for the website via a sign-up form
-       * When I'm on the /signup page:
-             * I would like to be able to enter my email, username, and preferred password on a clearly laid out form.
-             * I would like the website to log me in upon successful completion of the sign-up form.
-       * When I enter invalid data on the sign-up form:
-             * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries (except my password).
-                   * So that I can try again without needing to refill forms I entered valid data into.
+* As an unregistered and unauthorized user, I want to be able to sign up for the website via a sign-up form
+   * When I'm on the /signup page:
+      * I would like to be able to enter my email, username, and preferred password on a clearly laid out form.
+      * I would like the website to log me in upon successful completion of the sign-up form.
+      * When I enter invalid data on the sign-up form:
+         * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries (except my password).
+              * So that I can try again without needing to refill forms I entered valid data into.
       
 Log In
-      * As a registered and unauthorized user, I want to be able to log in to the website via a login form.
-       * When I'm on the /login page:
-             * I would like to be able to enter my email and password on a clearly laid out form.
-             * I would like the website to log me in upon successful completion of the login form.
+* As a registered and unauthorized user, I want to be able to log in to the website via a login form.
+   * When I'm on the /login page:
+       * I would like to be able to enter my email and password on a clearly laid out form.
+       * I would like the website to log me in upon successful completion of the login form.
        * When I enter invalid data on the login form:
-             * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries (except my password).
-                   * So that I can try again without needing to refill forms I entered valid data into.
+          * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries (except my password).
+               * So that I can try again without needing to refill forms I entered valid data into.
 
