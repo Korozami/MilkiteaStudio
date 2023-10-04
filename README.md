@@ -1,4 +1,4 @@
-# Flask React Project
+# MilkiteaStudio :rabbit2:
 
 This is the starter for the Flask React project.
 
