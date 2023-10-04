@@ -3,17 +3,17 @@
 Milkitea Studio operates as an e-commerce platform specializing in facilitating business-to-consumer transactions. Our website serves as a marketing where Milkitea Studio showcases and offers its range of products for purchase, providing users with the opportunity to acquire high-quality goods crafted by Milkitea Studio.
 
 ## Table Of Contents :scroll:
-* [:rabbit2: Introduction](#introduction)
-* :rabbit2: [Features](#features)
-* :rabbit2: [User Story](#user-story)
+* :rabbit2: [Introduction](#introduction-:rabbit:)
+* :rabbit2: [Features](#features-:rabbit:)
+* :rabbit2: [User Story](#user-story-:rabbit:)
   * 🥕 Users
   * 🥕 Store / Products
   * 🥕 User's Cart
   * 🥕 User's payment
   * 🥕 User's shipping address
   * 🥕 Search
-* :rabbit2: [MVP List](#mvp-list)
-* :rabbit2: [Schema](#schema)
+* :rabbit2: [MVP List](#mvp-list-:rabbit:)
+* :rabbit2: [Schema](#schema-:rabbit:)
 
 ## Introduction :rabbit:
 
