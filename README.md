@@ -12,8 +12,8 @@ Milkitea Studio operates as an e-commerce platform specializing in facilitating 
   * 🥕 User's payment
   * 🥕 User's shipping address
   * 🥕 Search
-* :rabbit2: [MVP List](##MVP-List-:rabbit:)
-* :rabbit2: [Schema](##-Schema-:rabbit:)
+* :rabbit2: [MVP List](##MVP-List)
+* :rabbit2: [Schema](##-Schema)
 
 ## Introduction :rabbit:
 
