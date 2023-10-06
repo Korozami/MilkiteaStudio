@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .db import db, environment, SCHEMA
 from sqlalchemy.orm import relationship
 
 
@@ -18,6 +18,7 @@ class Product(db.Model):
 
     stores = relationship('Store', back_populates='product')
     product_image = relationship('Product_Image', back_populates='product', cascade='all, delete-orphan')
+    cart_item = relationship("Cart_Item", back_populates='product', cascade='all, delete-orphan')
 
     def to_dict(self):
         product_image_data = []
