@@ -21,6 +21,11 @@ class User(db.Model, UserMixin):
 
     #relationships
     stores = relationship('Store', back_populates='user', cascade='all, delete-orphan')
+    cart = relationship('Cart', back_populates='user', cascade='all, delete-orphan')
+    payment = relationship('Payment', back_populates='user', cascade='all, delete-orphan')
+    address = relationship('Address', back_populates='user', cascade='all, delete-orphan')
+
+
 
     @property
     def password(self):
