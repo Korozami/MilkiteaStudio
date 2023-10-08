@@ -156,10 +156,10 @@ Remove Search
     *	Logged in users are directed to the homepage where all the items are located.
 
 *	Store / Products (if admin)
- 	*	Admin should be able to create a product in their store (CREATE)
- 	*	Admin should be able to view all their products in their store (READ)
-   	*	Admin should be able to update their products in their store (UPDATE)
-    *	Admin should be able to delete a product in their store (DELETE)
+ 	*	Admin should be able to create a product in the store (CREATE)
+ 	*	Admin should be able to view all products in the store (READ)
+   	*	Admin should be able to update products in the store (UPDATE)
+    *	Admin should be able to delete a product in the store (DELETE)
 
 *	User’s Cart
   	*	User should be able to add an item to their cart (CREATE)
@@ -186,5 +186,4 @@ Remove Search
 
 ## <a name="Schema"></a>Schema :rabbit:
 
-![MilkiTea Studio (2)](https://github.com/Korozami/MilkiteaStudio/assets/104758287/0d851acd-26bf-4ba8-8b86-9be3e716232b)
-
+![MilkiTea Studio](https://github.com/Korozami/MilkiteaStudio/assets/104758287/359c300f-5401-42f7-bb1f-7ab88c56e10b)
