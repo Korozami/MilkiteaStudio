@@ -9,7 +9,6 @@ class Store(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    item_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('products.id')), nullable=False)
     online = db.Column(db.Boolean, nullable=False)
 
     product = relationship("Product", back_populates='stores', cascade='all, delete-orphan')
@@ -19,6 +18,5 @@ class Store(db.Model):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'item_id': self.item_id,
             'online': self.online
         }

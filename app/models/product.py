@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.orm import relationship
 
 
@@ -9,6 +9,7 @@ class Product(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    store_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('stores.id')), nullable=False)
     item_name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Float, nullable=False)
@@ -26,6 +27,7 @@ class Product(db.Model):
             product_image_data.append(product_images.to_dict())
         return {
             'id': self.id,
+            'store_id': self.store_id,
             'item_name': self.item_name,
             'description': self.description,
             'price': self.price,
