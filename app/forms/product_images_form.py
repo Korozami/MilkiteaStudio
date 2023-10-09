@@ -1,15 +1,8 @@
 from flask_wtf import FlaskForm
-from flask_uploads import UploadSet, IMAGES, configure_uploads
 from flask_wtf.file import FileField, FileAllowed, FileRequired
-from ...app import app
+from wtforms import SubmitField
+from app.api.helper import ALLOWED_EXTENSIONS
 
-
-photos = UploadSet('photos', IMAGES)
-configure_uploads(app, photos)
-
-class ProductImageForm(FlaskForm):
-    images = FileField('photo', validators=[
-        FileAllowed(photos, 'Only images are allowed'),
-        FileRequired('File field should not be empty')
-        ]
-    )
+class ImageForm(FlaskForm):
+    image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    submit = SubmitField("Create Post")

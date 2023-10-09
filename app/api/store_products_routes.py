@@ -1,12 +1,10 @@
-from flask import Blueprint, request, send_from_directory, url_for
+from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, Store, Product
 from ..forms.product_form import ProductForm
 from ..forms.store_form import StoreForm
-from ..forms.product_images_form import ProductImageForm, photos
 from .auth_routes import validation_errors_to_error_messages
-import os
-import app.config
+
 store_product_routes = Blueprint('storeproducts', __name__)
 
 
@@ -24,7 +22,7 @@ def update_store():
     form = StoreForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     stores = Store.query.get(1)
-    if current_user.admin != True:
+    if not current_user.admin:
         return {'message': 'Unauthorized'}, 401
 
     if form.validate_on_submit():
@@ -131,31 +129,3 @@ def delete_product(product_id):
     db.session.delete(product)
     db.session.commit()
     return {'message': 'Successfully Deleted'}, 200
-
-
-# @store_product_routes.route('/products/images', methods=["GET", "POST"])
-# @login_required
-# def upload_image():
-#     if request.method == "POST":
-#         if request.files:
-#             image = request.files['image']
-
-#             if image.filename =="":
-#                 return {'message': "Image must have filename"}
-
-#             image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
-#             return redirect(request.url)
-@store_product_routes.route('/uploads/<filename>')
-def get_file(filename):
-    return send_from_directory(app.config["IMAGE_UPLOADS"])
-
-
-@store_product_routes.route('/products/images', methods=["POST"])
-@login_required
-def upload_image():
-    form = ProductImageForm()
-    if form.validate_on_submit():
-        filename = photos.save(form.photo.data)
-        file_url = url_for('get_file', filename=filename)
-    else:
-        file_url = None

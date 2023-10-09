@@ -17,13 +17,14 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    admin = db.Column(db.Boolean, nullable=False)
+    admin = db.Column(db.Boolean, default=False, nullable=False)
 
     #relationships
     stores = relationship('Store', back_populates='user', cascade='all, delete-orphan')
     cart = relationship('Cart', back_populates='user', cascade='all, delete-orphan')
     payment = relationship('Payment', back_populates='user', cascade='all, delete-orphan')
     address = relationship('Address', back_populates='user', cascade='all, delete-orphan')
+    order = relationship('Order', back_populates='user', cascade='all, delete-orphan')
 
 
 
