@@ -27,7 +27,7 @@ def update_store():
 
     if form.validate_on_submit():
 
-        stores.online = form.data['online'],
+        stores.online = form.data['online']
 
         db.session.commit()
 
@@ -123,7 +123,7 @@ def delete_product(product_id):
     if not product:
         return {'message': 'Product not found'}, 404
 
-    if current_user.admin != True:
+    if not current_user.admin:
         return {'message': 'Unauthorized'}, 401
 
     db.session.delete(product)
