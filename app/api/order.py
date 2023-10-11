@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import db, Order, Cart
 from ..forms.order_form import OrderForm
 from .auth_routes import validation_errors_to_error_messages
+from datetime import datetime
 
 order_routes = Blueprint('order', __name__)
 
@@ -31,8 +32,8 @@ def add_orders():
             cart_id = cart.id,
             order_number = form.data['order_number'],
             tracking_number = form.data['tracking_number'],
-            shipped = form.data['shipped'],
-            date_ordered = form.data['date_ordered']
+            shipped = False,
+            date_ordered = datetime.now()
         )
         db.session.add(order)
         db.session.commit()
@@ -54,8 +55,6 @@ def update_orders(order_id):
         order.order_number = form.data['order_number']
         order.tracking_number = form.data['tracking_number']
         order.shipped = form.data['shipped']
-        order.date_ordered = form.data['date_ordered']
-
         db.session.commit()
 
         return order.to_dict()

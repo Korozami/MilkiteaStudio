@@ -85,7 +85,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('cart_items',
-    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.Integer(), nullable=False, autoincrement=True),
     sa.Column('item_amount', sa.Integer(), nullable=False),
     sa.Column('cart_id', sa.Integer(), nullable=False),
     sa.Column('product_id', sa.Integer(), nullable=False),

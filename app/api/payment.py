@@ -51,10 +51,10 @@ def update_payment(payment_id):
         elif payment.user_id != current_user.id:
             return {"message": "You cannot edit an payment that isn't yours"}
         else:
-            payment.card_number = form.data['card_number'],
-            payment.name = form.data['name'],
-            payment.expiration_date = form.data['expiration_date'],
-            payment.security_code = form.data['security_code'],
+            payment.card_number = form.data['card_number']
+            payment.name = form.data['name']
+            payment.expiration_date = form.data['expiration_date']
+            payment.security_code = form.data['security_code']
             payment.billing_address = form.data['billing_address']
             db.session.commit()
             return payment.to_dict()

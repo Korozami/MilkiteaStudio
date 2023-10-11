@@ -12,6 +12,6 @@ def security_code(form, field):
 class PaymentForm(FlaskForm):
     card_number = IntegerField('card_number', validators=[DataRequired()])
     name = StringField('name', validators=[DataRequired()])
-    expiration_date = DateField('expiration_date',format='%Y/%m', validators=[DataRequired()])
+    expiration_date = DateField('expiration_date', format='%Y-%m',validators=[DataRequired()])
     security_code = IntegerField('security_code', validators=[DataRequired(), security_code])
     billing_address = StringField('billing_address', validators=[DataRequired()])

@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.orm import relationship
 
+
 class Cart_Item(db.Model):
     __tablename__ = 'cart_items'
 
@@ -20,5 +21,6 @@ class Cart_Item(db.Model):
             'id': self.id,
             'item_amount': self.item_amount,
             'cart_id': self.cart_id,
-            'product_id': self.product_id
+            'product_id': self.product_id,
+            'product': self.product.to_dict()
         }

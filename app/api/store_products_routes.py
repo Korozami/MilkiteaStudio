@@ -17,7 +17,7 @@ def get_store():
     return {'stores': {store.id: store.to_dict() for store in stores}}, 200
 
 
-@store_product_routes.route('/update', methods=["PUT,PATCH"])
+@store_product_routes.route('/update', methods=["PUT", "PATCH"])
 def update_store():
     form = StoreForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -74,8 +74,8 @@ def create_product():
             description = form.data['description'],
             price = form.data['price'],
             category = form.data['category'],
-            quanity = form.data['quantity'],
-            hide = form.data['hide']
+            quantity = form.data['quantity'],
+            hide = False
         )
         db.session.add(product)
         db.session.commit()
@@ -95,7 +95,7 @@ def update_product_id(product_id):
     if not product:
         return {'message': 'Product not found'}, 404
 
-    if current_user.admin != True:
+    if not current_user.admin:
         return {'message': 'Unauthorized'}, 401
 
     if form.validate_on_submit():
