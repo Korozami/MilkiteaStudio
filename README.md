@@ -186,4 +186,4 @@ Remove Search
 
 ## <a name="Schema"></a>Schema :rabbit:
 
-![MilkiTea Studio](https://github.com/Korozami/MilkiteaStudio/assets/104758287/359c300f-5401-42f7-bb1f-7ab88c56e10b)
+![MilkiTea Studio (1)](https://github.com/Korozami/MilkiteaStudio/assets/104758287/1a2d03e2-841d-43db-a996-bda0066294eb)
