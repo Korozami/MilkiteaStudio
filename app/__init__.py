@@ -7,6 +7,11 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.store_products_routes import store_product_routes
+from .api.address import address_routes
+from .api.cart_items import cart_routes
+from .api.order import order_routes
+from .api.payment import payment_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -26,6 +31,11 @@ def load_user(id):
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
+app.register_blueprint(store_product_routes, url_prefix='/api/store')
+app.register_blueprint(address_routes, url_prefix='/api/addresses')
+app.register_blueprint(cart_routes, url_prefix='/api/carts')
+app.register_blueprint(order_routes, url_prefix='/api/orders')
+app.register_blueprint(payment_routes, url_prefix='/api/payments')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 db.init_app(app)
