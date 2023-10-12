@@ -1,7 +1,10 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, Store, Product
+from app.models import db, Store, Product, Product_Image
+from app.api.helper import upload_file_to_s3, remove_file_from_s3, get_unique_filename
+from sqlalchemy import and_
 from ..forms.product_form import ProductForm
+from ..forms.product_images_form import ImageForm
 from ..forms.store_form import StoreForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -127,5 +130,67 @@ def delete_product(product_id):
         return {'message': 'Unauthorized'}, 401
 
     db.session.delete(product)
+    db.session.commit()
+    return {'message': 'Successfully Deleted'}, 200
+
+
+@store_product_routes.route('/products/<int:product_id>/images')
+def get_images(product_id):
+    files = Product_Image.query.get(product_id).all()
+    return files.to_dict()
+
+
+@store_product_routes.route('/products/<int:product_id>/images', methods=["POST"])
+@login_required
+def create_images(product_id):
+    form = ImageForm()
+
+    product = Product.query.get_or_404(product_id)
+
+    if not product:
+        return {'message': 'Product not found'}, 404
+
+    if not current_user.admin:
+        return {'message': 'Unauthorized'}, 401
+
+    if form.validate_on_submit():
+        image = form.data["image"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            return {'errors': 'Failed to upload'}
+
+        url = upload["url"]
+        new_image = Product_Image(
+            product_id = product_id,
+            image = url
+        )
+
+        db.session.add(new_image)
+        db.session.commit()
+        return product.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@store_product_routes.route('/products/<int:product_id>/images/<int:image_id>', methods=["DELETE"])
+@login_required
+def remove_image(product_id, image_id):
+    product = Product.query.get_or_404(product_id)
+
+    image = Product_Image.get_or_404(image_id)
+
+    if not product:
+        return {'message': 'Product not found'}, 404
+
+    if not image:
+        return {'message': 'Image not found}'}, 404
+
+    if not current_user.admin:
+        return {'message': 'Unauthorized'}, 401
+
+    db.session.delete(image)
+    remove_file_from_s3(image)
     db.session.commit()
     return {'message': 'Successfully Deleted'}, 200
