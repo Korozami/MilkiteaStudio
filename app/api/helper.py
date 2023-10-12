@@ -22,10 +22,11 @@ def get_unique_filename(filename):
 
 def upload_file_to_s3(file, acl="public-read"):
     try:
+        new_filename = get_unique_filename(file.filename)
         s3.upload_fileobj(
             file,
             BUCKET_NAME,
-            file.filename,
+            new_filename,
             ExtraArgs={
                 "ACL": acl,
                 "ContentType": file.content_type
@@ -35,7 +36,7 @@ def upload_file_to_s3(file, acl="public-read"):
         # in case the your s3 upload fails
         return {"errors": str(e)}
 
-    return {"url": f"{S3_LOCATION}{file.filename}"}
+    return {"url": f"{S3_LOCATION}{new_filename}"}
 
 
 def remove_file_from_s3(image_url):

@@ -136,7 +136,9 @@ def delete_product(product_id):
 
 @store_product_routes.route('/products/<int:product_id>/images')
 def get_images(product_id):
-    files = Product_Image.query.get(product_id).all()
+    files = Product_Image.query.get(product_id)
+    if not files:
+        return {'message': 'No images have been added'}
     return files.to_dict()
 
 
@@ -146,6 +148,7 @@ def create_images(product_id):
     form = ImageForm()
 
     product = Product.query.get_or_404(product_id)
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if not product:
         return {'message': 'Product not found'}, 404
@@ -154,9 +157,8 @@ def create_images(product_id):
         return {'message': 'Unauthorized'}, 401
 
     if form.validate_on_submit():
-        image = form.data["image"]
-        image.filename = get_unique_filename(image.filename)
-        upload = upload_file_to_s3(image)
+        upload = upload_file_to_s3(form.data["image"])
+        print(upload)
 
         if "url" not in upload:
             return {'errors': 'Failed to upload'}

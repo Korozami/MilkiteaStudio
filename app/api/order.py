@@ -24,7 +24,7 @@ def get_orders():
 def add_orders():
     form = OrderForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    cart = Cart.query.filter_by(user_id=current_user.id)
+    cart = Cart.query.filter_by(user_id=current_user.id).first()
 
     if form.validate_on_submit():
         order = Order(

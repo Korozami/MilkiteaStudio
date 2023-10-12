@@ -28,5 +28,6 @@ class Order(db.Model):
             'order_number': self.order_number,
             'tracking_number': self.tracking_number,
             'shipped': self.shipped,
-            'date_ordered': self.date_ordered
+            'date_ordered': self.date_ordered,
+            'cart': self.cart.to_dict()
         }

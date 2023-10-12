@@ -14,7 +14,12 @@ def get_cart():
     if carts:
         return carts.to_dict()
     elif not carts:
-        return {"message": "Cart is currently empty"}
+        new_cart = Cart(
+            user_id=current_user.id
+        )
+        db.session.add(new_cart)
+        db.session.commit()
+        return new_cart.to_dict()
 
 
 @cart_routes.route('/<int:product_id>/add', methods=["POST"])
@@ -32,28 +37,14 @@ def add_cart_items(product_id):
 
 
     if form.validate_on_submit():
-        if not cart:
-            new_cart = Cart(
-                user_id = current_user.id
-            )
-            cart_item = Cart_Item(
-                item_amount = form.data['item_amount'],
-                cart_id = cart.id,
-                product_id = product_id
-            )
-            db.session.add(new_cart)
-            db.session.add(cart_item)
-            db.session.commit()
-            return cart.to_dict()
-        else:
-            cart_item = Cart_Item(
-                item_amount = form.data['item_amount'],
-                cart_id = cart.id,
-                product_id = product_id
-            )
-            db.session.add(cart_item)
-            db.session.commit()
-            return cart_item.to_dict()
+        cart_item = Cart_Item(
+            item_amount = form.data['item_amount'],
+            cart_id = cart.id,
+            product_id = product_id
+        )
+        db.session.add(cart_item)
+        db.session.commit()
+        return cart_item.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
