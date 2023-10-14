@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
+import Logo from "../image/Logo.png"
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -34,6 +35,7 @@ function LoginFormPage() {
           </div>
           <div className="text-login">
             <div className="desc-login">
+              <img src={Logo} alt='logo' id='login-studio-logo' />
               <h1>Welcome!!!</h1>
               <p>
                 Welcome back to the joyful world of Milki Tea Studios! Here, your imagination dances freely. Immerse yourself in vibrant digital tales and explore

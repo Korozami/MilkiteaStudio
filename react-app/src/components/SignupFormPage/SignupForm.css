@@ -27,7 +27,7 @@ body{
 
 .main-signup{
     display: flex;
-    background-image: url("./image/Symmetry\ Blurple.png");
+    background-image: url("../image/Symmetry\ Blurple.png");
     background-size: cover;
     justify-content: center;
     align-items: center;
@@ -63,7 +63,7 @@ body{
     font-weight: bolder;
 }
 
-.nav-signup #home-signup{
+#home-signup{
     margin-left: 30px;
 }
 
@@ -76,16 +76,6 @@ body{
     width: 500px;
     margin-left: 30px;
 }
-
-.sign-up-logo{
-    margin-left: 200px;
-    width: 250px;
-    height: 250px;
-    background-image: url("./image/Logo.png");
-    background-size: cover;
-}
-
-
 
 .desc-signup h1{
     color: #6e683c;
@@ -109,6 +99,7 @@ body{
     color: #5d7aa5;
     display: flex;
     justify-content: center;
+    font-family: "SuperDessert", sans-serif;
     font-size: 30px;
     margin-bottom: 20px;
 }

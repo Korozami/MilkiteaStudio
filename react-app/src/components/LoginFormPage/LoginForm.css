@@ -9,7 +9,7 @@ body{
 
 .main-login{
     display: flex;
-    background-image: url("../SignupFormPage/image/Symmetry\ Blurple.png");
+    background-image: url("../image/Symmetry\ Blurple.png");
     background-size: cover;
     justify-content: center;
     align-items: center;
@@ -122,4 +122,9 @@ body{
     border: 2px solid rgb(161, 154, 154);
     border-radius: 20px;
     background-color: #90895b;
+}
+
+#login-studio-logo {
+    height: 250px;
+    margin-left: 130px;
 }

@@ -1,7 +1,70 @@
-.profile-dropdown {
+/* .profile-dropdown {
   position: absolute;
 }
 
 .hidden {
   display: none;
+} */
+
+@font-face {
+  font-family: "SuperFuntime";
+  src: url(../fonts/SuperFuntime-3zpLX.ttf);
+}
+
+@font-face {
+  font-family: "SuperDessert";
+  src: url(../fonts/SuperDessert-EaAyj.ttf);
+}
+
+.main-nav{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  width: 220px;
+  overflow: hidden;
+  height: auto;
+  background-color: #f8f5e0;
+}
+
+#studio-logo{
+  position: fixed;
+  top: 100px;
+  left: 0;
+  height: 220px;
+  width: 220px;
+}
+
+.nav{
+  position: fixed;
+  width: fit-content;
+  left: 40px;
+  top: 330px;
+}
+
+.store-name{
+  position: fixed;
+  top: 30px;
+  left: 15px;
+  color: #4c3125;
+  font-size: 25px;
+  font-family: "SuperFuntime", sans-serif;
+}
+
+.link{
+  text-decoration: none;
+  display: block;
+  color: #806a57;
+  font-size: 15px;
+  font-family: 'Courier New', Courier, monospace,"SuperDessert", sans-serif;
+}
+
+.link:hover{
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.user-link{
+  margin-top: 30px;
 }

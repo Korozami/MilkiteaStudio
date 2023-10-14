@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import { signUp } from "../../store/session";
+import Logo from "../image/Logo.png"
 import './SignupForm.css';
 
 function SignupFormPage() {
@@ -36,15 +37,14 @@ function SignupFormPage() {
         <div className="signup-title">Milki Tea Studios</div>
         <div className="main-signup-content">
           <div className="nav-signup">
-            <NavLink id="home-login" exact to="/">Home</NavLink>
+            <NavLink id="home-signup" exact to="/">Home</NavLink>
             <a href="#">Store</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
           </div>
           <div className="text-signup">
             <div className="desc-signup">
-              <div className="sign-up-logo">
-              </div>
+              <img src={Logo} alt='logo' id='login-studio-logo' />
               <h1>Welcome!!!</h1>
               <p>Step into the joyful world of Milki Tea Studios! Here, your imagination dances freely! Dive into our vibrant
                 digital artworks, each a tale to be discovered. Explore the charming handmade treasures, filled with the love and
