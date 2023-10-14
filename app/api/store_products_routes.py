@@ -78,7 +78,8 @@ def create_product():
             price = form.data['price'],
             category = form.data['category'],
             quantity = form.data['quantity'],
-            hide = False
+            hide = False,
+            display = False
         )
         db.session.add(product)
         db.session.commit()
@@ -108,6 +109,7 @@ def update_product_id(product_id):
         product.category = form.data['category']
         product.quanity = form.data['quantity']
         product.hide = form.data['hide']
+        product.display = form.data['display']
 
         db.session.commit()
         return product.to_dict()
@@ -166,7 +168,7 @@ def create_images(product_id):
         url = upload["url"]
         new_image = Product_Image(
             product_id = product_id,
-            image = url
+            imageUrl = url
         )
 
         db.session.add(new_image)
@@ -181,18 +183,18 @@ def create_images(product_id):
 def remove_image(product_id, image_id):
     product = Product.query.get_or_404(product_id)
 
-    image = Product_Image.get_or_404(image_id)
+    imageUrl = Product_Image.get_or_404(image_id)
 
     if not product:
         return {'message': 'Product not found'}, 404
 
-    if not image:
+    if not imageUrl:
         return {'message': 'Image not found}'}, 404
 
     if not current_user.admin:
         return {'message': 'Unauthorized'}, 401
 
-    db.session.delete(image)
-    remove_file_from_s3(image)
+    db.session.delete(imageUrl)
+    remove_file_from_s3(imageUrl)
     db.session.commit()
     return {'message': 'Successfully Deleted'}, 200

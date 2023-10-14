@@ -14,9 +14,13 @@ class Order(db.Model):
     cart_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('carts.id')), nullable=False)
     order_number = db.Column(db.Integer, nullable=False)
     tracking_number = db.Column(db.Integer)
-    shipped = db.Column(db.Boolean, nullable=False)
+    shipped = db.Column(db.Boolean, default=False)
+    address_order = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod('addresses.id')), nullable=False)
+    payment_order = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod('payments.id')), nullable=False)
     date_ordered = db.Column(db.DateTime, default=datetime.utcnow)
 
+    address = relationship('Address', back_populates='order')
+    payment = relationship('Payment', back_populates='order')
     cart = relationship('Cart', back_populates='order')
     user = relationship('User', back_populates='order')
 
@@ -28,6 +32,8 @@ class Order(db.Model):
             'order_number': self.order_number,
             'tracking_number': self.tracking_number,
             'shipped': self.shipped,
+            'address_order': self.address_order,
+            'payment_order': self.payment_order,
             'date_ordered': self.date_ordered,
             'cart': self.cart.to_dict()
         }

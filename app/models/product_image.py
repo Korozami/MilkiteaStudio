@@ -9,7 +9,7 @@ class Product_Image(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('products.id')), nullable=False)
-    image = db.Column(db.String(400))
+    imageUrl = db.Column(db.String(400))
 
     product = relationship("Product", back_populates='product_image')
 
@@ -17,5 +17,5 @@ class Product_Image(db.Model):
         return {
             'id': self.id,
             'product_id': self.product_id,
-            'image': self.image
+            'imageUrl': self.imageUrl
         }

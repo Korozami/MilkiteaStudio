@@ -15,8 +15,10 @@ class Address(db.Model):
     state = db.Column(db.String(255), nullable=False)
     country = db.Column(db.String(255), nullable=False)
     zip = db.Column(db.Integer, nullable=False)
+    primary = db.Column(db.Boolean, default=False)
 
     user = relationship("User", back_populates='address')
+    order = relationship('Order', back_populates='address')
 
     def to_dict(self):
         return {
@@ -26,5 +28,6 @@ class Address(db.Model):
             'address': self.address,
             'state': self.state,
             'country': self.country,
-            'zip': self.zip
+            'zip': self.zip,
+            'primary': self.primary
         }

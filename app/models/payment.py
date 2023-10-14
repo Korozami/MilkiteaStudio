@@ -15,8 +15,10 @@ class Payment(db.Model):
     expiration_date = db.Column(db.Date, nullable=False)
     security_code = db.Column(db.Integer, nullable=False)
     billing_address = db.Column(db.String(255), nullable=False)
+    primary = db.Column(db.Boolean, default=False)
 
     user = relationship("User", back_populates='payment')
+    order = relationship('Order', back_populates='payment')
 
     def to_dict(self):
         return {
@@ -26,5 +28,6 @@ class Payment(db.Model):
             'name': self.name,
             'expiration_date': self.expiration_date,
             'security_code': self.security_code,
-            'billing_address': self.billing_address
+            'billing_address': self.billing_address,
+            'primary': self.primary
         }

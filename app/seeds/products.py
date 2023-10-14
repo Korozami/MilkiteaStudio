@@ -10,7 +10,8 @@ def seed_products():
         price=40,
         category="Apparel",
         quantity=40,
-        hide=False
+        hide=False,
+        display=True
     )
     star_catcher_sticker = Product(
         store_id=1,
@@ -19,7 +20,8 @@ def seed_products():
         price=5,
         category="Sticker",
         quantity=40,
-        hide=False
+        hide=False,
+        display=True
     )
     cats_corner_sticker = Product(
         store_id=1,

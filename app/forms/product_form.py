@@ -27,3 +27,4 @@ class ProductForm(FlaskForm):
     category = StringField('category')
     quantity = IntegerField('quanitity', validators=[DataRequired()])
     hide = BooleanField('hide')
+    display = BooleanField('display')

@@ -15,7 +15,8 @@ class Product(db.Model):
     price = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(255))
     quantity = db.Column(db.Integer, nullable=False)
-    hide = db.Column(db.Boolean, nullable=False)
+    hide = db.Column(db.Boolean, default=False)
+    display = db.Column(db.Boolean, default=False)
 
     stores = relationship('Store', back_populates='product')
     product_image = relationship('Product_Image', back_populates='product', cascade='all, delete-orphan')
@@ -34,5 +35,6 @@ class Product(db.Model):
             'category': self.category,
             'quantity': self.quantity,
             'hide': self.hide,
+            'display': self.display,
             'product_images': product_image_data
         }
