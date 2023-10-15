@@ -12,6 +12,7 @@ class Product(db.Model):
     store_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('stores.id')), nullable=False)
     item_name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
+    size = db.Column(db.Text)
     price = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(255))
     quantity = db.Column(db.Integer, nullable=False)
@@ -31,6 +32,7 @@ class Product(db.Model):
             'store_id': self.store_id,
             'item_name': self.item_name,
             'description': self.description,
+            'size': self.size,
             'price': self.price,
             'category': self.category,
             'quantity': self.quantity,

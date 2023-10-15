@@ -23,6 +23,7 @@ def description_length(form, field):
 class ProductForm(FlaskForm):
     item_name = StringField('item_name', validators=[DataRequired()])
     description = TextAreaField('description', validators=[DataRequired(), description_length])
+    size = TextAreaField('size')
     price = DecimalField('price', validators=[DataRequired()])
     category = StringField('category')
     quantity = IntegerField('quanitity', validators=[DataRequired()])

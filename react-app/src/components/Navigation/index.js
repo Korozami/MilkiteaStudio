@@ -4,7 +4,7 @@ import { logout } from "../../store/session";
 import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import Logo from "../SignupFormPage/image/Logo.png"
+import Logo from "../image/Logo.png";
 import './Navigation.css';
 
 function Navigation({ isLoaded }){

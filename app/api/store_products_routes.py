@@ -75,6 +75,7 @@ def create_product():
             store_id = 1,
             item_name=form.data['item_name'],
             description = form.data['description'],
+            size = form.data['size'],
             price = form.data['price'],
             category = form.data['category'],
             quantity = form.data['quantity'],
@@ -105,6 +106,7 @@ def update_product_id(product_id):
     if form.validate_on_submit():
         product.item_name = form.data['item_name']
         product.description = form.data['description']
+        product.size = form.data['size']
         product.price = form.data['price']
         product.category = form.data['category']
         product.quanity = form.data['quantity']

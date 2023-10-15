@@ -1,0 +1,25 @@
+body{
+    background-color: #83b0b1;
+}
+
+.main-home{
+    margin-left: 225px;
+}
+
+.main-img{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-img img{
+    object-fit: scale-down;
+    max-height: 50vh;
+    border-radius: 30px;
+}
+
+#testing{
+    object-fit: scale-down;
+    max-height: 50vh;
+    border-radius: 30px;
+}
