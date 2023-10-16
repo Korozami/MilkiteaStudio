@@ -32,7 +32,7 @@ const deleteProductAction = (product) => ({
 
 export const fetchProducts = () => async (dispatch) => {
     try {
-        const res = await fetch("/api/store");
+        const res = await fetch("/api/store/");
 
         if (res.ok) {
             const data = await res.json();

@@ -1,3 +1,14 @@
+@font-face {
+    font-family: "SuperFuntime";
+    src: url(../fonts/SuperFuntime-3zpLX.ttf);
+}
+
+@font-face {
+    font-family: "SuperDessert";
+    src: url(../fonts/SuperDessert-EaAyj.ttf);
+}
+
+
 body{
     background-color: #83b0b1;
 }
@@ -7,7 +18,7 @@ body{
 }
 
 .main-img{
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
 }
@@ -18,8 +29,46 @@ body{
     border-radius: 30px;
 }
 
-#testing{
-    object-fit: scale-down;
-    max-height: 50vh;
-    border-radius: 30px;
+.home-title{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    color: beige;
+    margin: 30px;
+    font-family: "SuperDessert", 'Courier New', Courier, monospace ,sans-serif;
+}
+
+
+.product-container{
+    display: inline-block;
+    width: 300px;
+    margin: 20px 0px 20px 55px;
+    background-color: beige;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 15px;
+}
+
+.product img{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.product-container:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.product-name{
+    display: flex;
+    justify-content: center;
+    color: #5b4431;
+    margin: 4px;
+    font-weight: bolder;
+    font-family: "SuperFunTime";
+}
+
+.product-price{
+    font-style: italic;
+    font-weight: lighter;
+    display: flex;
+    justify-content: center;
+    margin: 4px;
 }

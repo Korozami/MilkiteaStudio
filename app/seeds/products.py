@@ -43,8 +43,7 @@ def seed_products():
         price=5,
         category="Sticker",
         quantity=40,
-        hide=False,
-        display=True
+        hide=False
     )
     dark_angel_twin = Product(
         store_id=1,
