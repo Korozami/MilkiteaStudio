@@ -36,11 +36,11 @@ function LoginFormPage() {
           <div className="text-login">
             <div className="desc-login">
               <img src={Logo} alt='logo' id='login-studio-logo' />
-              <h1>Welcome!!!</h1>
+              {/* <h1>Welcome!!!</h1>
               <p>
                 Welcome back to the joyful world of Milki Tea Studios! Here, your imagination dances freely. Immerse yourself in vibrant digital tales and explore
                 charming handmade treasures, each filled with love and whimsy, including our beloved shy bunnies. Thank you for being a part of our creative family and continue collecting our wonderful treasures.
-              </p>
+              </p> */}
               <div className="icon">
               </div>
             </div>
