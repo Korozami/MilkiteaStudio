@@ -10,9 +10,9 @@ const setAllProducts = (products) => ({
     products
 })
 
-const getProductId = (products) => ({
+const getProductId = (product) => ({
     type: GET_PRODUCT_ID,
-    products
+    product
 })
 
 const createProductAction = (product) => ({
