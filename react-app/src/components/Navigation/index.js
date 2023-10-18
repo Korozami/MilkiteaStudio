@@ -31,13 +31,22 @@ function Navigation({ isLoaded }){
 					<NavLink className="link" exact to="/about">About</NavLink>
 					<NavLink className="link" exact to="/contact">Contact</NavLink>
 					{sessionUser ? (
-						<button onClick={handleLogout}>Log Out</button>
+						<div className='user-loggin'>
+							<NavLink className='link' exact to="/user/portfolio">Profile</NavLink>
+							<button onClick={handleLogout}>Log Out</button>
+						</div>
 					) : (
 						<div className='user-link'>
 						<NavLink className="link" exact to="/login">Login</NavLink>
 						<NavLink className="link" exact to="/signup">Sign Up</NavLink>
 						</div>
 					)}
+					<a href='https://instagram.com/milkiteastudios'>
+						<i class="fa-brands fa-instagram fa-xl"></i>
+					</a>
+					<a href='https://youtube.com/@milkiteastudios'>
+						<i class="fa-brands fa-youtube fa-xl"></i>
+					</a>
 				</div>
 			</div>
 		</div>

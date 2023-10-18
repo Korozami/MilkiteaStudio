@@ -29,9 +29,9 @@ function LoginFormPage() {
         <div className="main-login-content">
           <div className="nav-login">
 					  <NavLink id="home-login" exact to="/">Home</NavLink>
-            <a href="#">Store</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <NavLink className="link" exact to="/store">Shop</NavLink>
+					  <NavLink className="link" exact to="/about">About</NavLink>
+					  <NavLink className="link" exact to="/contact">Contact</NavLink>
           </div>
           <div className="text-login">
             <div className="desc-login">

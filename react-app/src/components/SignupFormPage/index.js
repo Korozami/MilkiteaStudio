@@ -38,18 +38,13 @@ function SignupFormPage() {
         <div className="main-signup-content">
           <div className="nav-signup">
             <NavLink id="home-signup" exact to="/">Home</NavLink>
-            <a href="#">Store</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <NavLink className="link" exact to="/store">Shop</NavLink>
+					  <NavLink className="link" exact to="/about">About</NavLink>
+					  <NavLink className="link" exact to="/contact">Contact</NavLink>
           </div>
           <div className="text-signup">
             <div className="desc-signup">
               <img src={Logo} alt='logo' id='login-studio-logo' />
-              {/* <h1>Welcome!!!</h1> */}
-              {/* <p>Step into the joyful world of Milki Tea Studios! Here, your imagination dances freely! Dive into our vibrant
-                digital artworks, each a tale to be discovered. Explore the charming handmade treasures, filled with the love and
-                whimsy of shy bunnies. Join our creative family and enjoy your new treasures
-              </p> */}
             </div>
           </div>
           <div className="form-signup">

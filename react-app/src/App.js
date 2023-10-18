@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import HomePage from "./components/HomePage";
 import StorePage from "./components/StorePage";
+import UserPage from "./components/UserPage";
 import ProductDetail from "./components/ProductDetailPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/store/products/:productId">
             <ProductDetail />
+          </Route>
+          <Route path="/user/portfolio">
+            <UserPage />
           </Route>
           <Route path="/store">
             <StorePage />
