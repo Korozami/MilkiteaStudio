@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+}
+
+.main-login{
+    display: flex;
+    background-image: url("../image/Bg\ fixed.png");
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main-login-content{
+    height: 550px;
+    width: 1100px;
+    background-color: beige;
+    opacity: .95;
+    border: 10px solid #8bb6b9;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+}
+
+.nav-login{
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-login a{
+    text-decoration: none;
+    color: #9b935d;
+    font-size: 20px;
+    margin-right: 25px;
+}
+
+.nav-login a:hover{
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+.nav-login #home-login{
+    margin-left: 30px;
+}
+
+.text-login{
+    height: 460px;
+    display: flex;
+}
+
+.desc-login{
+    width: 500px;
+    margin-left: 30px;
+}
+
+.desc-login h2{
+    font-size: 30px;
+    color: #6e683c;
+    margin-bottom: 150px;
+    margin-top: 50px;
+}
+
+.desc-login h1{
+    color: #6e683c;
+    margin-bottom: 10px;
+}
+
+.desc-login p{
+    width: 450px;
+    opacity: .5;
+}
+
+.form-login{
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 400px;
+    height: 400px;
+}
+
+.form-login h1{
+    color: #6e683c;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.form-login label{
+    color: #6e683c;
+    margin-left: 100px;
+}
+
+.form-login input {
+    margin-left: 100px;
+    margin-bottom: 5px;
+    display: block;
+    height: 30px;
+    width: 200px;
+    background-color: transparent;
+    border: 2px solid white;
+    background-color: rgb(188, 176, 145);
+    border-radius: 20px;
+    color: #6e683c;
+}
+
+.form-login input:focus{
+    outline-color: rgb(161, 154, 154);
+}
+
+.form-login button {
+    color: white;
+    margin-left: 100px;
+    margin-top: 10px;
+    display: block;
+    height: 40px;
+    width: 200px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    opacity: 1;
+    border-radius: 20px;
+    background-color: rgb(137, 124, 91);
+}
+
+#login-studio-logo {
+    height: 400px;
+    margin-left: 60px;
+}

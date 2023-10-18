@@ -1,0 +1,82 @@
+@font-face {
+    font-family: "SuperFuntime";
+    src: url(../fonts/SuperFuntime-3zpLX.ttf);
+}
+
+@font-face {
+    font-family: "SuperDessert";
+    src: url(../fonts/SuperDessert-EaAyj.ttf);
+}
+
+
+body{
+    background-color: #f8f5e0;
+}
+
+.main-home{
+    margin-left: 200px;
+}
+
+.main-img{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-img img{
+    object-fit: scale-down;
+    max-height: 50vh;
+    border-radius: 30px;
+}
+
+.home-title{
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    color: #83b0b1;
+    margin: 30px;
+    font-family: "SuperDessert", 'Courier New', Courier, monospace ,sans-serif;
+}
+
+
+.product-container{
+    display: inline-block;
+    width: 300px;
+    margin: 20px 0px 20px 55px;
+    /* background-color: beige; */
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    border-radius: 15px;
+}
+
+.product img{
+    /* border-top-right-radius: 15px;
+    border-top-left-radius: 15px; */
+    border-radius: 250px;
+    margin-bottom: 30px;
+}
+.product-container:hover{
+    opacity: 0.85;
+    /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+}
+
+.product-name{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    color: #806a57;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    /* margin: 4px; */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.product-price{
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    color: #6d9696;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    margin: 4px;
+}

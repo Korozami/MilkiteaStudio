@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, Order, Cart
+from app.models import db, Order, Cart, Address, Payment
 from ..forms.order_form import OrderForm
 from .auth_routes import validation_errors_to_error_messages
 from datetime import datetime
@@ -19,12 +19,38 @@ def get_orders():
         return {'orders': {order.id: order.to_dict() for order in orders}}, 200
 
 
-@order_routes.route('/add', methods=["POST"])
+@order_routes.route('/add/<int:address_id>/<int:payment_id>', methods=["POST"])
 @login_required
-def add_orders():
+def add_orders(address_id, payment_id):
     form = OrderForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     cart = Cart.query.filter_by(user_id=current_user.id).first()
+    address = Address.query.get(address_id)
+    payment = Payment.query.get(payment_id)
+
+    if address.user_id != current_user.id:
+        return {'message': 'This address does not belong to this user'}
+
+    if payment.user_id != current_user.id:
+        return {'message': 'This payment does not belong to this user'}
+    # user_address = Address.query.filter_by(user_id=current_user.id).all()
+    # user_address_data = [address.to_dict() for address in user_address]
+    # user_payment = Payment.query.filter_by(user_id=current_user.id).all()
+    # payment_address_data = [payment.to_dict() for payment in user_payment]
+
+    # for address in user_address_data:
+    #     if (address.primary):
+    #         primary_address = address.id
+    #     else:
+    #         primary_address = Address.query.filter_by(user_id=current_user.id).first()
+
+
+    # for payment in payment_address_data:
+    #     if payment.primary:
+    #         primary_payment = payment.id
+    #     else:
+    #         primary_payment = Payment.query.filter_by(user_id=current_user.id).first()
+
 
     if form.validate_on_submit():
         order = Order(
@@ -33,7 +59,9 @@ def add_orders():
             order_number = form.data['order_number'],
             tracking_number = form.data['tracking_number'],
             shipped = False,
-            date_ordered = datetime.now()
+            date_ordered = datetime.now(),
+            address_order = address_id,
+            payment_order = payment_id
         )
         db.session.add(order)
         db.session.commit()

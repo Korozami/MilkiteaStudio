@@ -54,6 +54,7 @@ def update_address(address_id):
             address.state = form.data['state']
             address.country = form.data['country']
             address.zip = form.data['zip']
+            address.primary = form.data['primary']
             db.session.commit()
             return address.to_dict()
 

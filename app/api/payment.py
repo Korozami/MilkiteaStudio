@@ -56,6 +56,7 @@ def update_payment(payment_id):
             payment.expiration_date = form.data['expiration_date']
             payment.security_code = form.data['security_code']
             payment.billing_address = form.data['billing_address']
+            payment.primary = form.data['primary']
             db.session.commit()
             return payment.to_dict()
 

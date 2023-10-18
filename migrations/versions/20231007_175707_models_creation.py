@@ -25,9 +25,13 @@ def upgrade():
     sa.Column('order_number', sa.Integer(), nullable=False),
     sa.Column('tracking_number', sa.Integer(), nullable=True),
     sa.Column('shipped', sa.Boolean(), nullable=False),
+    sa.Column('address_order', sa.Integer(), nullable=False),
+    sa.Column('payment_order', sa.Integer(), nullable=False),
     sa.Column('date_ordered', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['cart_id'], ['carts.id'], ),
+    sa.ForeignKeyConstraint(['address_order'], ['addresses.id'], ),
+    sa.ForeignKeyConstraint(['payment_order'], ['payments.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('products',
@@ -35,10 +39,12 @@ def upgrade():
     sa.Column('store_id', sa.Integer(), nullable=False),
     sa.Column('item_name', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
+    sa.Column('size', sa.Text(), nullable=True),
     sa.Column('price', sa.Float(), nullable=False),
     sa.Column('category', sa.String(length=255), nullable=True),
     sa.Column('quantity', sa.Integer(), nullable=False),
-    sa.Column('hide', sa.Boolean(), nullable=False),
+    sa.Column('hide', sa.Boolean(), nullable=True),
+    sa.Column('display', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['store_id'], ['stores.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -50,6 +56,7 @@ def upgrade():
     sa.Column('state', sa.String(length=255), nullable=False),
     sa.Column('country', sa.String(length=255), nullable=False),
     sa.Column('zip', sa.Integer(), nullable=False),
+    sa.Column('primary', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -67,13 +74,14 @@ def upgrade():
     sa.Column('expiration_date', sa.Date(), nullable=False),
     sa.Column('security_code', sa.Integer(), nullable=False),
     sa.Column('billing_address', sa.String(length=255), nullable=False),
+    sa.Column('primary', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('product_images',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('product_id', sa.Integer(), nullable=False),
-    sa.Column('image', sa.String(length=400), nullable=True),
+    sa.Column('imageUrl', sa.String(length=400), nullable=True),
     sa.ForeignKeyConstraint(['product_id'], ['products.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
