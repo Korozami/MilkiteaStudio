@@ -1,9 +1,10 @@
 import './AddressPage.css';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
+import OpenModalButton from '../Modal';
 import { NavLink } from 'react-router-dom';
-import { fetchAddresses } from '../../store/address';
-
+import DeleteAddress from '../DeleteAddress';
+import { fetchAddresses, updateAddress } from '../../store/address';
 
 
 function AddressPage() {
@@ -23,7 +24,6 @@ function AddressPage() {
             <div className='address-body-wrapper'>
                 <NavLink className="address-add" exact to="/address/add">
                     <div className='adding-container'>
-                        {/* <i class="fa-solid fa-plus fa-2xl"></i> */}
                         <i className='material-icons' id='add-btn'>add</i>
                         <div className='adding-lable'>Add Address</div>
                     </div>
@@ -37,6 +37,7 @@ function AddressPage() {
                                     <div className='address-info'>{address?.address}</div>
                                     <div className='address-info'>{address?.city}, {address?.state} {address?.zip}</div>
                                     <div className='address-info'>{address?.country}</div>
+                                    <OpenModalButton buttonName="Delete" modalComponent={<DeleteAddress addressId={address?.id} />} />
                                 </div>
                             )
                         }

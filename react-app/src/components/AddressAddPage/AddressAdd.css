@@ -1,0 +1,75 @@
+@font-face {
+    font-family: "SuperFuntime";
+    src: url(../fonts/SuperFuntime-3zpLX.ttf);
+}
+
+@font-face {
+    font-family: "SuperDessert";
+    src: url(../fonts/SuperDessert-EaAyj.ttf);
+}
+
+@font-face {
+    font-family: "Cooltive";
+    src: url(../fonts/CutiveMono-Regular.ttf);
+}
+
+
+.address-form-container{
+    margin-left: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.address-form-heading-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.address-form-header{
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-family: "SuperDessert", sans-serif;
+    color: #6e683c;
+}
+
+.address-form{
+    display: flex;
+    justify-content: center;
+}
+
+.form-label{
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #6e683c;
+}
+
+.form-input{
+    margin-bottom: 10px;
+    height: 30px;
+    width: 200px;
+    background-color: transparent;
+    border: 2px solid white;
+    background-color: rgb(188, 176, 145);
+    border-radius: 20px;
+    color: #6e683c;
+    text-align: center;
+}
+
+.form-input:focus{
+    outline-color: rgb(161, 154, 154);
+}
+
+#address-submit-btn{
+    color: white;
+    margin-top: 10px;
+    display: block;
+    height: 40px;
+    width: 200px;
+    border: none;
+    opacity: 1;
+    border-radius: 20px;
+    background-color: rgb(137, 124, 91);
+}

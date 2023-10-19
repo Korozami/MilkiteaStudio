@@ -8,6 +8,7 @@ import StorePage from "./components/StorePage";
 import UserPage from "./components/UserPage";
 import AddressPage from "./components/AddressPage";
 import ProductDetail from "./components/ProductDetailPage";
+import AddressForm from "./components/AddressAddPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/user/portfolio">
             <UserPage />
+          </Route>
+          <Route path="/address/add">
+            <AddressForm />
           </Route>
           <Route path="/address">
             <AddressPage />

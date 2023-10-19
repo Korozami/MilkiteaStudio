@@ -71,17 +71,14 @@ export const fetchAddressId = (addressId) => async (dispatch) => {
 
 export const createAddress = (addressData) => async (dispatch) => {
     try {
-        const res = await('/api/addresses/add', {
+        const res = await fetch('/api/addresses/add', {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(addressData),
-        });
-
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(addressData)
+        })
         if (res.ok) {
             const data = await res.json();
-            dispatch(createAddressAction(data));
+            dispatch(createAddressAction(data))
             return data;
         } else {
             const errors = await res.json();
@@ -96,17 +93,15 @@ export const createAddress = (addressData) => async (dispatch) => {
 
 export const updateAddress = (addressId, updateAddressData) => async (dispatch) => {
     try {
-        const res = await(`/api/addresses/${addressId}/update`, {
+        const res = await fetch(`/api/addresses/${addressId}/update`, {
             method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updateAddressData),
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(updateAddressData)
         });
 
         if (res.ok) {
             const updateData = await res.json();
-            dispatch(updateAddressAction(updateData));
+            dispatch(updateAddressAction(updateData))
         } else {
             const errors = await res.json();
             return errors;
@@ -125,7 +120,7 @@ export const deleteAddress = (addressId) => async (dispatch) => {
         });
 
         if (res.ok) {
-            dispatch(deleteAddressAction(addressId));
+            dispatch(deleteAddressAction(addressId))
         } else {
             const errors = await res.json();
             return errors

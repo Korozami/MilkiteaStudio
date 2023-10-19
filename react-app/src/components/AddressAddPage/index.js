@@ -2,10 +2,12 @@ import './AddressAdd.css';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createAddress } from '../../store/address';
+import { useHistory } from "react-router-dom";
 
 
 function AddressForm() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [ city, setCity ] = useState("");
     const [ address, setAddress ] = useState("");
     const [ state, setState ] = useState("");
@@ -14,6 +16,7 @@ function AddressForm() {
     const [ errors, setErrors] = useState({});
 
     const handleAddAddress = async (e) => {
+
         e.preventDefault();
 
         const addressData = {
@@ -24,13 +27,11 @@ function AddressForm() {
             zip
         }
 
-        const res = await dispatch(createAddress(addressData));
+        let res = await dispatch(createAddress(addressData));
 
         if (res) {
-
+            history.push("/address")
         }
-
-
     }
 
     return (
@@ -38,38 +39,38 @@ function AddressForm() {
             <div className='address-form-heading-container'>
                 <div className='address-form-header'>Add a new address</div>
             </div>
-            <form className='address-form' onSubmit={} >
+            <form className='address-form' onSubmit={handleAddAddress} >
                 <div className='address-section'>
-                    <div className='country-label'>Country/Region</div>
-                    <input className='country-input'
+                    <div className='form-label'>Country/Region</div>
+                    <input className='form-input'
                         type='text'
                         onChange={(e) => setCountry(e.target.value)}
                         placeholder='Country'
                         required
                     />
-                    <div className='address-lable'>Address</div>
-                    <input className='address-input'
+                    <div className='form-label'>Address</div>
+                    <input className='form-input'
                         type='text'
                         onChange={(e) => setAddress(e.target.value)}
                         placeholder='Street address or P.O Box'
                         required
                         />
-                    <div className='city-label'>City</div>
-                    <input className='city-input'
+                    <div className='form-label'>City</div>
+                    <input className='form-input'
                         type='text'
                         onChange={(e) => setCity(e.target.value)}
                         placeholder='City'
                         required
                         />
-                    <div className='state-label'>State</div>
-                    <input className='state-input'
+                    <div className='form-label'>State</div>
+                    <input className='form-input'
                         type='text'
                         onChange={(e) => setState(e.target.value)}
                         placeholder='State'
                         required
                         />
-                    <div className='zip-label'>Zip Code</div>
-                    <input className='zip-input'
+                    <div className='form-label'>Zip Code</div>
+                    <input className='form-input'
                         type='number'
                         onChange={(e) => setZip(e.target.value)}
                         placeholder='Zip Code'
@@ -81,3 +82,5 @@ function AddressForm() {
         </div>
     )
 }
+
+export default AddressForm;
