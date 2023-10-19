@@ -1,0 +1,53 @@
+.address-main-body{
+    margin-left: 220px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.address-body-wrapper{
+    margin-top: 5vh;
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.address-header{
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.address-add{
+    text-decoration: none;
+}
+
+.adding-container{
+    color: #806a57;
+    border: 3px dotted black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 70px 90px 70px 90px;
+}
+
+#add-btn{
+    font-size: 100px;
+}
+
+.address-info{
+    font-size: 18px;
+}
+
+.address-contents{
+    margin-left: 20px;
+    color: #806a57;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0px 30px 0px 30px;
+}

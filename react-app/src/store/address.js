@@ -33,7 +33,7 @@ const deleteAddressAction = (address) => ({
 
 export const fetchAddresses = () => async (dispatch) => {
     try {
-        const res = await fetch("/api/addresses");
+        const res = await fetch("/api/addresses/");
 
         if (res.ok) {
             const data = await res.json();
