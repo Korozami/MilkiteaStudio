@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import HomePage from "./components/HomePage";
 import StorePage from "./components/StorePage";
 import UserPage from "./components/UserPage";
+import AddressPage from "./components/AddressPage";
 import ProductDetail from "./components/ProductDetailPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/user/portfolio">
             <UserPage />
+          </Route>
+          <Route path="/address">
+            <AddressPage />
           </Route>
           <Route path="/store">
             <StorePage />

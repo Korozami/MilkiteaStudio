@@ -14,6 +14,17 @@ def get_address():
     return {'addresses': {address.id: address.to_dict() for address in addresses}}, 200
 
 
+@address_routes.route('/<int:address_id>')
+@login_required
+def get_address_id(address_id):
+    address = Address.query.get_or_404(address_id)
+
+    if not address:
+        return {'message': 'Address not found'}, 404
+
+    return address.to_dict()
+
+
 @address_routes.route('/add', methods=["POST"])
 @login_required
 def create_address():
