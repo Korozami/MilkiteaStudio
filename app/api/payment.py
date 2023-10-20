@@ -17,6 +17,17 @@ def get_payment():
     return {'payments': {payment.id: payment.to_dict() for payment in payments}}, 200
 
 
+@payment_routes.route('/<int:payment_id>')
+@login_required
+def get_payment_id(payment_id):
+    payment = Payment.get_or_404(payment_id)
+
+    if not payment:
+        return {'message': 'Payment not found'}, 404
+
+    return payment.to_dict()
+
+
 @payment_routes.route('/add', methods=["POST"])
 @login_required
 def create_payment():

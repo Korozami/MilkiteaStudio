@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import productReducer from './product';
 import addressReducer from './address';
+import paymentReducer from './payment';
 
 const rootReducer = combineReducers({
   session,
   products: productReducer,
   addresses: addressReducer,
+  payments: paymentReducer,
 });
 
 
