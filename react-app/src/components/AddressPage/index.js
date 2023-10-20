@@ -16,7 +16,7 @@ function AddressPage() {
 
     useEffect(() => {
         dispatch(fetchAddresses())
-    }, [dispatch])
+    }, [dispatch, addressData])
 
     return (
         <div className='address-main-body'>
@@ -37,7 +37,12 @@ function AddressPage() {
                                     <div className='address-info'>{address?.address}</div>
                                     <div className='address-info'>{address?.city}, {address?.state} {address?.zip}</div>
                                     <div className='address-info'>{address?.country}</div>
-                                    <OpenModalButton buttonName="Delete" modalComponent={<DeleteAddress addressId={address?.id} />} />
+                                    <div className='button-container'>
+                                        <NavLink className="address-update" exact to={`/address/${address?.id}/update`}>
+                                            <button type='button'>Update</button>
+                                        </NavLink>
+                                        <OpenModalButton buttonName="Delete" modalComponent={<DeleteAddress addressId={address?.id} />} />
+                                    </div>
                                 </div>
                             )
                         }

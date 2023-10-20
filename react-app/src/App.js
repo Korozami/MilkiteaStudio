@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import HomePage from "./components/HomePage";
 import StorePage from "./components/StorePage";
+import UpdateAddressForm from "./components/UpdateAddressPage";
 import UserPage from "./components/UserPage";
 import AddressPage from "./components/AddressPage";
 import ProductDetail from "./components/ProductDetailPage";
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path="/address/add">
             <AddressForm />
+          </Route>
+          <Route path="/address/:addressId/update">
+            <UpdateAddressForm />
           </Route>
           <Route path="/address">
             <AddressPage />

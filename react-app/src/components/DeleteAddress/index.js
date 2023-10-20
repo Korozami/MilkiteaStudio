@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { context } from "../Modal";
 import { useContext, useEffect } from "react";
-import { deleteAddress } from "../../store/address";
+import { fetchAddresses, deleteAddress } from "../../store/address";
 
 function DeleteAddress ({ addressId }) {
     const dispatch = useDispatch();
@@ -16,6 +16,10 @@ function DeleteAddress ({ addressId }) {
             setModal(false)
         }}
     }
+
+    useEffect(() => {
+        dispatch(fetchAddresses())
+    }, [dispatch, setModal])
 
     return (
         <div className="confirmation">

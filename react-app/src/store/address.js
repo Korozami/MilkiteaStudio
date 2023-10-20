@@ -102,6 +102,7 @@ export const updateAddress = (addressId, updateAddressData) => async (dispatch) 
         if (res.ok) {
             const updateData = await res.json();
             dispatch(updateAddressAction(updateData))
+            return updateData;
         } else {
             const errors = await res.json();
             return errors;
