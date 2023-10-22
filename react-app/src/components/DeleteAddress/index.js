@@ -6,7 +6,6 @@ import { fetchAddresses, deleteAddress } from "../../store/address";
 function DeleteAddress ({ addressId }) {
     const dispatch = useDispatch();
     const address = useSelector((state) => state.addresses)
-    console.log(address)
     const { setModal } = useContext(context);
 
     const deletion = function () {

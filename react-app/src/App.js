@@ -11,6 +11,7 @@ import PaymentPage from "./components/PaymentPage";
 import AddressPage from "./components/AddressPage";
 import ProductDetail from "./components/ProductDetailPage";
 import AddressForm from "./components/AddressAddPage";
+import PaymentForm from "./components/PaymentAddPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/address/:addressId/update">
             <UpdateAddressForm />
+          </Route>
+          <Route path="/payment/add">
+            <PaymentForm />
           </Route>
           <Route path="/payment">
             <PaymentPage />

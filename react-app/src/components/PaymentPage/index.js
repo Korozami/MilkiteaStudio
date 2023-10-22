@@ -3,6 +3,7 @@ import { useSelector, useDispatch  } from 'react-redux';
 import OpenModalButton from '../Modal';
 import { NavLink } from 'react-router-dom';
 import { fetchPayments } from '../../store/payment';
+import DeletePayment from '../DeletePayment';
 
 function PaymentPage() {
     const dispatch = useDispatch();
@@ -53,7 +54,7 @@ function PaymentPage() {
                                         <NavLink className="address-update" exact to={`/payment/${payment?.id}/update`}>
                                             <button type='button'>Update</button>
                                         </NavLink>
-                                        {/* <OpenModalButton buttonName="Delete" modalComponent={<DeleteAddress addressId={address?.id} />} /> */}
+                                        <OpenModalButton buttonName="Delete" modalComponent={<DeletePayment paymentId={payment?.id} />} />
                                     </div>
                                 </div>
                             )
