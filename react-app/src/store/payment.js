@@ -51,7 +51,7 @@ export const fetchPayments = () => async (dispatch) => {
 
 export const fetchPaymentId = (paymentId) => async (dispatch) => {
     try {
-        const res = await fetch(`/api/payments/${paymentId}`);
+        const res = await fetch(`/api/payments/${paymentId}`)
 
         if(res.ok) {
             const data = await res.json();

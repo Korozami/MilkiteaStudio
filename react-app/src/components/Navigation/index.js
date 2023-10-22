@@ -33,7 +33,7 @@ function Navigation({ isLoaded }){
 					{sessionUser ? (
 						<div className='user-loggin'>
 							<NavLink className='link' exact to="/user/portfolio">Profile</NavLink>
-							<button onClick={handleLogout}>Log Out</button>
+							<button onClick={handleLogout}> Log Out</button>
 						</div>
 					) : (
 						<div className='user-link'>

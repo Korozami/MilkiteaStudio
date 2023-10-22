@@ -52,7 +52,7 @@ export const fetchAddresses = () => async (dispatch) => {
 
 export const fetchAddressId = (addressId) => async (dispatch) => {
     try {
-        const res = await fetch(`/api/addresses/${addressId}`);
+        const res = await fetch(`/api/addresses/${addressId}`)
 
         if (res.ok) {
             const data = await res.json();
