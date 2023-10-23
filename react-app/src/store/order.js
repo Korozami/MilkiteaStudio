@@ -85,3 +85,70 @@ export const createOrder = (addressId, paymentId, orderData) => async (dispatch)
         return error;
     }
 }
+
+
+export const updateOrder = (orderId, orderData) => async (dispatch) => {
+    try {
+        const res = await fetch(`/api/orders/${orderId}/update`, {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(orderData)
+        })
+        if (res.ok) {
+            const updated = await res.json();
+            dispatch(updateOrderAction(updated))
+            return updated;
+        } else {
+            const errors = await res.json();
+            return errors;
+        }
+    } catch (error) {
+        console.error("Error updating address", error)
+        return error;
+    }
+}
+
+
+export const deleteOrder = (orderId) => async (dispatch) => {
+    try {
+        const res = await fetch(`/api/orders/${orderId}/delete`, {
+            method: "DELETE",
+        });
+        if (res.ok) {
+            dispatch(deleteOrderAction(orderId))
+        } else {
+            const errors = await res.json();
+            return errors
+        }
+    } catch (error) {
+        console.error("Error deleting address", error)
+        return error;
+    }
+}
+
+
+const initialState = {};
+
+export default function orderReducer(state = initialState, action) {
+    let newState = { ...state };
+    switch (action.type) {
+        case GET_ALL_ORDERS:
+            const allOrder = action.orders;
+            newState.orders = allOrder;
+            return newState
+        case GET_ORDER_ID:
+            newState[action.order.id] = action.order;
+            return newState
+        case CREATE_ORDER:
+            newState[action.order.id] = action.order;
+            return newState
+        case UPDATE_ORDER:
+            newState[action.order.id] = action.order;
+            return newState
+        case DELETE_ORDER:
+            delete newState[action.order]
+            return newState;
+        default:
+            return newState;
+    }
+}
