@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/product";
 import './StorePage.css';
+import { NavLink } from 'react-router-dom';
+
 
 
 function StorePage() {
@@ -41,21 +43,21 @@ function StorePage() {
                     if (!(product.hide) && selectedCategory === "All") {
                         return (
                             <div key={index} className="product-container">
-                                <div className="product">
+                                <NavLink className='product' exact to={`/store/products/${product?.id}`}>
                                     <img src={product?.product_images[0].imageUrl} alt='product-image' height={200}/>
                                     <div className='product-name'>{product?.item_name}</div>
                                     <div className='product-price'>${product?.price.toFixed(2)}</div>
-                                </div>
+                                </NavLink>
                             </div>
                         )
                     } else if (product?.category.toUpperCase() === selectedCategory.toUpperCase()) {
                         return (
                             <div key={index} className="product-container">
-                                <div className="product">
+                                <NavLink className='product' exact to={`/store/products/${product?.id}`}>
                                     <img src={product?.product_images[0].imageUrl} alt='product-image' height={200}/>
                                     <div className='product-name'>{product?.item_name}</div>
                                     <div className='product-price'>${product?.price.toFixed(2)}</div>
-                                </div>
+                                </NavLink>
                             </div>
                         )
                     }

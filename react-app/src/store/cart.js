@@ -33,7 +33,7 @@ const deleteCartItemAction = (cart) => ({
 
 export const fetchCart = () => async (dispatch) => {
     try {
-        const res = await fetch("/api/carts");
+        const res = await fetch("/api/carts/");
 
         if (res.ok) {
             const data = await res.json();
@@ -77,7 +77,7 @@ export const createCartItem = (productId, cartData) => async (dispatch) => {
         })
         if (res.ok) {
             const data = await res.json();
-            dispatch(createCartItemAction(data))
+            dispatch(createCartItemAction(cartData))
             return data;
         } else {
             const errors = await res.json();

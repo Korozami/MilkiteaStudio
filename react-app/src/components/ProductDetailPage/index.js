@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/product";
+import { fetchCart, createCartItem } from "../../store/cart";
 import { useParams } from "react-router-dom";
 import './ProductDetail.css'
 
@@ -9,14 +10,29 @@ function ProductDetail () {
     const dispatch = useDispatch();
     const { productId } = useParams();
     const productData = useSelector((state)=> state.products.products)
+    const testing = useSelector((state) => state);
+    console.log(testing)
     const allProducts = productData ? Object.values(productData.products) : []
     const currProduct = allProducts[productId - 1]
+    const [quantity, setQuantity] = useState(0)
     const [mainImg, setMainImg] = useState(1)
-    console.log(currProduct)
 
     useEffect(() => {
+        dispatch(fetchCart())
         dispatch(fetchProducts());
     }, [dispatch])
+
+    const handleAddCartItem = async (e) => {
+
+        e.preventDefault();
+
+        const cartData = {
+            "item_amount": quantity
+        }
+
+        await dispatch(createCartItem(productId, cartData))
+
+    }
 
     return (
         <div className="product-page-container">
@@ -51,6 +67,12 @@ function ProductDetail () {
                             <div className="product-info-description">{currProduct?.description}</div>
                             <div className="product-info-size">{currProduct?.size}</div>
                             <div className="product-info-note">Please note the colors in the photos may not accurately represent those of the actual product!</div>
+                            <select className="product-info-quanity" name="quantity" onChange={(e) => setQuantity(e.target.value)}>
+                            {
+                                [...Array(10)].map((_, i) => i + 1).map(i => <option key={i} value={i}>Qty: {i}</option>)
+                            }
+                            </select>
+                            <button onClick={handleAddCartItem} className="add-cart-btn">Add to Cart</button>
                         </div>
                     </div>
                 </div>

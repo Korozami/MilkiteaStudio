@@ -42,7 +42,7 @@ function PaymentForm() {
                 <div className='address-section'>
                     <div className='form-label'>Card number</div>
                     <input className='form-input'
-                        type='number'
+                        type='text'
                         onChange={(e) => setCardNumber(e.target.value)}
                         placeholder='Card number'
                         required
