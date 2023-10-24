@@ -22,7 +22,7 @@ def seed_carts():
 # it will reset the primary keys for you as well.
 def undo_carts():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.opinions RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.carts RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM carts"))
 
