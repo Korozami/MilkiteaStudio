@@ -5,10 +5,10 @@ from datetime import date
 
 def seed_payments():
     demo_payment = Payment(
-        user_id=4, card_number=451253922148224, name="Demo Login", expiration_date=date(2025, 8, 1), security_code=5812, billing_address="10422 DeAddress Park PL, DeCity, DE 58122"
+        user_id=4, card_number="451253922148224", name="Demo Login", expiration_date=date(2025, 8, 1), security_code=5812, billing_address="10422 DeAddress Park PL, DeCity, DE 58122"
     )
     marnie_payment= Payment(
-        user_id=5, card_number=451254422148224, name="Marnie June", expiration_date=date(2025, 8, 1), security_code=5822, billing_address="10422 Marnie Park PL, MaCity, MA 58125"
+        user_id=5, card_number="451254422148224", name="Marnie June", expiration_date=date(2025, 8, 1), security_code=5822, billing_address="10422 Marnie Park PL, MaCity, MA 58125"
     )
 
     db.session.add(demo_payment)

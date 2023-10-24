@@ -60,7 +60,7 @@ def upgrade():
     op.create_table('payments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('card_number', sa.Integer(), nullable=False),
+    sa.Column('card_number', sa.String(length=255), nullable=False),
     sa.Column('name', sa.String(length=40), nullable=False),
     sa.Column('expiration_date', sa.Date(), nullable=False),
     sa.Column('security_code', sa.Integer(), nullable=False),

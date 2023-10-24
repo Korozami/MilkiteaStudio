@@ -10,7 +10,7 @@ class Payment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    card_number = db.Column(db.Integer, nullable=False)
+    card_number = db.Column(db.String(255), nullable=False)
     name = db.Column(db.String(40), nullable=False)
     expiration_date = db.Column(db.Date, nullable=False)
     security_code = db.Column(db.Integer, nullable=False)
