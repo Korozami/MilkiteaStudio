@@ -5,7 +5,15 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import HomePage from "./components/HomePage";
 import StorePage from "./components/StorePage";
+import UpdateAddressForm from "./components/UpdateAddressPage";
+import UpdatePaymentForm from "./components/UpdatePaymentPage";
+import UserPage from "./components/UserPage";
+import AdminPage from "./components/AdminPage";
+import PaymentPage from "./components/PaymentPage";
+import AddressPage from "./components/AddressPage";
 import ProductDetail from "./components/ProductDetailPage";
+import AddressForm from "./components/AddressAddPage";
+import PaymentForm from "./components/PaymentAddPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -29,6 +37,30 @@ function App() {
           </Route>
           <Route path="/store/products/:productId">
             <ProductDetail />
+          </Route>
+          <Route path="/user/portfolio">
+            <UserPage />
+          </Route>
+          <Route path="/address/add">
+            <AddressForm />
+          </Route>
+          <Route path="/address/:addressId/update">
+            <UpdateAddressForm />
+          </Route>
+          <Route path="/payment/add">
+            <PaymentForm />
+          </Route>
+          <Route path="/payment/:paymentId/update">
+            <UpdatePaymentForm />
+          </Route>
+          <Route path="/payment">
+            <PaymentPage />
+          </Route>
+          <Route path="/admin">
+            <AdminPage />
+          </Route>
+          <Route path="/address">
+            <AddressPage />
           </Route>
           <Route path="/store">
             <StorePage />

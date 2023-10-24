@@ -129,6 +129,7 @@ body{
     background-color: transparent;
     border: 2px solid white;
     background-color: rgb(188, 176, 145);
+    text-align: center;
     border-radius: 20px;
     color: #6e683c;
 }

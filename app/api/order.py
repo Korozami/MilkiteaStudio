@@ -19,6 +19,17 @@ def get_orders():
         return {'orders': {order.id: order.to_dict() for order in orders}}, 200
 
 
+@order_routes.route('/<int:order_id>')
+@login_required
+def get_order_id(order_id):
+    order = Order.query.get_or_404(order_id)
+
+    if not order:
+        return {'message': 'Order not found'}, 404
+
+    return order.to_dict()
+
+
 @order_routes.route('/add/<int:address_id>/<int:payment_id>', methods=["POST"])
 @login_required
 def add_orders(address_id, payment_id):

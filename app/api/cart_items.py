@@ -22,6 +22,18 @@ def get_cart():
         return new_cart.to_dict()
 
 
+@cart_routes.route('/<int:product_id>')
+@login_required
+def get_cart_item(product_id):
+    cart = Cart.query.filter_by(user_id=current_user.id).first()
+    cart_item = Cart_Item.query.filter_by(cart_id=cart.id, product_id=product_id).first()
+
+    if not cart_item:
+        return {'message': 'Product not found'}, 404
+
+    return cart_item.to_dict()
+
+
 @cart_routes.route('/<int:product_id>/add', methods=["POST"])
 @login_required
 def add_cart_items(product_id):

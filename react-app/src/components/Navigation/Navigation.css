@@ -52,6 +52,33 @@
   font-family: "SuperFuntime", sans-serif;
 }
 
+.nav i{
+  margin-top: 40px;
+  margin-right: 10px;
+}
+
+.nav a{
+  color: #4c3125;
+  text-decoration: none;
+}
+
+.nav a:visited{
+  color: #4c3125;
+}
+
+.user-loggin button{
+  color: white;
+  margin-top: 20px;
+  display: block;
+  height: 40px;
+  width: 100px;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  opacity: 1;
+  border-radius: 10px;
+  background-color: rgb(137, 124, 91);
+}
+
 .link{
   text-decoration: none;
   display: block;

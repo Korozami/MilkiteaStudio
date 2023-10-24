@@ -36,7 +36,7 @@ export const fetchProducts = () => async (dispatch) => {
 
         if (res.ok) {
             const data = await res.json();
-            dispatch(setAllProducts(data));
+            dispatch(setAllProducts(data))
             return data;
         } else {
             const errors = await res.json();
@@ -54,7 +54,7 @@ export const fetchProductId = (productId) => async (dispatch) => {
 
         if (res.ok) {
             const data = await res.json();
-            dispatch(getProductId(data));
+            dispatch(getProductId(data))
             return data;
         } else {
             const errors = await res.json();

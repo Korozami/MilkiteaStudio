@@ -48,7 +48,7 @@ function StorePage() {
                                 </div>
                             </div>
                         )
-                    } else if (product?.category.toUpperCase() === selectedCategory) {
+                    } else if (product?.category.toUpperCase() === selectedCategory.toUpperCase()) {
                         return (
                             <div key={index} className="product-container">
                                 <div className="product">

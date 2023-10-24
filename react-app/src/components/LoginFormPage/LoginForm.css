@@ -107,6 +107,7 @@ body{
     background-color: rgb(188, 176, 145);
     border-radius: 20px;
     color: #6e683c;
+    text-align: center;
 }
 
 .form-login input:focus{

@@ -17,6 +17,17 @@ def get_payment():
     return {'payments': {payment.id: payment.to_dict() for payment in payments}}, 200
 
 
+@payment_routes.route('/<int:payment_id>')
+@login_required
+def get_payment_id(payment_id):
+    payment = Payment.query.get_or_404(payment_id)
+
+    if not payment:
+        return {'message': 'Payment not found'}, 404
+
+    return payment.to_dict()
+
+
 @payment_routes.route('/add', methods=["POST"])
 @login_required
 def create_payment():
@@ -43,9 +54,8 @@ def create_payment():
 def update_payment(payment_id):
     form = PaymentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    payment =  Payment.query.get(payment_id)
     if form.validate_on_submit():
-        payment =  Payment.query.get(payment_id)
         if not payment:
             return {'message': 'Payment info not found'}
         elif payment.user_id != current_user.id:
