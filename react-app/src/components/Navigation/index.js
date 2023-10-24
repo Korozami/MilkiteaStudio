@@ -47,6 +47,9 @@ function Navigation({ isLoaded }){
 					<a href='https://youtube.com/@milkiteastudios'>
 						<i class="fa-brands fa-youtube fa-xl"></i>
 					</a>
+					<NavLink exact to="/cart">
+						<i className="fa-solid fa-cart-shopping fa-xl"></i>
+					</NavLink>
 				</div>
 			</div>
 		</div>

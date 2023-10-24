@@ -14,8 +14,11 @@ function ProductDetail () {
     console.log(testing)
     const allProducts = productData ? Object.values(productData.products) : []
     const currProduct = allProducts[productId - 1]
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState(1)
     const [mainImg, setMainImg] = useState(1)
+
+    let item_amount = Number(quantity)
+    console.log(item_amount)
 
     useEffect(() => {
         dispatch(fetchCart())
@@ -27,7 +30,7 @@ function ProductDetail () {
         e.preventDefault();
 
         const cartData = {
-            "item_amount": quantity
+            item_amount
         }
 
         await dispatch(createCartItem(productId, cartData))

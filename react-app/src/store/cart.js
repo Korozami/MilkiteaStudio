@@ -77,7 +77,7 @@ export const createCartItem = (productId, cartData) => async (dispatch) => {
         })
         if (res.ok) {
             const data = await res.json();
-            dispatch(createCartItemAction(cartData))
+            dispatch(createCartItemAction(data))
             return data;
         } else {
             const errors = await res.json();
