@@ -113,11 +113,12 @@ export const updateCartItem = (productId, cartData) => async (dispatch) => {
 }
 
 
-export const deleteCartItem = (productId) => async  (dispatch) => {
+export const deleteCartItem = (productId) => async (dispatch) => {
     try {
         const res = await fetch(`/api/carts/${productId}/delete`, {
             method: "DELETE",
-        })
+        });
+
         if (res.ok) {
             dispatch(deleteCartItemAction(productId))
         } else {
