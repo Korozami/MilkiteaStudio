@@ -5,7 +5,7 @@ const UPDATE_CART_ITEM = "cart/UPDATE_CART_ITEM";
 const DELETE_CART_ITEM = "cart/DELETE_CART_ITEM";
 
 
-const setCart = (cart) => ({
+const setCart = (carts) => ({
     type: GET_CART,
     carts
 })

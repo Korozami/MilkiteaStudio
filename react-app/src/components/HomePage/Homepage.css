@@ -38,6 +38,9 @@ body{
     font-family: "SuperDessert", 'Courier New', Courier, monospace ,sans-serif;
 }
 
+.product {
+    text-decoration: none;
+}
 
 .product-container{
     display: inline-block;

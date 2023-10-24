@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import compilation from '../image/compilation.jpg';
 import React, { useEffect } from "react";
 import { fetchProducts } from "../../store/product";
+import { NavLink } from 'react-router-dom';
 
 function HomePage() {
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function HomePage() {
                     if (product.display) {
                         return (
                             <div key={index} className='product-container'>
-                                <div className='product'>
+                                <NavLink className='product' exact to={`/store/products/${product?.id}`}>
                                     {/* {product?.product_images.map((productImg, index) => {
                                         console.log(productImg);
                                         if (productImg) {
@@ -41,7 +42,7 @@ function HomePage() {
                                     <img src={product?.product_images[0].imageUrl} alt='product-image' height={200}/>
                                     <div className='product-name'>{product?.item_name}</div>
                                     <div className='product-price'>${product?.price.toFixed(2)}</div>
-                                </div>
+                                </NavLink>
                             </div>
                         )
                     }
