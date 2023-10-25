@@ -96,7 +96,7 @@ export const updateCartItem = (productId, cartData) => async (dispatch) => {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(cartData)
-        })
+        });
 
         if (res.ok) {
             const updateData = await res.json();

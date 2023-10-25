@@ -6,10 +6,37 @@ import { fetchCart, fetchCartItem, updateCartItem, deleteCartItem } from '../../
 
 function CartPage() {
     const dispatch = useDispatch();
-    const [quantity, setQuantity] = useState()
     const cartItems = useSelector((state) => state.carts.carts)
     const allCartItems = cartItems ? Object.values(cartItems.cart_item) : []
     let number = 0;
+
+    const getDefaultCart = () => {
+        let cart = {}
+        for (let i = 0; i < cartItems?.cart_item.length; i++) {
+            cart[i] = cartItems?.cart_item[i]?.item_amount;
+        }
+        return cart;
+    }
+
+    const [cartQuantity, setCartQuantity] = useState(getDefaultCart())
+
+    console.log(cartItems)
+
+    const setCartItems = (itemId, item_amount) => {
+
+        let productId = cartItems?.cart_item[itemId]?.product?.id;
+        setCartQuantity((prev) => ({... prev, [itemId]: item_amount}))
+
+        if (item_amount > 0) {
+            const cartData = {
+                item_amount
+            }
+
+            dispatch(updateCartItem(productId, cartData))
+        }
+
+    }
+
 
     const deletion = function (productId) {
         let deleted = dispatch(deleteCartItem(productId))
@@ -18,23 +45,9 @@ function CartPage() {
         }
     }
 
-
-    const handleChange = async (id, e) => {
-
-        let item_amount = Number(e)
-
-        console.log(item_amount)
-        console.log(id)
-
-        // const cartData = {
-        //     item_amount
-        // }
-
-    }
-
     useEffect(() => {
         dispatch(fetchCart())
-    }, [dispatch])
+    }, [dispatch, cartItems])
 
     return (
         <div className='cart-container'>
@@ -42,7 +55,7 @@ function CartPage() {
                 <div className='cart-content'>
                     {allCartItems.map((item, index) => {
                         {number += (Number(item?.item_amount) * Number(item?.product?.price))}
-                        console.log(quantity)
+
                         return (
                             <div key={index} className='cart-item'>
                                 <img src={item?.product?.product_images[0].imageUrl} alt='product-image' height={100} />
@@ -53,8 +66,8 @@ function CartPage() {
                                 <form className='cart-form'>
                                     <input className='cart-quanitiy-input'
                                         type='number'
-                                        onChange={(e) => setQuantity(e.target.value)}
-                                        value={item?.item_amount}
+                                        onChange={(e) => setCartItems(item?.id - 1, e.target.value)}
+                                        value={cartQuantity[item?.id - 1]}
                                     />
                                 </form>
                                 <div className='total-amount'>${Number(item?.item_amount) * Number(item?.product?.price)}.00 </div>
