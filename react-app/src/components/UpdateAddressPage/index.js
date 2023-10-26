@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateAddress } from '../../store/address';
 import { useHistory, useParams } from "react-router-dom";
 import { fetchAddressId } from '../../store/address';
+import { CountryData } from '../../data/countries';
 
 
 function UpdateAddressForm() {
@@ -20,6 +21,20 @@ function UpdateAddressForm() {
     useEffect(() => {
         dispatch(fetchAddressId(addressId))
     }, [dispatch, addressId])
+
+    useEffect(() => {
+        const errors = {};
+
+        if (zip > 99999 || zip < 10000 && zip != 0) {
+            errors.zip = "please enter a valid 5 digit zip code"
+        }
+
+        if (!(CountryData.includes(country)) && country.length != 0) {
+            errors.country = "please enter a valid country"
+        }
+
+        setErrors(errors)
+    }, [country, zip])
 
     const handleUpdateAddress = async (e) => {
 
@@ -54,6 +69,9 @@ function UpdateAddressForm() {
                         value={country}
                         required
                     />
+                    <div className='error-blocks'>
+                        {errors.country && (<p className="error">*{errors.country}</p>)}
+                    </div>
                     <div className='form-label'>Address</div>
                     <input className='form-input'
                         type='text'
@@ -82,6 +100,9 @@ function UpdateAddressForm() {
                         value={zip}
                         required
                         />
+                    <div className='error-blocks'>
+                        {errors.zip && (<p className="error">*{errors.zip}</p>)}
+                    </div>
                     <button id='address-submit-btn' type='submit'>Update Address</button>
                 </div>
             </form>

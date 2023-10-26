@@ -16,3 +16,17 @@
 .form-input-textarea:focus{
     outline-color: rgb(161, 154, 154);
 }
+
+.error {
+	color: red;
+	font-size: small;
+}
+
+.image-btn{
+	color: #6e683c;
+}
+
+input[type="file"] {
+	color: #6e683c;
+	padding: 10px 10px;
+}
