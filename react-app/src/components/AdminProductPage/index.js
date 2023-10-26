@@ -28,10 +28,9 @@ function AdminProductPage() {
         }
     }
 
-
     useEffect(() => {
         dispatch(fetchProducts());
-    }, [dispatch])
+    }, [dispatch, productData])
 
     return (
         <div className="admin-store-page">

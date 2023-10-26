@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from "react-router-dom";
 import { updateProduct, fetchProductId } from '../../store/product';
+import { createImage } from '../../store/productImage';
+
 
 
 function UpdateProductForm() {
@@ -15,6 +17,7 @@ function UpdateProductForm() {
     const [ price, setPrice ] = useState(productData?.price);
     const [ category, setCategory ] = useState(productData?.category);
     const [ quantity, setQuantity ] = useState(productData?.quantity);
+    const [ image, setImage ] = useState();
     const [ errors, setErrors] = useState({});
 
     useEffect(() => {
@@ -36,6 +39,12 @@ function UpdateProductForm() {
 
         await dispatch(updateProduct(productId, productData))
 
+        if(image) {
+            const formData = new FormData();
+            formData.append("image", image);
+            await dispatch(createImage(productId, formData))
+        }
+
         history.push("/admin/products")
     }
 
@@ -44,7 +53,7 @@ function UpdateProductForm() {
             <div className='address-form-heading-container'>
                 <div className='address-form-header'>Update product</div>
             </div>
-            <form className='address-form' onSubmit={handleUpdateProduct} >
+            <form encType='multipart/form-data' className='address-form' onSubmit={handleUpdateProduct} >
                 <div className='address-section'>
                     <div className='form-label'>Name of Product</div>
                     <input className='form-input'
@@ -85,6 +94,12 @@ function UpdateProductForm() {
                         onChange={(e) => setQuantity(e.target.value)}
                         value={quantity}
                         required
+                        />
+                    <input
+                        type='file'
+                        name='file-to-save'
+                        accept='image/*'
+                        onChange={(e) => setImage(e.target.files[0])}
                         />
                     <button id='address-submit-btn' type='submit'>Update Product</button>
                 </div>

@@ -48,13 +48,11 @@ export const createImage = (productId, imageData) => async (dispatch) => {
     try {
         const res = await fetch(`/api/store/products/${productId}/images`, {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(imageData)
+            body: imageData
         })
         if (res.ok) {
-            const data = await res.json();
-            dispatch(createImageAction(data))
-            return data;
+            const { resPost } = await res.json();
+            dispatch(createImageAction(resPost));
         } else {
             const errors = await res.json();
             return errors;
