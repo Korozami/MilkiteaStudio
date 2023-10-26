@@ -6,6 +6,7 @@ import addressReducer from './address';
 import paymentReducer from './payment';
 import orderReducer from './order';
 import cartReducer from './cart';
+import imageReducer from './productImage';
 
 const rootReducer = combineReducers({
   session,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   payments: paymentReducer,
   carts: cartReducer,
   orders: orderReducer,
+  images: imageReducer,
 });
 
 

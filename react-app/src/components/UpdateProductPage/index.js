@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
-import { createProduct } from '../../store/product';
-import { createImage } from '../../store/productImage';
-import './productform.css'
+import { updateProduct } from '../../store/product';
 
 
-function ProductForm() {
+function UpdateProductForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     const [ item_name, setItemName ] = useState("");
@@ -15,7 +13,6 @@ function ProductForm() {
     const [ price, setPrice ] = useState();
     const [ category, setCategory ] = useState();
     const [ quantity, setQuantity ] = useState();
-    const [ image, setImage ] = useState();
     const [ errors, setErrors] = useState({});
 
     const handleAddProduct = async (e) => {
@@ -31,7 +28,7 @@ function ProductForm() {
             quantity
         }
 
-        let res = await dispatch(createProduct(productData));
+        let res = await dispatch(updateProduct(productData));
 
         if (res) {
             history.push("/admin/products")
@@ -41,7 +38,7 @@ function ProductForm() {
     return (
         <div className='address-form-container'>
             <div className='address-form-heading-container'>
-                <div className='address-form-header'>Add a new product</div>
+                <div className='address-form-header'>Update product</div>
             </div>
             <form className='address-form' onSubmit={handleAddProduct} >
                 <div className='address-section'>
@@ -85,11 +82,11 @@ function ProductForm() {
                         placeholder='Product Amount'
                         required
                         />
-                    <button id='address-submit-btn' type='submit'>Add Product</button>
+                    <button id='address-submit-btn' type='submit'>Update Product</button>
                 </div>
             </form>
         </div>
     )
 }
 
-export default ProductForm;
+export default UpdateProductForm;

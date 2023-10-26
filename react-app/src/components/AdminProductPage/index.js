@@ -19,7 +19,15 @@ function AdminProductPage() {
         }
     })
 
-    console.log(selectedCategory)
+    const deletion = function (product) {
+        if(product) {
+            const deleted = dispatch(deleteProduct(product));
+            if (deleted) {
+                console.log("Successfully deleted")
+            }
+        }
+    }
+
 
     useEffect(() => {
         dispatch(fetchProducts());
@@ -45,28 +53,34 @@ function AdminProductPage() {
                     </div>
                 </NavLink>
                 {allProducts.map((product, index) => {
+                    let image;
+                    if (product?.product_images[0]) {
+                        image = product?.product_images[0].imageUrl
+                    } else {
+                        image = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
+                    }
                     if (!(product.hide) && selectedCategory === "All") {
                         return (
                             <div key={index} className="product-container">
                                 <NavLink className='product' exact to={`/store/products/${product?.id}`}>
-                                    <img src={product?.product_images[0].imageUrl} alt='product-image' height={200}/>
+                                    <img src={image} alt='product-image' height={200}/>
                                     <div className='product-name'>{product?.item_name}</div>
                                     <div className='product-price'>${product?.price.toFixed(2)}</div>
                                 </NavLink>
                                 <button className="product-edit-btn">Update</button>
-                                <button className="product-edit-btn">Delete</button>
+                                <button onClick={() => deletion(product?.id)} className="product-edit-btn">Delete</button>
                             </div>
                         )
                     } else if (product?.category.toUpperCase() === selectedCategory.toUpperCase()) {
                         return (
                             <div key={index} className="product-container">
                                 <NavLink className='product' exact to={`/store/products/${product?.id}`}>
-                                    <img src={product?.product_images[0].imageUrl} alt='product-image' height={200}/>
+                                    <img src={image} alt='product-image' height={200}/>
                                     <div className='product-name'>{product?.item_name}</div>
                                     <div className='product-price'>${product?.price.toFixed(2)}</div>
                                 </NavLink>
                                 <button className="product-edit-btn">Update</button>
-                                <button className="product-edit-btn">Delete</button>
+                                <button onClick={() => deletion(product?.id)} className="product-edit-btn">Delete</button>
                             </div>
                         )
                     }
