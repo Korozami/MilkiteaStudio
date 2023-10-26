@@ -9,6 +9,7 @@ import UpdateAddressForm from "./components/UpdateAddressPage";
 import UpdatePaymentForm from "./components/UpdatePaymentPage";
 import UserPage from "./components/UserPage";
 import CartPage from "./components/CartPage";
+import UpdateProductForm from "./components/UpdateProductPage";
 import ProductForm from "./components/ProductAddPage";
 import AdminPage from "./components/AdminPage";
 import PaymentPage from "./components/PaymentPage";
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/store/products/:productId/update">
+            <UpdateProductForm />
           </Route>
           <Route path="/store/products/:productId">
             <ProductDetail />

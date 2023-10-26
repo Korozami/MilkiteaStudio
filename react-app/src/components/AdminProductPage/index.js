@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts, deleteProduct } from "../../store/product";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './adminproducts.css'
 
 
@@ -67,7 +67,9 @@ function AdminProductPage() {
                                     <div className='product-name'>{product?.item_name}</div>
                                     <div className='product-price'>${product?.price.toFixed(2)}</div>
                                 </NavLink>
-                                <button className="product-edit-btn">Update</button>
+                                <Link to={`/store/products/${product?.id}/update`}>
+                                    <button className="product-edit-btn">Update</button>
+                                </Link>
                                 <button onClick={() => deletion(product?.id)} className="product-edit-btn">Delete</button>
                             </div>
                         )
@@ -79,7 +81,9 @@ function AdminProductPage() {
                                     <div className='product-name'>{product?.item_name}</div>
                                     <div className='product-price'>${product?.price.toFixed(2)}</div>
                                 </NavLink>
-                                <button className="product-edit-btn">Update</button>
+                                <Link to={`/store/products/${product?.id}/update`}>
+                                    <button className="product-edit-btn">Update</button>
+                                </Link>
                                 <button onClick={() => deletion(product?.id)} className="product-edit-btn">Delete</button>
                             </div>
                         )

@@ -9,7 +9,6 @@ function UpdateAddressForm() {
     const dispatch = useDispatch();
     const { addressId } = useParams();
     const currAddress = useSelector((state) => state.addresses[addressId])
-    console.log(currAddress?.city)
     const history = useHistory();
     const [ city, setCity ] = useState(currAddress?.city);
     const [ address, setAddress ] = useState(currAddress?.address);
