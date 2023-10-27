@@ -9,7 +9,6 @@ function HomePage() {
     const dispatch = useDispatch();
     const productData = useSelector(state => state.products.products)
     const allProducts = productData ? Object.values(productData.products) : []
-    console.log(allProducts)
 
     useEffect(() => {
         dispatch(fetchProducts());

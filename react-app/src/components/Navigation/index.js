@@ -7,7 +7,7 @@ import ProfileButton from './ProfileButton';
 import Logo from "../image/Logo.png";
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation(){
 	const location = useLocation();
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user);
@@ -21,7 +21,6 @@ function Navigation({ isLoaded }){
 			link = '/user/portfolio'
 		}
 	}
-	console.log(link)
 
 	const handleLogout = (e) => {
 		e.preventDefault();
