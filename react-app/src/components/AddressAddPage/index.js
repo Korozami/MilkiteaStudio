@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createAddress } from '../../store/address';
 import { useHistory } from "react-router-dom";
-
+import { CountryData } from '../../data/countries';
 
 function AddressForm() {
     const dispatch = useDispatch();
@@ -15,9 +15,31 @@ function AddressForm() {
     const [ zip, setZip ] = useState();
     const [ errors, setErrors] = useState({});
 
+    useEffect(() => {
+        const errors = {};
+
+        if (address.length != 0 && address.length < 5) {
+            errors.address = "please enter a valid address"
+        }
+
+        if (zip > 99999 || zip < 10000 && zip != 0) {
+            errors.zip = "please enter a valid 5 digit zip code"
+        }
+
+        if (!(CountryData.includes(country)) && country.length != 0) {
+            errors.country = "please enter a valid country"
+        }
+
+        setErrors(errors)
+    }, [address, country, zip])
+
     const handleAddAddress = async (e) => {
 
         e.preventDefault();
+
+        if (Object.values(errors).length) {
+            return alert("Error please fix the underlying problems")
+        };
 
         const addressData = {
             city,
@@ -31,6 +53,7 @@ function AddressForm() {
 
         if (res) {
             history.push("/address")
+            setErrors({})
         }
     }
 
@@ -48,6 +71,9 @@ function AddressForm() {
                         placeholder='Country'
                         required
                     />
+                    <div className='error-blocks'>
+                        {errors.country && (<p className="error">*{errors.country}</p>)}
+                    </div>
                     <div className='form-label'>Address</div>
                     <input className='form-input'
                         type='text'
@@ -55,6 +81,9 @@ function AddressForm() {
                         placeholder='Street address or P.O Box'
                         required
                         />
+                    <div className='error-blocks'>
+                        {errors.address && (<p className="error">*{errors.address}</p>)}
+                    </div>
                     <div className='form-label'>City</div>
                     <input className='form-input'
                         type='text'
@@ -76,6 +105,9 @@ function AddressForm() {
                         placeholder='Zip Code'
                         required
                         />
+                    <div className='error-blocks'>
+                        {errors.zip && (<p className="error">*{errors.zip}</p>)}
+                    </div>
                     <button id='address-submit-btn' type='submit'>Add Address</button>
                 </div>
             </form>

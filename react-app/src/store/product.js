@@ -68,17 +68,14 @@ export const fetchProductId = (productId) => async (dispatch) => {
 
 export const createProduct = (productData) => async (dispatch) => {
     try {
-        const res = await('/api/store/products/create', {
+        const res = await fetch('/api/store/products/create', {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(productData),
-        });
-
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(productData)
+        })
         if (res.ok) {
             const data = await res.json();
-            dispatch(createProductAction(data));
+            dispatch(createProductAction(data))
             return data;
         } else {
             const errors = await res.json();
@@ -92,17 +89,15 @@ export const createProduct = (productData) => async (dispatch) => {
 
 export const updateProduct = (productId, updateProductData) => async (dispatch) => {
     try {
-        const res = await(`/api/store/products/${productId}/update`, {
+        const res = await fetch(`/api/store/products/${productId}/update`, {
             method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updateProductData),
-        });
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(updateProductData)
+        })
 
         if (res.ok) {
             const updateData = await res.json();
-            dispatch(updateProductAction(updateData));
+            dispatch(updateProductAction(updateData))
         } else {
             const errors = await res.json();
             return errors;
@@ -120,7 +115,7 @@ export const deleteProduct = (productId) => async (dispatch) => {
         });
 
         if (res.ok) {
-            dispatch(deleteProductAction(productId));
+            dispatch(deleteProductAction(productId))
         } else {
             const errors = await res.json();
             return errors;

@@ -7,10 +7,20 @@ import ProfileButton from './ProfileButton';
 import Logo from "../image/Logo.png";
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation(){
 	const location = useLocation();
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user);
+
+	let link;
+
+	if (sessionUser) {
+		if(sessionUser.admin) {
+			link = '/admin'
+		} else {
+			link = '/user/portfolio'
+		}
+	}
 
 	const handleLogout = (e) => {
 		e.preventDefault();
@@ -32,7 +42,7 @@ function Navigation({ isLoaded }){
 					<NavLink className="link" exact to="/contact">Contact</NavLink>
 					{sessionUser ? (
 						<div className='user-loggin'>
-							<NavLink className='link' exact to="/user/portfolio">Profile</NavLink>
+							<NavLink className='link' exact to={link}>Profile</NavLink>
 							<button onClick={handleLogout}> Log Out</button>
 						</div>
 					) : (
@@ -41,12 +51,15 @@ function Navigation({ isLoaded }){
 						<NavLink className="link" exact to="/signup">Sign Up</NavLink>
 						</div>
 					)}
-					<a href='https://instagram.com/milkiteastudios'>
+					<a href='https://instagram.com/milkiteastudios' target='_blank'>
 						<i class="fa-brands fa-instagram fa-xl"></i>
 					</a>
-					<a href='https://youtube.com/@milkiteastudios'>
+					<a href='https://youtube.com/@milkiteastudios' target='_blank'>
 						<i class="fa-brands fa-youtube fa-xl"></i>
 					</a>
+					<NavLink exact to="/cart">
+						<i className="fa-solid fa-cart-shopping fa-xl"></i>
+					</NavLink>
 				</div>
 			</div>
 		</div>

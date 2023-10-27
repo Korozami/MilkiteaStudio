@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../store/product";
-import './StorePage.css';
-import { NavLink } from 'react-router-dom';
+import { fetchProducts, deleteProduct } from "../../store/product";
+import { NavLink, Link } from 'react-router-dom';
+import './adminproducts.css'
 
 
-
-function StorePage() {
+function AdminProductPage() {
     const dispatch = useDispatch();
     const [selectedCategory, setSelectedCategory] = useState("All")
     const productData = useSelector(state => state.products.products)
@@ -20,14 +19,21 @@ function StorePage() {
         }
     })
 
-    console.log(selectedCategory)
+    const deletion = function (product) {
+        if(product) {
+            const deleted = dispatch(deleteProduct(product));
+            if (deleted) {
+                console.log("Successfully deleted")
+            }
+        }
+    }
 
     useEffect(() => {
         dispatch(fetchProducts());
-    }, [dispatch])
+    }, [dispatch, productData])
 
     return (
-        <div className="store-page">
+        <div className="admin-store-page">
             <div className="store-nav">
                 <div className="store-nav-title">Categories</div>
                 {uniqueCategory.map((category, index) => {
@@ -38,7 +44,13 @@ function StorePage() {
                     )
                 })}
             </div>
-            <div className="displayed-products">
+            <div className="admin-displayed-products">
+                <NavLink className="product-add" exact to="/admin/products/add">
+                    <div className='product-add-container'>
+                        <i className='material-icons' id='add-btn'>add</i>
+                        <div className='adding-label'>Add Product</div>
+                    </div>
+                </NavLink>
                 {allProducts.map((product, index) => {
                     let image;
                     if (product?.product_images[0]) {
@@ -54,6 +66,10 @@ function StorePage() {
                                     <div className='product-name'>{product?.item_name}</div>
                                     <div className='product-price'>${product?.price.toFixed(2)}</div>
                                 </NavLink>
+                                <Link to={`/store/products/${product?.id}/update`}>
+                                    <button className="product-edit-btn">Update</button>
+                                </Link>
+                                <button onClick={() => deletion(product?.id)} className="product-edit-btn">Delete</button>
                             </div>
                         )
                     } else if (product?.category.toUpperCase() === selectedCategory.toUpperCase()) {
@@ -64,6 +80,10 @@ function StorePage() {
                                     <div className='product-name'>{product?.item_name}</div>
                                     <div className='product-price'>${product?.price.toFixed(2)}</div>
                                 </NavLink>
+                                <Link to={`/store/products/${product?.id}/update`}>
+                                    <button className="product-edit-btn">Update</button>
+                                </Link>
+                                <button onClick={() => deletion(product?.id)} className="product-edit-btn">Delete</button>
                             </div>
                         )
                     }
@@ -73,4 +93,4 @@ function StorePage() {
     );
 }
 
-export default StorePage;
+export default AdminProductPage;

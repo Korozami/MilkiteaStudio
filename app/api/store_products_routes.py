@@ -67,7 +67,7 @@ def create_product():
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if current_user.admin != True:
+    if not current_user.admin:
         return {'message': 'Unauthorized'}, 401
 
     if form.validate_on_submit():

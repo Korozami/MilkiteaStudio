@@ -33,7 +33,7 @@ const deleteCartItemAction = (cart) => ({
 
 export const fetchCart = () => async (dispatch) => {
     try {
-        const res = await fetch("/api/carts");
+        const res = await fetch("/api/carts/");
 
         if (res.ok) {
             const data = await res.json();
@@ -96,7 +96,7 @@ export const updateCartItem = (productId, cartData) => async (dispatch) => {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(cartData)
-        })
+        });
 
         if (res.ok) {
             const updateData = await res.json();
@@ -113,11 +113,12 @@ export const updateCartItem = (productId, cartData) => async (dispatch) => {
 }
 
 
-export const deleteCartItem = (productId) => async  (dispatch) => {
+export const deleteCartItem = (productId) => async (dispatch) => {
     try {
         const res = await fetch(`/api/carts/${productId}/delete`, {
             method: "DELETE",
-        })
+        });
+
         if (res.ok) {
             dispatch(deleteCartItemAction(productId))
         } else {

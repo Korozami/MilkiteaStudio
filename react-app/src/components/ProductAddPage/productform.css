@@ -1,0 +1,32 @@
+.form-input-textarea{
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: 2px solid white;
+    background-color: rgb(188, 176, 145);
+    color: #6e683c;
+    display: flex;
+	align-items: flex-start;
+	width: 330px;
+	height: 100px;
+	border-radius: 20px;
+	resize: none;
+	padding: 10px;
+}
+
+.form-input-textarea:focus{
+    outline-color: rgb(161, 154, 154);
+}
+
+.error {
+	color: red;
+	font-size: small;
+}
+
+.image-btn{
+	color: #6e683c;
+}
+
+input[type="file"] {
+	color: #6e683c;
+	padding: 10px 10px;
+}

@@ -1,0 +1,24 @@
+.about-page{
+    margin-left: 220px;
+}
+
+.about-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.about-wrapper{
+    background-color: #83b0b1;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-info{
+    margin: 100px;
+    font-size: 20px;
+    color: #806a57;
+}

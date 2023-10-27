@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateAddress } from '../../store/address';
 import { useHistory, useParams } from "react-router-dom";
 import { fetchAddressId } from '../../store/address';
+import { CountryData } from '../../data/countries';
 
 
 function UpdateAddressForm() {
     const dispatch = useDispatch();
     const { addressId } = useParams();
     const currAddress = useSelector((state) => state.addresses[addressId])
-    console.log(currAddress?.city)
     const history = useHistory();
     const [ city, setCity ] = useState(currAddress?.city);
     const [ address, setAddress ] = useState(currAddress?.address);
@@ -22,9 +22,31 @@ function UpdateAddressForm() {
         dispatch(fetchAddressId(addressId))
     }, [dispatch, addressId])
 
+    useEffect(() => {
+        const errors = {};
+
+        if (zip > 99999 || zip < 10000 && zip != 0) {
+            errors.zip = "please enter a valid 5 digit zip code"
+        }
+
+        if (!(CountryData.includes(country)) && country.length != 0) {
+            errors.country = "please enter a valid country"
+        }
+
+        if (address.length != 0 && address.length < 5) {
+            errors.address = "please enter a valid address"
+        }
+
+        setErrors(errors)
+    }, [address, country, zip])
+
     const handleUpdateAddress = async (e) => {
 
         e.preventDefault();
+
+        if (Object.values(errors).length) {
+            return alert("Error please fix the underlying problems")
+        };
 
         const addressData = {
             city,
@@ -38,6 +60,7 @@ function UpdateAddressForm() {
 
         if (res) {
             history.push("/address")
+            setErrors({})
         }
     }
 
@@ -55,6 +78,9 @@ function UpdateAddressForm() {
                         value={country}
                         required
                     />
+                    <div className='error-blocks'>
+                        {errors.country && (<p className="error">*{errors.country}</p>)}
+                    </div>
                     <div className='form-label'>Address</div>
                     <input className='form-input'
                         type='text'
@@ -62,6 +88,9 @@ function UpdateAddressForm() {
                         value={address}
                         required
                         />
+                    <div className='error-blocks'>
+                        {errors.address && (<p className="error">*{errors.address}</p>)}
+                    </div>
                     <div className='form-label'>City</div>
                     <input className='form-input'
                         type='text'
@@ -83,6 +112,9 @@ function UpdateAddressForm() {
                         value={zip}
                         required
                         />
+                    <div className='error-blocks'>
+                        {errors.zip && (<p className="error">*{errors.zip}</p>)}
+                    </div>
                     <button id='address-submit-btn' type='submit'>Update Address</button>
                 </div>
             </form>

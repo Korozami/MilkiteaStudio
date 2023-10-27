@@ -1,0 +1,53 @@
+.admin-store-page{
+    margin-left: 220px;
+}
+
+.product-edit-btn{
+    color: white;
+    margin-left: 40px;
+    margin-top: 20px;
+    height: 40px;
+    width: 100px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    opacity: 1;
+    border-radius: 10px;
+    background-color: rgb(137, 124, 91);
+}
+
+.admin-displayed-products{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-add{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    height: 100px;
+    width: 150px;
+    margin-left: 50px;
+    color: #806a57;
+    border: 2px dotted black;
+    border-radius: 50px;
+    padding: 100px 80px;
+}
+
+#add-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.adding-label{
+    display: flex;
+    justify-content: center;
+}
+
+.product-add-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

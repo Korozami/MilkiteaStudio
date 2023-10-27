@@ -39,13 +39,14 @@ function AdminPage() {
                             </div>
                         </NavLink>
                     </div>
+                    <div className='admin-header'>Store Productivity</div>
                     <div className='admin-store-info-container'>
-                        <div className='admin-store-info-header'>Store Productivity</div>
                         <div className='admin-store-info-wrapper'>
                             <div className='user-info-link'>
                                 <div className='user-info-container'>
                                     <i className="fa-solid fa-users fa-xl"></i>
                                     <div className='user-info-title'>Total Users</div>
+                                    <div className='user-info-details'>TBD</div>
                                 </div>
                             </div>
                         </div>
@@ -54,6 +55,7 @@ function AdminPage() {
                                 <div className='user-info-container'>
                                     <i className="fa-solid fa-warehouse fa-xl"></i>
                                     <div className='user-info-title'>Total Orders</div>
+                                    <div className='user-info-details'>TBD</div>
                                 </div>
                             </div>
                         </div>
@@ -62,15 +64,16 @@ function AdminPage() {
                                 <div className='user-info-container'>
                                     <i className="fa-solid fa-piggy-bank fa-xl"></i>
                                     <div className='user-info-title'>Total Profit</div>
+                                    <div className='user-info-details'>TBD</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className='admin-recent-orders-container'>
+                    {/* <div className='admin-recent-orders-container'>
                         <div className='admin-recent-orders-wrapper'>
                             <div className='admin-recent-orders-header'>Recent Orders</div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
