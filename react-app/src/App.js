@@ -17,6 +17,7 @@ import AddressPage from "./components/AddressPage";
 import ProductDetail from "./components/ProductDetailPage";
 import AddressForm from "./components/AddressAddPage";
 import AboutPage from "./components/AboutPage";
+import ContactPage from "./components/ContactPage";
 import PaymentForm from "./components/PaymentAddPage";
 import AdminProductPage from "./components/AdminProductPage";
 import { authenticate } from "./store/session";
@@ -66,6 +67,9 @@ function App() {
           </Route>
           <Route path="/cart">
             <CartPage />
+          </Route>
+          <Route path="/contact">
+            <ContactPage />
           </Route>
           <Route path="/payment">
             <PaymentPage />

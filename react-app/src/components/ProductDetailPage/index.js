@@ -35,6 +35,9 @@ function ProductDetail () {
 
         await dispatch(createCartItem(productId, cartData))
 
+        alert("Item added to cart!")
+
+
     }
 
     return (
