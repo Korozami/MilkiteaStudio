@@ -16,7 +16,7 @@ function ProductForm() {
     const [ size, setSize ] = useState();
     const [ price, setPrice ] = useState();
     const [ category, setCategory ] = useState();
-    const [ quantity, setQuantity ] = useState();
+    const [ quantity, setQuantity ] = useState(0);
     const [ image, setImage ] = useState();
     const [ errors, setErrors] = useState({});
 
@@ -39,7 +39,7 @@ function ProductForm() {
             errors.quantity = "Quantity can't be less than 0"
         }
 
-        if (quantity.includes(".")) {
+        if (quantity != 0 && ((quantity - Math.floor(quantity)) !== 0)) {
             errors.quantity = "Quantity can't be a decimal"
         }
 

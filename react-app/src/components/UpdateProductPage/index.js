@@ -27,7 +27,7 @@ function UpdateProductForm() {
     useEffect(() => {
         const errors ={};
 
-        if(description.length < 10 && description.length != 0) {
+        if(description.length != 0 && description.length < 10) {
             errors.description = "Description should be greater than 10"
         }
 
@@ -39,7 +39,7 @@ function UpdateProductForm() {
             errors.quantity = "Quantity can't be less than 0"
         }
 
-        if (quantity.includes(".")) {
+        if (quantity != 0 && ((quantity - Math.floor(quantity)) !== 0)) {
             errors.quantity = "Quantity can't be a decimal"
         }
 
