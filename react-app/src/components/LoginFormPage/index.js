@@ -14,6 +14,16 @@ function LoginFormPage() {
 
   if (sessionUser) return <Redirect to="/" />;
 
+  const demoUserLogin = (e) => {
+		setEmail('demo@aa.io')
+		setPassword('password')
+	  }
+
+    const adminDemoUserLogin = (e) => {
+      setEmail('demoA@aa.io')
+      setPassword('password')
+    }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -72,6 +82,8 @@ function LoginFormPage() {
                   />
                 </label>
                 <button type="submit">Log In</button>
+                <button type="submit" id="demo-user-login-btn" onClick={demoUserLogin}>Log in as demo user</button>
+                <button type="submit" id="demo-user-login-btn" onClick={adminDemoUserLogin}>Log in as admin demo user</button>
               </form>
             </div>
         </div>
