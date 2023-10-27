@@ -16,9 +16,6 @@ function PaymentForm() {
 
     let today = new Date().toISOString().slice(0, 7)
 
-    console.log(card_number[0])
-    console.log(card_number[1])
-
     useEffect(() => {
         const errors = {};
 
