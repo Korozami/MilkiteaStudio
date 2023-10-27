@@ -16,6 +16,9 @@ function PaymentForm() {
 
     let today = new Date().toISOString().slice(0, 7)
 
+    console.log(card_number[0])
+    console.log(card_number[1])
+
     useEffect(() => {
         const errors = {};
 
@@ -24,12 +27,12 @@ function PaymentForm() {
         }
 
         if (card_number.length != 0 && (card_number.length < 13 || card_number.length > 16)) {
-            errors.card_number = "invalid card number"
+            errors.card_number = "invalid card number again"
         }
 
-        if (card_number.length != 0 && ((card_number[0] != "3" && card_number[1] != "7") || card_number[0] != "4" || card_number[0] != "5" || card_number[0] != "6")) {
-            errors.card_number = "invalid card number"
-        }
+        // if (card_number.length != 0 && ((card_number[0] != "3" && card_number[1] != "7") || card_number[0] != "4" || card_number[0] != "5" || card_number[0] != "6")) {
+        //     errors.card_number = "invalid card number"
+        // }
 
         if (security_code > 9999 || security_code < 100) {
             errors.security_code = "invalid CVV/CVC"
