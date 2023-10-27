@@ -18,6 +18,10 @@ function AddressForm() {
     useEffect(() => {
         const errors = {};
 
+        if (address.length != 0 && address.length < 5) {
+            errors.address = "please enter a valid address"
+        }
+
         if (zip > 99999 || zip < 10000 && zip != 0) {
             errors.zip = "please enter a valid 5 digit zip code"
         }
@@ -27,11 +31,15 @@ function AddressForm() {
         }
 
         setErrors(errors)
-    }, [country, zip])
+    }, [address, country, zip])
 
     const handleAddAddress = async (e) => {
 
         e.preventDefault();
+
+        if (Object.values(errors).length) {
+            return alert("Error please fix the underlying problems")
+        };
 
         const addressData = {
             city,
@@ -45,6 +53,7 @@ function AddressForm() {
 
         if (res) {
             history.push("/address")
+            setErrors({})
         }
     }
 
@@ -72,6 +81,9 @@ function AddressForm() {
                         placeholder='Street address or P.O Box'
                         required
                         />
+                    <div className='error-blocks'>
+                        {errors.address && (<p className="error">*{errors.address}</p>)}
+                    </div>
                     <div className='form-label'>City</div>
                     <input className='form-input'
                         type='text'

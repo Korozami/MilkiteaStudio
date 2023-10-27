@@ -50,6 +50,10 @@ function UpdateProductForm() {
 
         e.preventDefault();
 
+        if (Object.values(errors).length) {
+            return alert("Error please fix the underlying problems")
+        };
+
         const productData = {
             item_name,
             description,
@@ -68,6 +72,7 @@ function UpdateProductForm() {
         }
 
         history.push("/admin/products")
+        setErrors({})
     }
 
     return (

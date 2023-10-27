@@ -1,3 +1,45 @@
+@font-face {
+    font-family: "SuperFuntime";
+    src: url(../fonts/SuperFuntime-3zpLX.ttf);
+}
+
+@font-face {
+    font-family: "SuperDessert";
+    src: url(../fonts/SuperDessert-EaAyj.ttf);
+}
+
 .admin-page{
-    margin-left: 220px;
+    margin-left: 260px;
+    margin-right: 120px;
+    margin-top: 20px;
+}
+.admin-page-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-navlinks-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.admin-store-info-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.user-info-details{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.admin-header{
+    font-size: 20px;
+    color: #806a57;
+    font-family: "SuperDessert", 'Courier New', Courier, monospace ,sans-serif;
 }

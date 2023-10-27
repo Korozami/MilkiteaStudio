@@ -33,12 +33,20 @@ function UpdateAddressForm() {
             errors.country = "please enter a valid country"
         }
 
+        if (address.length != 0 && address.length < 5) {
+            errors.address = "please enter a valid address"
+        }
+
         setErrors(errors)
-    }, [country, zip])
+    }, [address, country, zip])
 
     const handleUpdateAddress = async (e) => {
 
         e.preventDefault();
+
+        if (Object.values(errors).length) {
+            return alert("Error please fix the underlying problems")
+        };
 
         const addressData = {
             city,
@@ -52,6 +60,7 @@ function UpdateAddressForm() {
 
         if (res) {
             history.push("/address")
+            setErrors({})
         }
     }
 
@@ -79,6 +88,9 @@ function UpdateAddressForm() {
                         value={address}
                         required
                         />
+                    <div className='error-blocks'>
+                        {errors.address && (<p className="error">*{errors.address}</p>)}
+                    </div>
                     <div className='form-label'>City</div>
                     <input className='form-input'
                         type='text'

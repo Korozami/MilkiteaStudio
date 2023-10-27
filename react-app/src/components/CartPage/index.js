@@ -20,8 +20,6 @@ function CartPage() {
 
     const [cartQuantity, setCartQuantity] = useState(getDefaultCart())
 
-    console.log(cartItems)
-
     const setCartItems = (itemId, item_amount) => {
 
         let productId = cartItems?.cart_item[itemId]?.product?.id;
@@ -35,6 +33,10 @@ function CartPage() {
             dispatch(updateCartItem(productId, cartData))
         }
 
+    }
+
+    function temporaryalert () {
+        alert("Shop temporarily closed please check back again to buy your goodies :(")
     }
 
 
@@ -80,7 +82,7 @@ function CartPage() {
                     <div className='checkout-total'>
                         Subtotal ${number}.00
                     </div>
-                    <button>CHECKOUT</button>
+                    <button onClick={temporaryalert}>CHECKOUT</button>
                 </div>
             </div>
         </div>

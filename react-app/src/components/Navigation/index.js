@@ -12,6 +12,17 @@ function Navigation({ isLoaded }){
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user);
 
+	let link;
+
+	if (sessionUser) {
+		if(sessionUser.admin) {
+			link = '/admin'
+		} else {
+			link = '/user/portfolio'
+		}
+	}
+	console.log(link)
+
 	const handleLogout = (e) => {
 		e.preventDefault();
 		dispatch(logout());
@@ -32,7 +43,7 @@ function Navigation({ isLoaded }){
 					<NavLink className="link" exact to="/contact">Contact</NavLink>
 					{sessionUser ? (
 						<div className='user-loggin'>
-							<NavLink className='link' exact to="/user/portfolio">Profile</NavLink>
+							<NavLink className='link' exact to={link}>Profile</NavLink>
 							<button onClick={handleLogout}> Log Out</button>
 						</div>
 					) : (
