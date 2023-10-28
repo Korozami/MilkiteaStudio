@@ -8,6 +8,7 @@ function CartPage() {
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.carts.carts)
     const allCartItems = cartItems ? Object.values(cartItems.cart_item) : []
+    const [ errors, setErrors] = useState({});
     let number = 0;
 
     const getDefaultCart = () => {
@@ -18,12 +19,28 @@ function CartPage() {
         return cart;
     }
 
+
     const [cartQuantity, setCartQuantity] = useState(getDefaultCart())
 
     const setCartItems = (itemId, item_amount) => {
 
-        let productId = cartItems?.cart_item[itemId]?.product?.id;
+        const errors = {};
+
+        // let productId = cartItems?.cart_item[itemId]?.product?.id;
+
+        let productId = cartItems?.cart_item[itemId - 1]?.product?.id
+
         setCartQuantity((prev) => ({... prev, [itemId]: item_amount}))
+
+        if (item_amount < 0) {
+            errors.item_amount = "Amount can't be negative"
+        }
+
+        setErrors(errors);
+
+        if (Object.values(errors).length) {
+            return alert("Error amount can't be negative")
+        };
 
         if (item_amount > 0) {
             const cartData = {
@@ -31,6 +48,8 @@ function CartPage() {
             }
 
             dispatch(updateCartItem(productId, cartData))
+
+            setErrors({})
         }
 
     }
@@ -47,18 +66,22 @@ function CartPage() {
         }
     }
 
-    useEffect(() => {
-        if(!cartItems) {
-            dispatch(fetchCart()).then((cartItems) => {
-                if (cartItems) {
-                    setCartQuantity(getDefaultCart());
-                }
-            })
-            .catch((err) => {
-                console.error("Error fetching cart item", err);
-            });
-        }
+    // useEffect(() => {
+    //     if(!cartItems) {
+    //         dispatch(fetchCart()).then((cartItems) => {
+    //             if (cartItems) {
+    //                 setCartQuantity(getDefaultCart());
+    //             }
+    //         })
+    //         .catch((err) => {
+    //             console.error("Error fetching cart item", err);
+    //         });
+    //     }
 
+    // }, [dispatch, cartItems])
+
+    useEffect(() => {
+        dispatch(fetchCart())
     }, [dispatch, cartItems])
 
     return (
@@ -78,7 +101,7 @@ function CartPage() {
                                 <form className='cart-form'>
                                     <input className='cart-quanitiy-input'
                                         type='number'
-                                        onChange={(e) => setCartItems(item?.id - 1, e.target.value)}
+                                        onChange={(e) => setCartItems((item?.id - 1), e.target.value)}
                                         value={cartQuantity[item?.id - 1]}
                                     />
                                 </form>
