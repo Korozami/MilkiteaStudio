@@ -48,7 +48,17 @@ function CartPage() {
     }
 
     useEffect(() => {
-        dispatch(fetchCart())
+        if(!cartItems) {
+            dispatch(fetchCart()).then((cartItems) => {
+                if (cartItems) {
+                    setCartQuantity(getDefaultCart());
+                }
+            })
+            .catch((err) => {
+                console.error("Error fetching cart item", err);
+            });
+        }
+
     }, [dispatch, cartItems])
 
     return (
