@@ -9,18 +9,32 @@ import { CountryData } from '../../data/countries';
 function UpdateAddressForm() {
     const dispatch = useDispatch();
     const { addressId } = useParams();
-    const currAddress = useSelector((state) => state.addresses[addressId])
+    const currAddress = useSelector((state) => state.addresses[addressId] || "")
     const history = useHistory();
-    const [ city, setCity ] = useState(currAddress?.city);
-    const [ address, setAddress ] = useState(currAddress?.address);
-    const [ state, setState ] = useState(currAddress?.state);
-    const [ country, setCountry ] = useState(currAddress?.country);
+    const [ city, setCity ] = useState(currAddress?.city || "");
+    const [ address, setAddress ] = useState(currAddress?.address || "");
+    const [ state, setState ] = useState(currAddress?.state || "");
+    const [ country, setCountry ] = useState(currAddress?.country || "");
     const [ zip, setZip ] = useState(currAddress?.zip);
     const [ errors, setErrors] = useState({});
 
     useEffect(() => {
-        dispatch(fetchAddressId(addressId))
-    }, [dispatch, addressId])
+        if(!currAddress) {
+            dispatch(fetchAddressId(addressId)).then((currAddress) => {
+                if (currAddress) {
+                    setCity(currAddress?.city);
+                    setAddress(currAddress?.address);
+                    setState(currAddress?.state);
+                    setCountry(currAddress?.country);
+                    setZip(currAddress?.zip);
+                }
+            })
+            .catch((err) => {
+                console.error("Error fetching address details", err);
+            });
+        }
+
+    }, [dispatch, addressId, currAddress])
 
     useEffect(() => {
         const errors = {};

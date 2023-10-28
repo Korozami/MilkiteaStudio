@@ -10,9 +10,12 @@ function UpdateProductForm() {
     const dispatch = useDispatch();
     const { productId } = useParams();
     const productData = useSelector((state) => state.products[productId])
+
+
+
     const history = useHistory();
-    const [ item_name, setItemName ] = useState(productData?.item_name);
-    const [ description, setDescription ] = useState(productData?.description);
+    const [ item_name, setItemName ] = useState(productData?.item_name || "");
+    const [ description, setDescription ] = useState(productData?.description || "");
     const [ size, setSize ] = useState(productData?.size);
     const [ price, setPrice ] = useState(productData?.price);
     const [ category, setCategory ] = useState(productData?.category);
@@ -21,15 +24,33 @@ function UpdateProductForm() {
     const [ errors, setErrors] = useState({});
 
     useEffect(() => {
-        dispatch(fetchProductId(productId))
-    }, [dispatch, productId])
+        if(!productData) {
+            dispatch(fetchProductId(productId)).then((productData) => {
+                if (productData) {
+                    setItemName(productData?.item_name);
+                    setDescription(productData?.description);
+                    setSize(productData?.size);
+                    setPrice(productData?.price);
+                    setCategory(productData?.category);
+                    setQuantity(productData?.quantity);
+                }
+            })
+            .catch((err) => {
+                console.error("Error fetching product details", err);
+            });
+        }
+
+        }, [dispatch, productId, productData])
 
     useEffect(() => {
         const errors ={};
 
-        if(description.length != 0 && description.length < 10) {
-            errors.description = "Description should be greater than 10"
+        if (description) {
+            if(description.length != 0 && description.length < 10) {
+                errors.description = "Description should be greater than 10"
+         }
         }
+
 
         if(price < 0) {
             errors.price = "Price can't be less than 0"

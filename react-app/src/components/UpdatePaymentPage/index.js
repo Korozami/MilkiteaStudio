@@ -9,16 +9,30 @@ function UpdatePaymentForm() {
     const history = useHistory();
     const { paymentId } = useParams();
     const currPayment = useSelector((state) => state.payments[paymentId]);
-    const [ card_number, setCardNumber ] = useState(currPayment?.card_number);
-    const [ name, setName ] = useState(currPayment?.name);
+    const [ card_number, setCardNumber ] = useState(currPayment?.card_number || "");
+    const [ name, setName ] = useState(currPayment?.name || "");
     const [ expiration_date, setExpirationDate ] = useState(currPayment?.expiration_date);
     const [ security_code, setSecurityCode ] = useState(currPayment?.security_code);
-    const [ billing_address, setBillingAddress ] = useState(currPayment?.billing_address);
+    const [ billing_address, setBillingAddress ] = useState(currPayment?.billing_address || "");
     const [ errors, setErrors] = useState({});
 
     useEffect(() => {
-        dispatch(fetchPaymentId(paymentId))
-    }, [dispatch])
+        if(!currPayment) {
+            dispatch(fetchPaymentId(paymentId)).then((currPayment) => {
+                if (currPayment) {
+                    setCardNumber(currPayment?.card_number);
+                    setName(currPayment?.name);
+                    setExpirationDate(currPayment?.expiration_date);
+                    setSecurityCode(currPayment?.security_code);
+                    setBillingAddress(currPayment?.billing_address);
+                }
+            })
+            .catch((err) => {
+                console.error("Error fetching payment details", err);
+            });
+        }
+
+    }, [dispatch, paymentId, currPayment])
 
     let today = new Date().toISOString().slice(0, 7)
 

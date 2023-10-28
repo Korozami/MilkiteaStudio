@@ -98,6 +98,7 @@ export const updateProduct = (productId, updateProductData) => async (dispatch) 
         if (res.ok) {
             const updateData = await res.json();
             dispatch(updateProductAction(updateData))
+            return updateData;
         } else {
             const errors = await res.json();
             return errors;
