@@ -23,9 +23,15 @@ function CartPage() {
     const [cartQuantity, setCartQuantity] = useState(getDefaultCart())
 
     useEffect(() => {
-        if (cartQuantity == {}) {
-            dispatch(fetchCart());
-            setCartQuantity(getDefaultCart())
+        if (!cartItems) {
+            dispatch(fetchCart()).then((cartItems) => {
+                if(cartItems) {
+                    setCartQuantity(getDefaultCart())
+                }
+            })
+            .catch((err) => {
+                console.error("Error fetching product details", err);
+            });
         }
     }, [dispatch, cartItems])
 
