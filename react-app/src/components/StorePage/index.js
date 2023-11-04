@@ -20,8 +20,6 @@ function StorePage() {
         }
     })
 
-    console.log(selectedCategory)
-
     useEffect(() => {
         dispatch(fetchProducts());
     }, [dispatch])
