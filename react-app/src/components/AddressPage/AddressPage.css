@@ -59,6 +59,10 @@
     flex-wrap: wrap;
 }
 
+.address-info i {
+    font-size: 30px;
+}
+
 .address-update button {
     color: white;
     margin-top: 20px;

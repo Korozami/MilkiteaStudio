@@ -27,6 +27,20 @@ function PaymentPage() {
         }
     }
 
+    function findCardIcon (number) {
+        if (number === "3" || number === 3) {
+            return <i className="fa-brands fa-cc-amex"></i>;
+        } else if (number === "4" || number === 4) {
+            return <i className="fa-brands fa-cc-visa"></i>;
+        } else if (number === "5" || number === 5) {
+            return <i className="fa-brands fa-cc-mastercard"></i>;
+        } else if (number === "6" || number === 6) {
+            return <i class="fa-brands fa-cc-discover"></i>;
+        } else {
+            return "Unknown"
+        }
+    }
+
 
     useEffect(() => {
         dispatch(fetchPayments())
@@ -47,6 +61,7 @@ function PaymentPage() {
                         if(payment) {
                             return (
                                 <div key={index} className='address-info-container'>
+                                    <div className='address-info'>{findCardIcon(payment?.card_number.toString().slice(0,1))}</div>
                                     <div className='address-info'>{payment?.name}</div>
                                     <div className='address-info'>{findCardName(payment?.card_number.toString().slice(0,1))}</div>
                                     <div className='address-info'>Credit card ending in {payment?.card_number.toString().slice(-4)}</div>
