@@ -16,12 +16,12 @@ function LoginFormPage() {
 
   const demoUserLogin = (e) => {
 		setEmail('demo@aa.io')
-		setPassword('password')
+		setPassword('Smithern5898')
 	  }
 
     const adminDemoUserLogin = (e) => {
       setEmail('demoA@aa.io')
-      setPassword('password')
+      setPassword('Smithern5898')
     }
 
   const handleSubmit = async (e) => {

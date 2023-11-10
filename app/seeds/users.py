@@ -11,10 +11,10 @@ def seed_users():
         first_name='Kevin', last_name='S', username='Korozami', email='koro@gmail.com', password='koromouse', admin=True
     )
     adminDemo = User(
-        first_name="DemoA", last_name="loginA", username='DemoA', email='demoA@aa.io', password='password', admin=True
+        first_name="DemoA", last_name="loginA", username='DemoA', email='demoA@aa.io', password='Smithern5898', admin=True
     )
     demo = User(
-        first_name="Demo", last_name="login", username='Demo', email='demo@aa.io', password='password', admin=False)
+        first_name="Demo", last_name="login", username='Demo', email='demo@aa.io', password='Smithern5898', admin=False)
     marnie = User(
         first_name="Marnie", last_name="June", username='marnie', email='marnie@aa.io', password='password', admin=False)
     bobbie = User(
