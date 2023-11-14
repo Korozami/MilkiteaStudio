@@ -12,7 +12,6 @@ function AddressPage() {
     const sessionUser = useSelector((state) => state.session.user);
     const addressData = useSelector(state => state.addresses.addresses)
     const allAddress = addressData ? Object.values(addressData.addresses) : []
-    console.log(allAddress)
 
     useEffect(() => {
         dispatch(fetchAddresses())
