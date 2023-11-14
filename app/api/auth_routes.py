@@ -92,8 +92,8 @@ def update_user():
             user.first_name = form.data['first_name']
             user.middle_name = form.data['middle_name']
             user.last_name = form.data['last_name']
-            user.username = user.username
-            user.email = user.email
+            user.username = form.data["username"]
+            user.email = form.data["email"]
             user.password = user.password
             user.admin = user.admin
             db.session.commit()
@@ -117,8 +117,8 @@ def update_user_credential():
             user.first_name = user.first_name
             user.middle_name = user.middle_name
             user.last_name = user.last_name
-            user.username = form.data["username"]
-            user.email = form.data["email"]
+            user.username = user.username
+            user.email = user.email
             user.password = form.data["password"]
             user.admin = user.admin
             db.session.commit()

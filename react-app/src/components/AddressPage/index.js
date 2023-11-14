@@ -4,7 +4,7 @@ import { useSelector, useDispatch  } from 'react-redux';
 import OpenModalButton from '../Modal';
 import { NavLink } from 'react-router-dom';
 import DeleteAddress from '../DeleteAddress';
-import { fetchAddresses, updateAddress } from '../../store/address';
+import { fetchAddresses } from '../../store/address';
 
 
 function AddressPage() {
@@ -40,7 +40,7 @@ function AddressPage() {
                                         <NavLink className="address-update" exact to={`/address/${address?.id}/update`}>
                                             <button type='button'>Update</button>
                                         </NavLink>
-                                        <OpenModalButton buttonName="Delete" modalComponent={<DeleteAddress addressId={address?.id} />} />
+                                        <OpenModalButton className="delete-btn" buttonName="Delete" modalComponent={<DeleteAddress addressId={address?.id} />} />
                                     </div>
                                 </div>
                             )

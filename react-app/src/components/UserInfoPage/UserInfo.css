@@ -1,3 +1,79 @@
+@font-face {
+    font-family: "SuperFuntime";
+    src: url(../fonts/SuperFuntime-3zpLX.ttf);
+}
+
+@font-face {
+    font-family: "SuperDessert";
+    src: url(../fonts/SuperDessert-EaAyj.ttf);
+}
+
 .user-info-body{
     margin-left: 220px;
+}
+
+.user-info-wrapper{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-content{
+    border: 2px solid rgb(148, 121, 88);
+    width: 20vw;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-info-box{
+    color: #806a57;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-update-info{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.user-selection h3 {
+    color: #806a57;
+    font-size: 20px;
+    font-family: "SuperDessert", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-info-label{
+    font-size: 18px;
+    font-family: "SuperFuntime";
+}
+
+.user-selection button{
+    margin-top: 20px;
+    color: white;
+    height: 40px;
+    width: 200px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    opacity: 1;
+    border-radius: 10px;
+    transition: all .3s ease;
+    background-color: rgb(137, 124, 91);
+}
+
+.user-selection button:hover{
+    background-color: #83b0b1;
 }

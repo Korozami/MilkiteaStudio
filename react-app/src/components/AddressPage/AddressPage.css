@@ -72,7 +72,12 @@
     border: none;
     opacity: 1;
     border-radius: 10px;
+    transition: all .3s ease;
     background-color: rgb(137, 124, 91);
+}
+
+.address-update button:hover {
+    background-color: #83b0b1;
 }
 
 .button-container{
@@ -90,7 +95,12 @@
     border: none;
     opacity: 1;
     border-radius: 10px;
+    transition: all .3s ease;
     background-color: rgb(137, 124, 91);
+}
+
+.delete-btn:hover {
+    background-color: #83b0b1;
 }
 
 .address-contents{
