@@ -1,9 +1,17 @@
 import './UserInfo.css'
 import React from 'react';
-import { fetchUsers, updateUserInfo, updateCredential } from '../../store/session';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchUsers, updateUserInfo, updateCredential } from '../../store/user';
 
 
 function UserInfoPage () {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchUsers())
+    }, [dispatch])
 
     return (
         <div className='user-info-body'>
