@@ -15,8 +15,8 @@ function UserInfoUpdatePage () {
     const [first_name, setFirstName] = useState(sessionUser?.first_name || "");
     const [middle_name, setMiddleName] = useState(sessionUser?.middle_name || "");
     const [last_name, setLastName] = useState(sessionUser?.last_name || "");
-    const [username, setUsername] = useState(sessionUser?.username);
-    const [email, setEmail] = useState(sessionUser?.email)
+    const [username, setUsername] = useState(sessionUser?.username || "");
+    const [email, setEmail] = useState(sessionUser?.email || "")
     const [errors, setErrors] = useState({});
 
     if (!sessionUser) history.push('/login')

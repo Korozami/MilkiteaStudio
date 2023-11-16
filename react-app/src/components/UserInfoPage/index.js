@@ -1,22 +1,20 @@
 import './UserInfo.css'
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, NavLink } from 'react-router-dom';
-// import { useEffect } from 'react';
-
+import { useEffect } from 'react';
+import { authenticate } from '../../store/session';
 
 function UserInfoPage () {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const history = useHistory();
-
     const sessionUser = useSelector(state => state.session.user);
 
     if (!sessionUser) history.push('/login')
 
-
-    // useEffect(() => {
-
-    // }, [dispatch, sessionUser])
+    useEffect(() => {
+        dispatch(authenticate())
+    }, [dispatch, sessionUser])
 
     return (
         <div className='user-info-body'>
@@ -27,7 +25,7 @@ function UserInfoPage () {
                         <div className='user-update-info'>
                             <div className='user-info-box'>
                                 <div className='user-info-label'>Name</div>
-                                <div className='user-info-value'>{sessionUser?.first_name} {sessionUser?.last_name}</div>
+                                <div className='user-info-value'>{sessionUser?.first_name} {sessionUser?.middle_name} {sessionUser?.last_name}</div>
                                 <div className='user-info-label'>Username</div>
                                 <div className='user-info-value'>{sessionUser?.username}</div>
                                 <div className='user-info-label'>Email</div>
