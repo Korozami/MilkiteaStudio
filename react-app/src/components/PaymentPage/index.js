@@ -9,7 +9,6 @@ function PaymentPage() {
     const dispatch = useDispatch();
     const paymentData = useSelector(state => state.payments.payments)
     const allPayment = paymentData ? Object.values(paymentData.payments) : []
-    console.log(allPayment)
 
     const card_name = ["American Express", "Visa", "Mastercard", "Discover"];
 

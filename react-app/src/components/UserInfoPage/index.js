@@ -2,16 +2,21 @@ import './UserInfo.css'
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, NavLink } from 'react-router-dom';
+// import { useEffect } from 'react';
 
 
 function UserInfoPage () {
+    // const dispatch = useDispatch();
     const history = useHistory();
 
     const sessionUser = useSelector(state => state.session.user);
 
-    console.log(sessionUser)
-
     if (!sessionUser) history.push('/login')
+
+
+    // useEffect(() => {
+
+    // }, [dispatch, sessionUser])
 
     return (
         <div className='user-info-body'>
