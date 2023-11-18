@@ -19,6 +19,7 @@ import AddressForm from "./components/AddressAddPage";
 import AboutPage from "./components/AboutPage";
 import UserInfoPage from "./components/UserInfoPage";
 import UserInfoUpdatePage from "./components/UserInfoUpdatePage";
+import UserCredentialUpdatePage from "./components/UserCredentialUpdatePage";
 import ContactPage from "./components/ContactPage";
 import PaymentForm from "./components/PaymentAddPage";
 import AdminProductPage from "./components/AdminProductPage";
@@ -54,6 +55,9 @@ function App() {
           </Route>
           <Route path="/update/information">
             <UserInfoUpdatePage />
+          </Route>
+          <Route path="/update/credentials">
+            <UserCredentialUpdatePage />
           </Route>
           <Route path="/address/add">
             <AddressForm />
