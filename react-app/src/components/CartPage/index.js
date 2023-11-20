@@ -1,7 +1,9 @@
 import './cartpage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import { fetchCart, fetchCartItem, updateCartItem, deleteCartItem } from '../../store/cart';
+import { NavLink } from 'react-router-dom';
+import { fetchCart, updateCartItem, deleteCartItem } from '../../store/cart';
+
 
 
 function CartPage() {
@@ -63,11 +65,6 @@ function CartPage() {
 
     }
 
-    function temporaryalert () {
-        alert("Shop temporarily closed please check back again to buy your goodies :(")
-    }
-
-
     const deletion = function (productId) {
         let deleted = dispatch(deleteCartItem(productId))
         if (deleted) {
@@ -111,7 +108,9 @@ function CartPage() {
                     <div className='checkout-total'>
                         Subtotal ${number}.00
                     </div>
-                    <button onClick={temporaryalert}>CHECKOUT</button>
+                    <NavLink exact to="/checkout">
+                        <button type='button'>CHECKOUT</button>
+                    </NavLink>
                 </div>
             </div>
         </div>

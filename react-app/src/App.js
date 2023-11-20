@@ -21,6 +21,7 @@ import UserInfoPage from "./components/UserInfoPage";
 import UserInfoUpdatePage from "./components/UserInfoUpdatePage";
 import UserCredentialUpdatePage from "./components/UserCredentialUpdatePage";
 import ContactPage from "./components/ContactPage";
+import CheckoutPage from "./components/CheckoutPage";
 import PaymentForm from "./components/PaymentAddPage";
 import AdminProductPage from "./components/AdminProductPage";
 import { authenticate } from "./store/session";
@@ -73,6 +74,9 @@ function App() {
           </Route>
           <Route path="/payment/:paymentId/update">
             <UpdatePaymentForm />
+          </Route>
+          <Route path="/checkout">
+            <CheckoutPage />
           </Route>
           <Route path="/cart">
             <CartPage />
