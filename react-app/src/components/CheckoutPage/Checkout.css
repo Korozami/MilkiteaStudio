@@ -2,7 +2,7 @@
     margin-left: 220px;
 }
 
-.address-info-dropdown-container.inactive{
+.payment-info-dropdown-container.inactive{
 	opacity: 0;
 	visibility: hidden;
 	display: none;
@@ -10,7 +10,7 @@
 	transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
-.address-info-dropdown-content:hover{
+.payment-info-dropdown-content:hover{
     background-color: #83b0b1;
     cursor: pointer;
 }
