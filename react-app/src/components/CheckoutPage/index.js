@@ -13,11 +13,14 @@ function CheckoutPage() {
     const cartItems = useSelector((state) => state.carts.carts)
     const addressData = useSelector((state) => state.addresses.addresses)
     const paymentData = useSelector((state) => state.payments.payments)
-    const [changePayment, setChangePayment] = useState(false)
+
     const allCartItems = cartItems ? Object.values(cartItems.cart_item) : []
     const allAddress = addressData ? Object.values(addressData.addresses) : []
     const allPayment = paymentData ? Object.values(paymentData.payments) : []
 
+    const [changePayment, setChangePayment] = useState(false)
+    const [selectedPaymentCard, setSelectedPaymentCard] = useState("")
+    const [selectedPaymentAddress, setSelectedPaymentAddress] = useState("")
     const card_name = ["American Express", "Visa", "Mastercard", "Discover"];
 
     function findCardName (number) {
@@ -48,8 +51,26 @@ function CheckoutPage() {
         }
     }
 
-    function changePaymentButton () {
+    function changePaymentButtonDropDown () {
         setChangePayment(!changePayment)
+    }
+
+    //set primary payment on render
+    if(selectedPaymentCard === ""){
+        allPayment.map((payment) => {
+            if(payment?.primary) {
+                setSelectedPaymentCard(payment?.card_number)
+                setSelectedPaymentAddress(payment?.billing_address)
+            } else if (payment?.id === 1) {
+                setSelectedPaymentCard(payment?.card_number)
+                setSelectedPaymentAddress(payment?.billing_address)
+            }
+        });
+    }
+
+    //switch payment method function
+    function changePaymentMethod (id) {
+
     }
 
     useEffect(() => {
@@ -71,55 +92,33 @@ function CheckoutPage() {
                     <div className='payment-checkout-container'>
                         <div className='payment-checkout-wrapper'>
                             <div className='payment-checkout-content'>
-                            {allPayment.map((payment, index) => {
-                                    if(payment?.primary) {
-                                        return (
-                                            <div key={index} className='address-info-checkout-content'>
-                                                <div className='address-info-left'>
-                                                    <h3>Payment method</h3>
-                                                </div>
-                                                <div className='address-info-middle'>
-                                                    <div className='address-info'>{findCardIcon(payment?.card_number.toString().slice(0,1))} Paying
-                                                        with {findCardName(payment?.card_number.toString().slice(0,1))} {payment?.card_number.toString().slice(-4)}
-                                                    </div>
-                                                    <div className='address-info'>Billing address: {payment?.billing_address}</div>
-                                                </div>
-                                                <div className='address-info-right'>
-                                                    <button onClick={changePaymentButton}>Change</button>
-                                                </div>
-                                            </div>
-                                        )
-                                    } else if (payment?.id === 1) {
-                                        return (
-                                            <div key={index} className='address-info-checkout-content'>
-                                                <div className='address-info-left'>
-                                                    <h3>Payment method</h3>
-                                                </div>
-                                                <div className='address-info-middle'>
-                                                    <div className='address-info'>{findCardIcon(payment?.card_number.toString().slice(0,1))} Paying
-                                                        with {findCardName(payment?.card_number.toString().slice(0,1))} {payment?.card_number.toString().slice(-4)}
-                                                    </div>
-                                                    <div className='address-info'>Billing address: {payment?.billing_address}</div>
-                                                </div>
-                                                <div className='address-info-right'>
-                                                    <button onClick={changePaymentButton}>Change</button>
-                                                </div>
-                                            </div>
-                                        )
-                                    }
-                                })}
+                                <div className='address-info-checkout-content'>
+                                    <div className='address-info-left'>
+                                        <h3>Payment method</h3>
+                                    </div>
+                                    <div className='address-info-middle'>
+                                        <div className='address-info'>{findCardIcon(selectedPaymentCard.toString().slice(0,1))} Paying
+                                            with {findCardName(selectedPaymentCard.toString().slice(0,1))} {selectedPaymentCard.toString().slice(-4)}
+                                        </div>
+                                        <div className='address-info'>Billing address: {selectedPaymentAddress}</div>
+                                    </div>
+                                    <div className='address-info-right'>
+                                        <button onClick={changePaymentButtonDropDown}>Change</button>
+                                    </div>
+                                </div>
                             </div>
                             <div className='payment-checkout-content-dropdown'>
+                                <div className={`address-info-dropdown-container ${changePayment ? 'active' : 'inactive'}`}>
+                                    Select Payment
+                                </div>
                                 {allPayment.map((payment, index) => {
                                     if(payment && changePayment) {
                                         return (
-                                            <div>
-                                                <div key={index} className='address-info-dropdown-container'>
-                                                    <div className='address-dropdown-info'>{findCardIcon(payment?.card_number.toString().slice(0,1))}</div>
-                                                    <div className='address-dropdown-info'>{payment?.name}</div>
-                                                    <div className='address-dropdown-info'>{findCardName(payment?.card_number.toString().slice(0,1))}</div>
-                                                    <div className='address-dropdown-info'>Credit card ending in {payment?.card_number.toString().slice(-4)}</div>
-                                                </div>
+                                            <div key={index} className='address-info-dropdown-content'>
+                                                <div className='address-dropdown-info'>{findCardIcon(payment?.card_number.toString().slice(0,1))}</div>
+                                                <div className='address-dropdown-info'>{payment?.name}</div>
+                                                <div className='address-dropdown-info'>{findCardName(payment?.card_number.toString().slice(0,1))}</div>
+                                                <div className='address-dropdown-info'>Credit card ending in {payment?.card_number.toString().slice(-4)}</div>
                                             </div>
                                         )
                                     }
