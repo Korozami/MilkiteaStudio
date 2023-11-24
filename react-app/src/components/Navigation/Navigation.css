@@ -57,9 +57,18 @@
   margin-right: 10px;
 }
 
+.nav i:hover {
+  color: #83b0b1;
+}
+
 .nav a{
   color: #4c3125;
   text-decoration: none;
+  transition: all .3s ease;
+}
+
+.nav a:hover {
+  color: #83b0b1;
 }
 
 .nav a:visited{
@@ -76,7 +85,12 @@
   border: none;
   opacity: 1;
   border-radius: 10px;
+  transition: all .3s ease;
   background-color: rgb(137, 124, 91);
+}
+
+.user-loggin button:hover {
+  background-color: #83b0b1;
 }
 
 .link{

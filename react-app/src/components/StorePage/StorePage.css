@@ -62,9 +62,11 @@
     border-radius: 20px;
     justify-content: center;
     overflow: clip;
+    transition: all .3s ease;
     font-family: 'Courier New', Courier, monospace;
 }
 
 .category-name:hover{
     text-decoration: underline;
+    background-color: #83b0b1;
 }

@@ -37,6 +37,14 @@
     padding: 80px 90px 80px 90px;
 }
 
+.adding-container i {
+    transition: all .3s ease;
+}
+
+.adding-container i:hover{
+    color: #83b0b1;
+}
+
 #add-btn{
     font-size: 100px;
 }
