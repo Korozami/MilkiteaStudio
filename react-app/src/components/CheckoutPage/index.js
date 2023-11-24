@@ -31,6 +31,34 @@ function CheckoutPage() {
     const [selectedPaymentAddress, setSelectedPaymentAddress] = useState("")
     const card_name = ["American Express", "Visa", "Mastercard", "Discover"];
 
+    let number = 0;
+
+    const getDefaultCart = () => {
+        let cart = {}
+        for (let i = 0; i < cartItems?.cart_item.length; i++) {
+            cart[i] = cartItems?.cart_item[i]?.item_amount;
+        }
+        return cart;
+    }
+
+
+    const [cartQuantity, setCartQuantity] = useState(getDefaultCart())
+
+    useEffect(() => {
+        if (!cartItems) {
+            dispatch(fetchCart()).then((cartItems) => {
+                if(cartItems) {
+                    setCartQuantity(getDefaultCart())
+                }
+            })
+            .catch((err) => {
+                console.error("Error fetching product details", err);
+            });
+        }
+    }, [dispatch, cartItems])
+
+
+
     if (city === "" && selectedAddress === false) {
         allAddress.map((address) => {
             if(address?.primary) {
@@ -199,7 +227,26 @@ function CheckoutPage() {
                     <div className='product-checkout-container'>
                         <div className='product-checkout-wrapper'>
                             <div className='product-checkout-content'>
-
+                            {allCartItems.map((item, index) => {
+                                {number += (Number(item?.item_amount) * Number(item?.product?.price))}
+                                return (
+                                    <div key={index} className='cart-item'>
+                                        <img src={item?.product?.product_images[0].imageUrl} alt='product-image' height={100} />
+                                        <div className='cart-item-section-one'>
+                                            <div className='product-name'>{item?.product?.item_name}</div>
+                                            <div className='product-price'>${item?.product?.price}.00</div>
+                                        </div>
+                                        <form className='cart-form'>
+                                            <input className='cart-quanitiy-input'
+                                                type='number'
+                                                placeholder={item?.item_amount}
+                                                value={cartQuantity[index]}
+                                            />
+                                        </form>
+                                        <div className='total-amount'>${Number(item?.item_amount) * Number(item?.product?.price)}.00 </div>
+                                    </div>
+                                )
+                            })}
                             </div>
                         </div>
                     </div>

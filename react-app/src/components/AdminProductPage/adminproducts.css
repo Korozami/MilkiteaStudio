@@ -13,6 +13,11 @@
     opacity: 1;
     border-radius: 10px;
     background-color: rgb(137, 124, 91);
+    transition: all .3s ease;
+}
+
+.product-edit-btn:hover {
+    background-color: #83b0b1;
 }
 
 .admin-displayed-products{
@@ -33,6 +38,11 @@
     border: 2px dotted black;
     border-radius: 50px;
     padding: 100px 80px;
+    transition: all .3s ease;
+}
+
+.product-add:hover {
+    color: #83b0b1;
 }
 
 #add-btn{

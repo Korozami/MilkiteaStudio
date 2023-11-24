@@ -82,7 +82,6 @@ function CartPage() {
                 <div className='cart-content'>
                     {allCartItems.map((item, index) => {
                         {number += (Number(item?.item_amount) * Number(item?.product?.price))}
-                        console.log(item?.item_amount)
                         return (
                             <div key={index} className='cart-item'>
                                 <img src={item?.product?.product_images[0].imageUrl} alt='product-image' height={100} />

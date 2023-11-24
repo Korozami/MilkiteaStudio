@@ -145,4 +145,9 @@ body{
     opacity: 1;
     border-radius: 20px;
     background-color: rgb(137, 124, 91);
+    transition: all .3s ease;
+}
+
+.form-signup button:hover {
+    background-color: #83b0b1;
 }
