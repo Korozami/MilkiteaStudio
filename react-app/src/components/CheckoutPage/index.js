@@ -249,20 +249,22 @@ function CheckoutPage() {
                                             <div className='cart-checkout-item-section-one'>
                                                 <div className='product-checkout-name'>{item?.product?.item_name}</div>
                                                 <div className='product-checkout-price'>${item?.product?.price}.00</div>
-                                            </div>
-                                            <form className='cart-form'>
+                                                <form className='cart-form'>
                                                 <input className='cart-quanitiy-input'
                                                     type='number'
                                                     placeholder={item?.item_amount}
                                                     value={cartQuantity[index]}
                                                 />
                                             </form>
-                                            <div className='total-amount'>${Number(item?.item_amount) * Number(item?.product?.price)}.00 </div>
+                                            </div>
                                         </div>
                                     )
                                 })}
                             </div>
                         </div>
+                    </div>
+                    <div className='checkout-bottom-button-container'>
+                        <button>Place Your Order</button>
                     </div>
                 </div>
                 <div className='checkout-right-content'>
