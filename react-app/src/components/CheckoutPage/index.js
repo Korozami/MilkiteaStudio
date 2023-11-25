@@ -139,7 +139,7 @@ function CheckoutPage() {
                             <div className='address-checkout-content'>
                                 <div className='address-info-checkout-content'>
                                     <div className='address-info-left'>
-                                        <h3>Shipping address</h3>
+                                        <h3>Shipping address:</h3>
                                     </div>
                                     <div className='address-info-middle'>
                                         <div className='address-info'>{sessionUser?.first_name} {sessionUser?.middle_name || ""} {sessionUser?.last_name}</div>
@@ -153,7 +153,7 @@ function CheckoutPage() {
                             </div>
                             <div className='payment-checkout-content-dropdown'>
                                 <div className={`payment-info-dropdown-container ${changeAddress ? 'active' : 'inactive'}`}>
-                                    Select Address
+                                    Select Address:
                                 </div>
                                 {allAddress.map((address, index) => {
                                     function changeAddressMethod() {
@@ -166,11 +166,17 @@ function CheckoutPage() {
                                     }
                                     if(address && changeAddress) {
                                         return (
-                                            <div key={index} onClick={changeAddressMethod} className='address-info-container'>
-                                                <div className='address-info'>{sessionUser?.first_name} {sessionUser?.last_name}</div>
-                                                <div className='address-info'>{address?.address}</div>
-                                                <div className='address-info'>{address?.city}, {address?.state} {address?.zip}</div>
-                                                <div className='address-info'>{address?.country}</div>
+                                            <div key={index} onClick={changeAddressMethod} className='address-checkout-info-container'>
+                                                <div className='address-checkout-content'>
+                                                    <div className='address-checkout-label'>Name:</div>
+                                                    <div className='address-checkout-info'>{sessionUser?.first_name} {sessionUser?.last_name}</div>
+                                                </div>
+                                                <div className='address-checkout-content'>
+                                                    <div className='address-checkout-label'>Address:</div>
+                                                    <div className='address-checkout-info'>{address?.address}</div>
+                                                    <div className='address-checkout-info'>{address?.city}, {address?.state} {address?.zip}</div>
+                                                    <div className='address-checkout-info'>{address?.country}</div>
+                                                </div>
                                             </div>
                                         )
                                     }
@@ -183,7 +189,7 @@ function CheckoutPage() {
                             <div className='payment-checkout-content'>
                                 <div className='payment-info-checkout-content'>
                                     <div className='payment-info-left'>
-                                        <h3>Payment method</h3>
+                                        <h3>Payment method:</h3>
                                     </div>
                                     <div className='payment-info-middle'>
                                         <div className='payment-info'>{findCardIcon(selectedPaymentCard.toString().slice(0,1))} Paying
@@ -198,7 +204,7 @@ function CheckoutPage() {
                             </div>
                             <div className='payment-checkout-content-dropdown'>
                                 <div className={`payment-info-dropdown-container ${changePayment ? 'active' : 'inactive'}`}>
-                                    Select Payment
+                                    Select Payment:
                                 </div>
                                 {allPayment.map((payment, index) => {
 
