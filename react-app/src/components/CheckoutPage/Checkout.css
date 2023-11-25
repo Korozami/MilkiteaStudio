@@ -114,10 +114,20 @@
 	border-bottom: .5px solid #806a57;
 }
 
+.payment-info-dropdown-content {
+	display: flex;
+	margin: 20px 0px;
+	justify-content: space-between;
+}
+
 .payment-info-dropdown-content:hover{
     color: white;
 	background-color: #83b0b1;
     cursor: pointer;
 	padding: 15px;
 	border-radius: 5px;
+}
+
+.payment-dropdown-info i {
+	font-size: 30px;
 }

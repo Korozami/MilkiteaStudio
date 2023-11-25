@@ -219,10 +219,17 @@ function CheckoutPage() {
                                     if(payment && changePayment) {
                                         return (
                                             <div key={index}  onClick={changePaymentMethod} className='payment-info-dropdown-content'>
-                                                <div className='payment-dropdown-info'>{findCardIcon(payment?.card_number.toString().slice(0,1))}</div>
-                                                <div className='payment-dropdown-info'>{payment?.name}</div>
-                                                <div className='payment-dropdown-info'>{findCardName(payment?.card_number.toString().slice(0,1))}</div>
-                                                <div className='payment-dropdown-info'>Credit card ending in {payment?.card_number.toString().slice(-4)}</div>
+                                                <div className='payment-info-content'>
+                                                    <div className='payment-dropdown-info'>{findCardIcon(payment?.card_number.toString().slice(0,1))}</div>
+                                                </div>
+                                                <div className='payment-info-content'>
+                                                    <div className='payment-info-label'>Name on Card: </div>
+                                                    <div className='payment-dropdown-info'>{payment?.name}</div>
+                                                </div>
+                                                <div className='payment-info-content'>
+                                                    <div className='payment-dropdown-info'>{findCardName(payment?.card_number.toString().slice(0,1))}:</div>
+                                                    <div className='payment-dropdown-info'>Credit card ending in {payment?.card_number.toString().slice(-4)}</div>
+                                                </div>
                                             </div>
                                         )
                                     }
@@ -233,26 +240,27 @@ function CheckoutPage() {
                     <div className='product-checkout-container'>
                         <div className='product-checkout-wrapper'>
                             <div className='product-checkout-content'>
-                            {allCartItems.map((item, index) => {
-                                {number += (Number(item?.item_amount) * Number(item?.product?.price))}
-                                return (
-                                    <div key={index} className='cart-checkout-item'>
-                                        <img src={item?.product?.product_images[0].imageUrl} alt='product-image' height={100} />
-                                        <div className='cart-checkout-item-section-one'>
-                                            <div className='product-checkout-name'>{item?.product?.item_name}</div>
-                                            <div className='product-checkout-price'>${item?.product?.price}.00</div>
+                                <h3>Review Items and Shipping: </h3>
+                                {allCartItems.map((item, index) => {
+                                    {number += (Number(item?.item_amount) * Number(item?.product?.price))}
+                                    return (
+                                        <div key={index} className='cart-checkout-item'>
+                                            <img src={item?.product?.product_images[0].imageUrl} alt='product-image' height={100} />
+                                            <div className='cart-checkout-item-section-one'>
+                                                <div className='product-checkout-name'>{item?.product?.item_name}</div>
+                                                <div className='product-checkout-price'>${item?.product?.price}.00</div>
+                                            </div>
+                                            <form className='cart-form'>
+                                                <input className='cart-quanitiy-input'
+                                                    type='number'
+                                                    placeholder={item?.item_amount}
+                                                    value={cartQuantity[index]}
+                                                />
+                                            </form>
+                                            <div className='total-amount'>${Number(item?.item_amount) * Number(item?.product?.price)}.00 </div>
                                         </div>
-                                        <form className='cart-form'>
-                                            <input className='cart-quanitiy-input'
-                                                type='number'
-                                                placeholder={item?.item_amount}
-                                                value={cartQuantity[index]}
-                                            />
-                                        </form>
-                                        <div className='total-amount'>${Number(item?.item_amount) * Number(item?.product?.price)}.00 </div>
-                                    </div>
-                                )
-                            })}
+                                    )
+                                })}
                             </div>
                         </div>
                     </div>
