@@ -66,7 +66,7 @@ function CheckoutPage() {
                 setAddress(address?.address)
                 setState(address?.state)
                 setZip(address?.zip)
-            } else if (address?.id === 1) {
+            } else if (address) {
                 setCity(address?.city)
                 setAddress(address?.address)
                 setState(address?.state)
@@ -117,7 +117,7 @@ function CheckoutPage() {
             if(payment?.primary) {
                 setSelectedPaymentCard(payment?.card_number)
                 setSelectedPaymentAddress(payment?.billing_address)
-            } else if (payment?.id === 1) {
+            } else if (payment) {
                 setSelectedPaymentCard(payment?.card_number)
                 setSelectedPaymentAddress(payment?.billing_address)
             }
@@ -230,11 +230,11 @@ function CheckoutPage() {
                             {allCartItems.map((item, index) => {
                                 {number += (Number(item?.item_amount) * Number(item?.product?.price))}
                                 return (
-                                    <div key={index} className='cart-item'>
+                                    <div key={index} className='cart-checkout-item'>
                                         <img src={item?.product?.product_images[0].imageUrl} alt='product-image' height={100} />
-                                        <div className='cart-item-section-one'>
-                                            <div className='product-name'>{item?.product?.item_name}</div>
-                                            <div className='product-price'>${item?.product?.price}.00</div>
+                                        <div className='cart-checkout-item-section-one'>
+                                            <div className='product-checkout-name'>{item?.product?.item_name}</div>
+                                            <div className='product-checkout-price'>${item?.product?.price}.00</div>
                                         </div>
                                         <form className='cart-form'>
                                             <input className='cart-quanitiy-input'
@@ -251,7 +251,26 @@ function CheckoutPage() {
                         </div>
                     </div>
                 </div>
-                <div className='checkout-right-content'></div>
+                <div className='checkout-right-content'>
+                    <div className='order-checkout'>
+                        <div className='order-total'>
+                            Items: ${number}.00
+                        </div>
+                        <div className='order-total'>
+                            Shipping & handling: $0.00
+                        </div>
+                        <div className='order-total'>
+                            Total before tax: ${number}.00
+                        </div>
+                        <div className='order-total'>
+                            Estimated tax to be collected: $0.00
+                        </div>
+                        <div className='order-total'>
+                            Order total: ${number}.00
+                        </div>
+                        <button type='button'>Place Your Order</button>
+                    </div>
+                </div>
             </div>
         </div>
     )
