@@ -58,23 +58,6 @@ body{
     margin-left: 30px;
 }
 
-.desc-login h2{
-    font-size: 30px;
-    color: #6e683c;
-    margin-bottom: 150px;
-    margin-top: 50px;
-}
-
-.desc-login h1{
-    color: #6e683c;
-    margin-bottom: 10px;
-}
-
-.desc-login p{
-    width: 450px;
-    opacity: .5;
-}
-
 .form-login{
     position: absolute;
     top: 60px;
@@ -136,4 +119,19 @@ body{
 #login-studio-logo {
     height: 400px;
     margin-left: 60px;
+}
+
+@media screen and (max-width: 800px){
+    .desc-login {
+        visibility: hidden;
+    }
+
+    .form-login {
+        top: 100px;
+        left: 100px;
+    }
+
+    .nav-login{
+        justify-content: center;
+    }
 }

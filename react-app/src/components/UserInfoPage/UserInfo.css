@@ -21,7 +21,7 @@
 
 .user-content{
     border: 2px solid rgb(148, 121, 88);
-    width: 20vw;
+    min-width: 20vw;
     padding: 30px;
     display: flex;
     flex-direction: column;

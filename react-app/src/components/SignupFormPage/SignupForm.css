@@ -52,7 +52,6 @@ body{
 }
 
 .nav-signup{
-    width: 30px;
     height: 100px;
     display: flex;
     align-items: center;
@@ -82,16 +81,6 @@ body{
 .desc-signup{
     width: 500px;
     margin-left: 30px;
-}
-
-.desc-signup h1{
-    color: #6e683c;
-    margin-bottom: 10px;
-}
-
-.desc-signup p{
-    width: 450px;
-    opacity: .5;
 }
 
 .form-signup{
@@ -150,4 +139,19 @@ body{
 
 .form-signup button:hover {
     background-color: #83b0b1;
+}
+
+@media screen and (max-width: 800px){
+    .desc-signup {
+        visibility: hidden;
+    }
+
+    .form-signup {
+        top: 100px;
+        left: 100px;
+    }
+
+    .nav-signup{
+        justify-content: center;
+    }
 }

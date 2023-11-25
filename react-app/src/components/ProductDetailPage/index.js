@@ -43,43 +43,30 @@ function ProductDetail () {
     return (
         <div className="product-page-container">
             <div className="product-page-wrapper">
-                <div className="product-image-container">
-                    {/* <div className="main-product-img">
-                        {currProduct?.product_images.map((productImg, index) => {
-                            if (productImg.id === mainImg) {
-                                return (
-                                    <div key={index} className='main-productId-img'>
-                                        <img src={productImg?.imageUrl} alt="product image" />
-                                    </div>
-                                )
-                            }
-                        })}
-                    </div> */}
-                    <div className="mini-image-container">
-                        {currProduct?.product_images.map((productImg, index) => {
-                            if (productImg) {
-                                return (
-                                    <div onClick={() => {setMainImg(productImg.id)}} key={index} className='product-img'>
-                                        <img src={productImg?.imageUrl} alt="product image" />
-                                    </div>
-                                )
-                            }
-                        })}
-                    </div>
-                    <div className="info-container">
-                        <div className="info-wrapper">
-                            <div className="product-info-title">{currProduct?.item_name.toUpperCase()}</div>
-                            <div className="product-info-price">${currProduct?.price.toFixed(2)}</div>
-                            <div className="product-info-description">{currProduct?.description}</div>
-                            <div className="product-info-size">{currProduct?.size}</div>
-                            <div className="product-info-note">Please note the colors in the photos may not accurately represent those of the actual product!</div>
-                            <select className="product-info-quanity" name="quantity" onChange={(e) => setQuantity(e.target.value)}>
-                            {
-                                [...Array(10)].map((_, i) => i + 1).map(i => <option key={i} value={i}>Qty: {i}</option>)
-                            }
-                            </select>
-                            <button onClick={handleAddCartItem} className="add-cart-btn">Add to Cart</button>
-                        </div>
+                <div className="mini-image-container">
+                    {currProduct?.product_images.map((productImg, index) => {
+                        if (productImg) {
+                            return (
+                                <div onClick={() => {setMainImg(productImg.id)}} key={index} className='product-img'>
+                                    <img src={productImg?.imageUrl} alt="product image" />
+                                </div>
+                            )
+                        }
+                    })}
+                </div>
+                <div className="info-container">
+                    <div className="info-wrapper">
+                        <div className="product-info-title">{currProduct?.item_name.toUpperCase()}</div>
+                        <div className="product-info-price">${currProduct?.price.toFixed(2)}</div>
+                        <div className="product-info-description">{currProduct?.description}</div>
+                        <div className="product-info-size">{currProduct?.size}</div>
+                        <div className="product-info-note">Please note the colors in the photos may not accurately represent those of the actual product!</div>
+                        <select className="product-info-quanity" name="quantity" onChange={(e) => setQuantity(e.target.value)}>
+                        {
+                            [...Array(10)].map((_, i) => i + 1).map(i => <option key={i} value={i}>Qty: {i}</option>)
+                        }
+                        </select>
+                        <button onClick={handleAddCartItem} className="add-cart-btn">Add to Cart</button>
                     </div>
                 </div>
             </div>
