@@ -57,22 +57,21 @@ function CheckoutPage() {
         }
     }, [dispatch, cartItems])
 
-
-
+    //set primary address on render
     if (city === "" && selectedAddress === false) {
-        allAddress.map((address) => {
-            if(address?.primary) {
-                setCity(address?.city)
-                setAddress(address?.address)
-                setState(address?.state)
-                setZip(address?.zip)
-            } else if (address) {
-                setCity(address?.city)
-                setAddress(address?.address)
-                setState(address?.state)
-                setZip(address?.zip)
+        for(let i = 1; i < allAddress.length; i++) {
+            setCity(allAddress[0]?.city)
+            setAddress(allAddress[0]?.address)
+            setState(allAddress[0]?.state)
+            setZip(allAddress[0]?.zip)
+            if(allAddress[i]?.primary) {
+                setCity(allAddress[i]?.city)
+                setAddress(allAddress[i]?.address)
+                setState(allAddress[i]?.state)
+                setZip(allAddress[i]?.zip)
+                break
             }
-        })
+        }
     }
 
     function findCardName (number) {
@@ -112,16 +111,16 @@ function CheckoutPage() {
     }
 
     //set primary payment on render
-    if(selectedPaymentCard === "" && paymentSelected === false){
-        allPayment.map((payment) => {
-            if(payment?.primary) {
-                setSelectedPaymentCard(payment?.card_number)
-                setSelectedPaymentAddress(payment?.billing_address)
-            } else if (payment) {
-                setSelectedPaymentCard(payment?.card_number)
-                setSelectedPaymentAddress(payment?.billing_address)
+    if(selectedPaymentCard === "" && paymentSelected === false) {
+        for(let i = 1; i < allPayment.length; i++) {
+            setSelectedPaymentCard(allPayment[0]?.card_number)
+            setSelectedPaymentAddress(allPayment[0]?.billing_address)
+            if(allPayment[i]?.primary) {
+                setSelectedPaymentCard(allPayment[i]?.card_number)
+                setSelectedPaymentAddress(allPayment[i]?.billing_address)
+                break
             }
-        });
+        }
     }
 
     useEffect(() => {
@@ -268,21 +267,27 @@ function CheckoutPage() {
                     </div>
                 </div>
                 <div className='checkout-right-content'>
+                    <h3 className='order-title'>Order Summary</h3>
                     <div className='order-checkout'>
                         <div className='order-total'>
-                            Items: ${number}.00
+                            <div className='order-label'>Items: </div>
+                            <div className='order-value'>${number}.00</div>
                         </div>
                         <div className='order-total'>
-                            Shipping & handling: $0.00
+                            <div className='order-label'>Shipping & Handling </div>
+                            <div className='order-value'>$0.00</div>
                         </div>
                         <div className='order-total'>
-                            Total before tax: ${number}.00
+                            <div className='order-label'>Total before tax: </div>
+                            <div className='order-value'>${number}.00</div>
                         </div>
                         <div className='order-total'>
-                            Estimated tax to be collected: $0.00
+                            <div className='order-label'>Estimated tax to be collected: </div>
+                            <div className='order-value'>$0.00</div>
                         </div>
                         <div className='order-total'>
-                            Order total: ${number}.00
+                            <div className='order-label'>Order total: </div>
+                            <div className='order-value'>${number}.00</div>
                         </div>
                         <button type='button'>Place Your Order</button>
                     </div>
