@@ -5,6 +5,7 @@ import OpenModalButton from '../Modal';
 import { NavLink } from 'react-router-dom';
 import DeleteAddress from '../DeleteAddress';
 import { fetchAddresses } from '../../store/address';
+import primary from '../image/primary.jpg'
 
 
 function AddressPage() {
@@ -15,7 +16,7 @@ function AddressPage() {
 
     useEffect(() => {
         dispatch(fetchAddresses())
-    }, [dispatch, addressData])
+    }, [dispatch])
 
     return (
         <div className='address-main-body'>
@@ -32,6 +33,7 @@ function AddressPage() {
                         if(address) {
                             return (
                                 <div key={index} className='address-info-container'>
+                                    <img src={primary} alt='primary' className={`primary-image ${address?.primary ? 'active' : 'inactive'}`} />
                                     <div className='address-info'>{sessionUser?.first_name} {sessionUser?.last_name}</div>
                                     <div className='address-info'>{address?.address}</div>
                                     <div className='address-info'>{address?.city}, {address?.state} {address?.zip}</div>

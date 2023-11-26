@@ -4,6 +4,8 @@ import OpenModalButton from '../Modal';
 import { NavLink } from 'react-router-dom';
 import { fetchPayments } from '../../store/payment';
 import DeletePayment from '../DeletePayment';
+import primary from '../image/primary.jpg'
+
 
 function PaymentPage() {
     const dispatch = useDispatch();
@@ -60,6 +62,7 @@ function PaymentPage() {
                         if(payment) {
                             return (
                                 <div key={index} className='address-info-container'>
+                                    <img src={primary} alt='primary' className={`primary-image ${payment?.primary ? 'active' : 'inactive'}`} />
                                     <div className='address-info'>{findCardIcon(payment?.card_number.toString().slice(0,1))}</div>
                                     <div className='address-info'>{payment?.name}</div>
                                     <div className='address-info'>{findCardName(payment?.card_number.toString().slice(0,1))}</div>

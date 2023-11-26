@@ -140,7 +140,7 @@ function UpdateAddressForm() {
                             onChange={() => setPrimary(!primary)}
                             value={primary}
                             />
-                        </div>
+                    </div>
 
                     <button id='address-submit-btn' type='submit'>Update Address</button>
                 </div>
