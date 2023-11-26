@@ -4,6 +4,7 @@ import { updateAddress } from '../../store/address';
 import { useHistory, useParams } from "react-router-dom";
 import { fetchAddressId } from '../../store/address';
 import { CountryData } from '../../data/countries';
+import './updateAddress.css';
 
 
 function UpdateAddressForm() {
@@ -16,6 +17,7 @@ function UpdateAddressForm() {
     const [ state, setState ] = useState(currAddress?.state || "");
     const [ country, setCountry ] = useState(currAddress?.country || "");
     const [ zip, setZip ] = useState(currAddress?.zip);
+    const [ primary, setPrimary ] = useState(currAddress?.primary);
     const [ errors, setErrors] = useState({});
 
     useEffect(() => {
@@ -27,6 +29,7 @@ function UpdateAddressForm() {
                     setState(currAddress?.state);
                     setCountry(currAddress?.country);
                     setZip(currAddress?.zip);
+                    setPrimary(currAddress?.primary)
                 }
             })
             .catch((err) => {
@@ -67,7 +70,8 @@ function UpdateAddressForm() {
             address,
             state,
             country,
-            zip
+            zip,
+            primary
         }
 
         let res = await dispatch(updateAddress(addressId, addressData))
@@ -129,6 +133,15 @@ function UpdateAddressForm() {
                     <div className='error-blocks'>
                         {errors.zip && (<p className="error">*{errors.zip}</p>)}
                     </div>
+                    <div className='form-label'>
+                        Set as Primary
+                        <input className='form-checkbox'
+                            type='checkbox'
+                            onChange={() => setPrimary(!primary)}
+                            value={primary}
+                            />
+                        </div>
+
                     <button id='address-submit-btn' type='submit'>Update Address</button>
                 </div>
             </form>
