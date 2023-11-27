@@ -86,7 +86,7 @@ function CartPage() {
                             <div key={index} className='cart-item'>
                                 <img src={item?.product?.product_images[0].imageUrl} alt='product-image' height={100} />
                                 <div className='cart-item-section-one'>
-                                    <div className='product-name'>{item?.product?.item_name}</div>
+                                    <div className='product-cart-name'>{item?.product?.item_name}</div>
                                     <div className='product-price'>${item?.product?.price}.00</div>
                                 </div>
                                 <form className='cart-form'>
