@@ -78,6 +78,57 @@ def sign_up():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+@auth_routes.route('/update/info', methods=["PUT"])
+@login_required
+def update_user():
+    form = SignUpForm()
+    id = current_user.id
+    form['csrf_token'].data = request.cookies['csrf_token']
+    user = User.query.get(id)
+    if form.validate_on_submit():
+        if not user:
+            return {'message': 'User info not found'}
+        else:
+            user.first_name = form.data['first_name']
+            user.middle_name = form.data['middle_name']
+            user.last_name = form.data['last_name']
+            user.username = form.data["username"]
+            user.email = form.data["email"]
+            user.password = user.password
+            user.admin = user.admin
+            db.session.commit()
+            return user.to_dict()
+
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@auth_routes.route('/update/credential', methods=["PUT"])
+@login_required
+def update_user_credential():
+    form = SignUpForm()
+    id = current_user.id
+    form['csrf_token'].data = request.cookies['csrf_token']
+    user = User.query.get(id)
+    if form.validate_on_submit():
+        if not user:
+            return {'message': 'User info not found'}
+        else:
+            user.first_name = user.first_name
+            user.middle_name = user.middle_name
+            user.last_name = user.last_name
+            user.username = user.username
+            user.email = user.email
+            user.password = form.data["password"]
+            user.admin = user.admin
+            db.session.commit()
+            return user.to_dict()
+
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+
 @auth_routes.route('/unauthorized')
 def unauthorized():
     """

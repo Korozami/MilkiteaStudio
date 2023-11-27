@@ -10,6 +10,10 @@
 
 }
 
+.product-name {
+    min-width: 450px;
+}
+
 .cart-content{
     display: flex;
     flex-direction: column;
@@ -48,6 +52,7 @@
 
 .total-amount{
     color: #806a57;
+    min-width: 100px;
 }
 
 /* cart checkout css */

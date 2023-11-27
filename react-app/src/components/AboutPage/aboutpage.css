@@ -22,3 +22,10 @@
     font-size: 20px;
     color: #806a57;
 }
+
+@media screen and (max-width: 800px){
+    .about-info {
+        min-width: 900px;
+        margin-left: 760px;
+    }
+}

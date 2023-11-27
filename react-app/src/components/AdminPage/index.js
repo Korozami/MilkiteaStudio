@@ -1,11 +1,10 @@
 import React from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink, useHistory } from 'react-router-dom';
 import './adminpage.css';
 
 function AdminPage() {
     const history = useHistory();
-    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     console.log(sessionUser)
 

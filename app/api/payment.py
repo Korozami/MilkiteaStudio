@@ -60,15 +60,27 @@ def update_payment(payment_id):
             return {'message': 'Payment info not found'}
         elif payment.user_id != current_user.id:
             return {"message": "You cannot edit an payment that isn't yours"}
-        else:
-            payment.card_number = form.data['card_number']
-            payment.name = form.data['name']
-            payment.expiration_date = form.data['expiration_date']
-            payment.security_code = form.data['security_code']
-            payment.billing_address = form.data['billing_address']
-            payment.primary = form.data['primary']
-            db.session.commit()
-            return payment.to_dict()
+        elif form.data['primary'] == True:
+            findPrimary = Payment.query.filter_by(user_id=current_user.id, primary=True).first()
+            if findPrimary:
+                findPrimary.primary = False
+                payment.card_number = form.data['card_number']
+                payment.name = form.data['name']
+                payment.expiration_date = form.data['expiration_date']
+                payment.security_code = form.data['security_code']
+                payment.billing_address = form.data['billing_address']
+                payment.primary = form.data['primary']
+                db.session.commit()
+                return payment.to_dict()
+            else:
+                payment.card_number = form.data['card_number']
+                payment.name = form.data['name']
+                payment.expiration_date = form.data['expiration_date']
+                payment.security_code = form.data['security_code']
+                payment.billing_address = form.data['billing_address']
+                payment.primary = form.data['primary']
+                db.session.commit()
+                return payment.to_dict()
 
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401

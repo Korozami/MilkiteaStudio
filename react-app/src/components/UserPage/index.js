@@ -7,7 +7,6 @@ import { NavLink, useHistory } from 'react-router-dom';
 function UserPage () {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    console.log(sessionUser)
 
     if (!sessionUser) history.push('/login')
 

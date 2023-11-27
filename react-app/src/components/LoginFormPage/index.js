@@ -16,12 +16,12 @@ function LoginFormPage() {
 
   const demoUserLogin = (e) => {
 		setEmail('demo@aa.io')
-		setPassword('password')
+		setPassword('Smithern5898')
 	  }
 
     const adminDemoUserLogin = (e) => {
       setEmail('demoA@aa.io')
-      setPassword('password')
+      setPassword('Smithern5898')
     }
 
   const handleSubmit = async (e) => {
@@ -46,13 +46,6 @@ function LoginFormPage() {
           <div className="text-login">
             <div className="desc-login">
               <img src={Logo} alt='logo' id='login-studio-logo' />
-              {/* <h1>Welcome!!!</h1>
-              <p>
-                Welcome back to the joyful world of Milki Tea Studios! Here, your imagination dances freely. Immerse yourself in vibrant digital tales and explore
-                charming handmade treasures, each filled with love and whimsy, including our beloved shy bunnies. Thank you for being a part of our creative family and continue collecting our wonderful treasures.
-              </p> */}
-              <div className="icon">
-              </div>
             </div>
           </div>
           <div className="form-login">

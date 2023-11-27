@@ -57,5 +57,10 @@ body.active-modal {
     border: none;
     opacity: 1;
     border-radius: 10px;
+    transition: all .3s ease;
     background-color: rgb(137, 124, 91);
+}
+
+.modalbtn:hover {
+    background-color: #83b0b1;
 }

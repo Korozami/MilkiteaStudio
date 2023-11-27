@@ -14,6 +14,7 @@ function UpdatePaymentForm() {
     const [ expiration_date, setExpirationDate ] = useState(currPayment?.expiration_date);
     const [ security_code, setSecurityCode ] = useState(currPayment?.security_code);
     const [ billing_address, setBillingAddress ] = useState(currPayment?.billing_address || "");
+    const [ primary, setPrimary ] = useState(currPayment?.primary);
     const [ errors, setErrors] = useState({});
 
     useEffect(() => {
@@ -25,6 +26,7 @@ function UpdatePaymentForm() {
                     setExpirationDate(currPayment?.expiration_date);
                     setSecurityCode(currPayment?.security_code);
                     setBillingAddress(currPayment?.billing_address);
+                    setPrimary(currPayment?.primary)
                 }
             })
             .catch((err) => {
@@ -47,9 +49,9 @@ function UpdatePaymentForm() {
             errors.card_number = "invalid card number"
         }
 
-        if (card_number.length != 0 && ((card_number[0] != "3" && card_number[1] != "7") || card_number[0] != "4" || card_number[0] != "5" || card_number[0] != "6")) {
-            errors.card_number = "invalid card number"
-        }
+        // if (card_number.length != 0 && ((card_number[0] != "3" && card_number[1] != "7") || card_number[0] != "4" || card_number[0] != "5" || card_number[0] != "6")) {
+        //     errors.card_number = "invalid card number"
+        // }
 
         if (security_code > 9999 || security_code < 100) {
             errors.security_code = "invalid CVV/CVC"
@@ -79,7 +81,8 @@ function UpdatePaymentForm() {
             name,
             expiration_date,
             security_code,
-            billing_address
+            billing_address,
+            primary
         }
 
         let res = await dispatch(updatePayment(paymentId, paymentData));
@@ -145,6 +148,14 @@ function UpdatePaymentForm() {
                         />
                     <div className='error-blocks'>
                         {errors.billing_address && (<p className="error">*{errors.billing_address}</p>)}
+                    </div>
+                    <div className='form-label'>
+                        Set as Primary
+                        <input className='form-checkbox'
+                            type='checkbox'
+                            onChange={() => setPrimary(!primary)}
+                            value={primary}
+                            />
                     </div>
                     <button id='address-submit-btn' type='submit'>Update Payment</button>
                 </div>

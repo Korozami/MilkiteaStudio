@@ -4,7 +4,8 @@ import { useSelector, useDispatch  } from 'react-redux';
 import OpenModalButton from '../Modal';
 import { NavLink } from 'react-router-dom';
 import DeleteAddress from '../DeleteAddress';
-import { fetchAddresses, updateAddress } from '../../store/address';
+import { fetchAddresses } from '../../store/address';
+import primary from '../image/primary.jpg'
 
 
 function AddressPage() {
@@ -12,11 +13,10 @@ function AddressPage() {
     const sessionUser = useSelector((state) => state.session.user);
     const addressData = useSelector(state => state.addresses.addresses)
     const allAddress = addressData ? Object.values(addressData.addresses) : []
-    console.log(allAddress)
 
     useEffect(() => {
         dispatch(fetchAddresses())
-    }, [dispatch, addressData])
+    }, [dispatch])
 
     return (
         <div className='address-main-body'>
@@ -33,6 +33,7 @@ function AddressPage() {
                         if(address) {
                             return (
                                 <div key={index} className='address-info-container'>
+                                    <img src={primary} alt='primary' className={`primary-image ${address?.primary ? 'active' : 'inactive'}`} />
                                     <div className='address-info'>{sessionUser?.first_name} {sessionUser?.last_name}</div>
                                     <div className='address-info'>{address?.address}</div>
                                     <div className='address-info'>{address?.city}, {address?.state} {address?.zip}</div>
@@ -41,7 +42,7 @@ function AddressPage() {
                                         <NavLink className="address-update" exact to={`/address/${address?.id}/update`}>
                                             <button type='button'>Update</button>
                                         </NavLink>
-                                        <OpenModalButton buttonName="Delete" modalComponent={<DeleteAddress addressId={address?.id} />} />
+                                        <OpenModalButton className="delete-btn" buttonName="Delete" modalComponent={<DeleteAddress addressId={address?.id} />} />
                                     </div>
                                 </div>
                             )

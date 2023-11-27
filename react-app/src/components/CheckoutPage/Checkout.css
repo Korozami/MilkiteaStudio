@@ -1,0 +1,215 @@
+.checkout-container{
+    margin-left: 220px;
+}
+
+.checkout-wrapper {
+	display: flex;
+}
+
+.checkout-left-content {
+	border: 1px solid #806a57;
+	width: 50vw;
+	padding: 40px;
+	margin: 120px;
+	border-radius: 5px;
+	color: #806a57;
+}
+
+.checkout-right-content {
+	color: #806a57;
+    position: sticky;
+	max-height: 450px;
+    margin-left: 40px;
+	right: 100px;
+	top: 150px;
+	border: 1px solid #806a57;
+	padding: 40px 20px;
+	border-radius: 5px;
+}
+
+.address-info-checkout-content {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	border-bottom: 1px solid #806a57;
+	padding-bottom: 12px;
+}
+
+.address-info-right button {
+	color: white;
+    margin-top: 20px;
+    height: 40px;
+    width: 100px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    opacity: 1;
+    border-radius: 10px;
+    transition: all .3s ease;
+    background-color: rgb(137, 124, 91);
+}
+
+.address-info-right button:hover {
+	background-color: #83b0b1;
+}
+
+.address-checkout-info-container {
+	display: flex;
+	justify-content: space-between;
+	margin: 20px 0px;
+	transition: all .3s ease;
+	padding-bottom: 12px;
+	border-bottom: .5px solid #806a57;
+}
+
+.address-checkout-info-container:hover {
+	color: white;
+	background-color: #83b0b1;
+    cursor: pointer;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.payment-info-checkout-content {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	border-bottom: 1px solid #806a57;
+	padding-bottom: 12px;
+}
+
+.payment-checkout-content {
+	margin: 20px 0px;
+	gap: 50px;
+}
+
+.payment-info {
+	max-width: 300px;
+}
+
+.payment-info-middle {
+	max-width: 170px;
+}
+
+.payment-info-right button {
+	color: white;
+    margin-top: 20px;
+    height: 40px;
+    width: 100px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    opacity: 1;
+    border-radius: 10px;
+    transition: all .3s ease;
+    background-color: rgb(137, 124, 91);
+}
+
+.payment-info-right button:hover {
+	background-color: #83b0b1;
+}
+
+.payment-info-dropdown-container {
+	margin: 20px 0px;
+	transition: all .3s ease;
+}
+
+.payment-info-dropdown-container.inactive{
+	opacity: 0;
+	visibility: hidden;
+	display: none;
+	transform: translateY(-20px);
+	transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+	padding-bottom: 12px;
+	border-bottom: .5px solid #806a57;
+}
+
+.payment-info-dropdown-content {
+	display: flex;
+	margin: 20px 0px;
+	justify-content: space-between;
+}
+
+.payment-info-dropdown-content:hover{
+    color: white;
+	background-color: #83b0b1;
+    cursor: pointer;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.payment-dropdown-info i {
+	font-size: 30px;
+}
+
+.cart-checkout-item {
+	display: flex;
+	margin: 20px 0px;
+	padding-bottom: 12px;
+	border-bottom: .5px solid #806a57;
+}
+
+.cart-checkout-item-section-one{
+	margin-left: 20px;
+}
+
+.checkout-bottom-button-container {
+	display: flex;
+	justify-content: center;
+}
+
+.checkout-bottom-button-container button {
+	color: white;
+    margin-top: 20px;
+    height: 60px;
+    width: 500px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    opacity: 1;
+    border-radius: 10px;
+    transition: all .3s ease;
+    background-color: rgb(137, 124, 91);
+}
+
+.checkout-bottom-button-container button:hover {
+	background-color: #83b0b1;
+}
+
+.order-checkout {
+	display: flex;
+	flex-direction: column;
+}
+
+.order-total {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+	padding-bottom: 12px;
+	border-bottom: .5px solid #806a57;
+}
+
+.order-checkout button {
+	color: white;
+    margin-top: 10px;
+    height: 60px;
+    width: 300px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    opacity: 1;
+    border-radius: 10px;
+    transition: all .3s ease;
+    background-color: rgb(137, 124, 91);
+}
+
+.order-checkout button:hover {
+	background-color: #83b0b1;
+}
+
+.order-title {
+	margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1500px){
+	.checkout-right-content {
+		display: none;
+		visibility: hidden;
+	}
+}

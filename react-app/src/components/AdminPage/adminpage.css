@@ -23,12 +23,22 @@
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
 .admin-store-info-container{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin-top: 20px;
+}
+
+.user-info-container {
+    transition: all .3s ease;
+}
+
+.user-info-container:hover {
+    color: #83b0b1;
 }
 
 .user-info-details{

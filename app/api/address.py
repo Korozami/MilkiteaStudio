@@ -59,15 +59,27 @@ def update_address(address_id):
             return {'message': 'Address info not found'}
         elif address.user_id != current_user.id:
             return {'message': "You cannot edit an address that isn't yours"}
-        elif address:
-            address.city = form.data['city']
-            address.address = form.data['address']
-            address.state = form.data['state']
-            address.country = form.data['country']
-            address.zip = form.data['zip']
-            address.primary = form.data['primary']
-            db.session.commit()
-            return address.to_dict()
+        elif form.data['primary'] == True:
+            findPrimary = Address.query.filter_by(user_id=current_user.id, primary=True).first()
+            if findPrimary:
+                findPrimary.primary = False
+                address.city = form.data['city']
+                address.address = form.data['address']
+                address.state = form.data['state']
+                address.country = form.data['country']
+                address.zip = form.data['zip']
+                address.primary = form.data['primary']
+                db.session.commit()
+                return address.to_dict()
+            elif address:
+                address.city = form.data['city']
+                address.address = form.data['address']
+                address.state = form.data['state']
+                address.country = form.data['country']
+                address.zip = form.data['zip']
+                address.primary = form.data['primary']
+                db.session.commit()
+                return address.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

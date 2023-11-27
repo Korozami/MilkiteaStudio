@@ -1,0 +1,37 @@
+@font-face {
+    font-family: "SuperFuntime";
+    src: url(../fonts/SuperFuntime-3zpLX.ttf);
+}
+
+@font-face {
+    font-family: "SuperDessert";
+    src: url(../fonts/SuperDessert-EaAyj.ttf);
+}
+
+@font-face {
+    font-family: "Cooltive";
+    src: url(../fonts/CutiveMono-Regular.ttf);
+}
+
+.user-info-update-container{
+    margin-left: 220px;
+}
+
+.user-info-update-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.user-info-update-header h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-family: "SuperDessert", sans-serif;
+    color: #6e683c;
+}
+
+.update-info-container{
+    display: flex;
+    justify-content: center;
+}

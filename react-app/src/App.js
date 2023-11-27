@@ -17,7 +17,11 @@ import AddressPage from "./components/AddressPage";
 import ProductDetail from "./components/ProductDetailPage";
 import AddressForm from "./components/AddressAddPage";
 import AboutPage from "./components/AboutPage";
+import UserInfoPage from "./components/UserInfoPage";
+import UserInfoUpdatePage from "./components/UserInfoUpdatePage";
+import UserCredentialUpdatePage from "./components/UserCredentialUpdatePage";
 import ContactPage from "./components/ContactPage";
+import CheckoutPage from "./components/CheckoutPage";
 import PaymentForm from "./components/PaymentAddPage";
 import AdminProductPage from "./components/AdminProductPage";
 import { authenticate } from "./store/session";
@@ -50,6 +54,12 @@ function App() {
           <Route path="/user/portfolio">
             <UserPage />
           </Route>
+          <Route path="/update/information">
+            <UserInfoUpdatePage />
+          </Route>
+          <Route path="/update/credentials">
+            <UserCredentialUpdatePage />
+          </Route>
           <Route path="/address/add">
             <AddressForm />
           </Route>
@@ -64,6 +74,9 @@ function App() {
           </Route>
           <Route path="/payment/:paymentId/update">
             <UpdatePaymentForm />
+          </Route>
+          <Route path="/checkout">
+            <CheckoutPage />
           </Route>
           <Route path="/cart">
             <CartPage />
@@ -82,6 +95,9 @@ function App() {
           </Route>
           <Route path="/admin">
             <AdminPage />
+          </Route>
+          <Route path="/user">
+            <UserInfoPage />
           </Route>
           <Route path="/address">
             <AddressPage />
