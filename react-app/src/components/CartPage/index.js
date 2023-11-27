@@ -89,7 +89,7 @@ function CartPage() {
                                     <div className='product-cart-name'>{item?.product?.item_name}</div>
                                     <div className='product-price'>${item?.product?.price}.00</div>
                                 </div>
-                                <form className='cart-form'>
+                                <form className='cart-checkout-form'>
                                     <input className='cart-quanitiy-input'
                                         type='number'
                                         onChange={(e) => setCartItems((index), e.target.value)}
