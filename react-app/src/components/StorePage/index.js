@@ -36,7 +36,7 @@ function StorePage() {
                     )
                 })}
             </div>
-            <div className="displayed-products">
+            <div className="displayed-shop-products">
                 {allProducts.map((product, index) => {
                     let image;
                     if (product?.product_images[0]) {

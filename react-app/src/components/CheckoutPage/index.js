@@ -1,7 +1,7 @@
 import './Checkout.css';
 import { fetchAddresses, fetchAddressId } from '../../store/address';
 import { fetchPayments, fetchPaymentId } from '../../store/payment';
-import { fetchCart, fetchCartItem } from '../../store/cart';
+import { fetchCart, fetchCartItem, updateCartItem } from '../../store/cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
@@ -30,6 +30,7 @@ function CheckoutPage() {
     const [paymentSelected, setPaymentSelected] = useState(false)
     const [selectedPaymentAddress, setSelectedPaymentAddress] = useState("")
     const card_name = ["American Express", "Visa", "Mastercard", "Discover"];
+    const [ errors, setErrors] = useState({});
 
     let number = 0;
 
@@ -41,8 +42,35 @@ function CheckoutPage() {
         return cart;
     }
 
-
     const [cartQuantity, setCartQuantity] = useState(getDefaultCart())
+
+    const setCartItems = (itemId, item_amount) => {
+
+        let productId = cartItems?.cart_item[itemId]?.id
+
+        setCartQuantity((prev) => ({... prev, [itemId]: item_amount}))
+
+        if (item_amount < 0) {
+            errors.item_amount = "Amount can't be negative"
+        }
+
+        setErrors(errors);
+
+        if (Object.values(errors).length) {
+            return alert("Error amount can't be negative")
+        };
+
+        if (item_amount > 0) {
+            const cartData = {
+                item_amount
+            }
+
+            dispatch(updateCartItem(productId, cartData))
+
+            setErrors({})
+        }
+
+    }
 
     useEffect(() => {
         if (!cartItems) {
@@ -251,6 +279,7 @@ function CheckoutPage() {
                                                 <form className='cart-form'>
                                                 <input className='cart-quanitiy-input'
                                                     type='number'
+                                                    onChange={(e) => setCartItems((index), e.target.value)}
                                                     placeholder={item?.item_amount}
                                                     value={cartQuantity[index]}
                                                 />

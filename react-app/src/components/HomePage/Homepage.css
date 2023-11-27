@@ -84,3 +84,8 @@ body{
     justify-content: center;
     margin: 4px;
 }
+
+.displayed-products{
+    display: flex;
+    justify-content: center;
+}
