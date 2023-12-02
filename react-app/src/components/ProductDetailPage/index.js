@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/product";
 import { fetchCart, createCartItem } from "../../store/cart";
 import { useParams } from "react-router-dom";
+import Popup from "../BoughtItemPopup/popup";
 import './ProductDetail.css'
 
 
@@ -10,15 +11,13 @@ function ProductDetail () {
     const dispatch = useDispatch();
     const { productId } = useParams();
     const productData = useSelector((state)=> state.products.products)
-    const testing = useSelector((state) => state);
-    console.log(testing)
     const allProducts = productData ? Object.values(productData.products) : []
     const currProduct = allProducts[productId - 1]
     const [quantity, setQuantity] = useState(1)
     const [mainImg, setMainImg] = useState(1)
+    const [buttonPopup, setButtonPopup] = useState(false)
 
     let item_amount = Number(quantity)
-    console.log(item_amount)
 
     useEffect(() => {
         dispatch(fetchCart())
@@ -33,15 +32,18 @@ function ProductDetail () {
             item_amount
         }
 
-        await dispatch(createCartItem(productId, cartData))
+        dispatch(createCartItem(productId, cartData))
 
-        alert("Item added to cart!")
+        setButtonPopup(true)
 
 
     }
 
     return (
         <div className="product-page-container">
+            <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                <h3>Item added to cart!</h3>
+            </Popup>
             <div className="product-page-wrapper">
                 <div className="mini-image-container">
                     {currProduct?.product_images.map((productImg, index) => {

@@ -289,6 +289,13 @@ function CheckoutPage() {
                                     )
                                 })}
                             </div>
+                            <div className='product-checkout-shipping-content'>
+                                <h3>Delivery Option:</h3>
+                                <div className='delivery-option-content'>
+                                    <input type='radio' value='standard' checked />
+                                    <label className='radio-label'>Standard (7 - 14 days)</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='checkout-bottom-button-container'>

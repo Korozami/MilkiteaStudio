@@ -6,7 +6,6 @@ import { fetchPayments, deletePayment } from "../../store/payment";
 function DeletePayment ({ paymentId }) {
     const dispatch = useDispatch();
     const payment = useSelector((state) => state.payments)
-    console.log(payment)
     const { setModal } = useContext(context);
 
     const deletion = function () {

@@ -207,9 +207,36 @@
 	margin-bottom: 20px;
 }
 
+.product-checkout-wrapper {
+	display: flex;
+	margin-left: 0;
+}
+
+.product-checkout-shipping-content{
+	margin-right: auto;
+	margin-left: 20px;
+}
+
+.product-checkout-shipping-content h3 {
+	margin-bottom: 20px;
+}
+
+.delivery-option-content {
+	margin-left: 20px;
+}
+
+.product-checkout-shipping-content .radio-label {
+	margin-left: 15px;
+}
+
 @media screen and (max-width: 1500px){
 	.checkout-right-content {
 		display: none;
 		visibility: hidden;
+	}
+
+	.product-checkout-wrapper {
+		display: block;
+		margin-bottom: 20px;
 	}
 }
