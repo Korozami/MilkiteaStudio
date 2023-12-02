@@ -49,6 +49,10 @@ body.active-modal {
     background-color: rgb(137, 124, 91);
 }
 
+.close-modal:hover {
+    background-color: #83b0b1;
+}
+
 .modalbtn {
     color: white;
     height: 40px;

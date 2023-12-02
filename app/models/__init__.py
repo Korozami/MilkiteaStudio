@@ -9,3 +9,4 @@ from .order import Order
 from .payment import Payment
 from .product import Product
 from .product_image import Product_Image
+from .order_item import Order_Item

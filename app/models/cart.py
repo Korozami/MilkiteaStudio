@@ -12,7 +12,6 @@ class Cart(db.Model):
 
     user = relationship("User", back_populates='cart')
     cart_item = relationship("Cart_Item", back_populates='cart', cascade='all, delete-orphan')
-    order = relationship("Order", back_populates='cart', cascade='all, delete-orphan')
 
     def to_dict(self):
         cart_data = []

@@ -11,9 +11,9 @@ class Order(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    cart_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('carts.id')), nullable=False)
-    order_number = db.Column(db.Integer, nullable=False)
-    tracking_number = db.Column(db.Integer)
+    order_number = db.Column(db.String(255), nullable=False)
+    shipping_method = db.Column(db.String(255), nullable=False)
+    tracking_number = db.Column(db.String(255), nullable=False)
     shipped = db.Column(db.Boolean, default=False)
     address_order = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod('addresses.id')), nullable=False)
     payment_order = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod('payments.id')), nullable=False)
@@ -21,19 +21,22 @@ class Order(db.Model):
 
     address = relationship('Address', back_populates='order')
     payment = relationship('Payment', back_populates='order')
-    cart = relationship('Cart', back_populates='order')
     user = relationship('User', back_populates='order')
+    order_item = relationship("Order_Item", back_populates='order')
 
     def to_dict(self):
+        order_data = []
+        for order_item in self.order_item:
+            order_data.append(order_item.to_dict())
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'cart_id': self.cart_id,
             'order_number': self.order_number,
+            'shipping_method': self.shipping_method,
             'tracking_number': self.tracking_number,
             'shipped': self.shipped,
             'address_order': self.address_order,
             'payment_order': self.payment_order,
             'date_ordered': self.date_ordered,
-            'cart': self.cart.to_dict()
+            'order_item': order_data
         }

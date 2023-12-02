@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, Order, Cart, Address, Payment
+from app.models import db, Order, Address, Payment, Order_Item, Cart_Item, Cart
 from ..forms.order_form import OrderForm
 from .auth_routes import validation_errors_to_error_messages
 from datetime import datetime
@@ -35,39 +35,42 @@ def get_order_id(order_id):
 def add_orders(address_id, payment_id):
     form = OrderForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    cart = Cart.query.filter_by(user_id=current_user.id).first()
     address = Address.query.get(address_id)
     payment = Payment.query.get(payment_id)
+    cart = Cart.query.filter_by(user_id=current_user.id).first()
+    cart_item = Cart_Item.query.filter_by(cart_id=cart.id).all()
+    order = Order.query.filter_by(user_id=current_user.id).all()
+    i = 0
+    order_id = 1
 
     if address.user_id != current_user.id:
         return {'message': 'This address does not belong to this user'}
 
     if payment.user_id != current_user.id:
         return {'message': 'This payment does not belong to this user'}
-    # user_address = Address.query.filter_by(user_id=current_user.id).all()
-    # user_address_data = [address.to_dict() for address in user_address]
-    # user_payment = Payment.query.filter_by(user_id=current_user.id).all()
-    # payment_address_data = [payment.to_dict() for payment in user_payment]
+    cart_item_data = [items.to_dict() for items in cart_item]
 
-    # for address in user_address_data:
-    #     if (address.primary):
-    #         primary_address = address.id
-    #     else:
-    #         primary_address = Address.query.filter_by(user_id=current_user.id).first()
+    order_item_data = [items.to_dict() for items in order]
 
+    # print(cart_item_data[0]['product'])
+    # return str(cart_item_data[0]['product']['id'])
+    # print(order)
+    # return(order_item_data)
 
-    # for payment in payment_address_data:
-    #     if payment.primary:
-    #         primary_payment = payment.id
-    #     else:
-    #         primary_payment = Payment.query.filter_by(user_id=current_user.id).first()
+    if(len(order) > 0):
+        j = 0
+        id = 0
+        while j < len(order_item_data):
+            id = order_item_data[j]['id']
+            j += 1
+        order_id = int(id) + 1
 
 
     if form.validate_on_submit():
         order = Order(
             user_id = current_user.id,
-            cart_id = cart.id,
             order_number = form.data['order_number'],
+            shipping_method = form.data['shipping_method'],
             tracking_number = form.data['tracking_number'],
             shipped = False,
             date_ordered = datetime.now(),
@@ -75,6 +78,17 @@ def add_orders(address_id, payment_id):
             payment_order = payment_id
         )
         db.session.add(order)
+        while i < len(cart_item_data):
+            item_amount = int(cart_item_data[i]['item_amount'])
+            id = int(cart_item_data[i]['product']['id'])
+            order_item = Order_Item(
+                item_amount = item_amount,
+                order_id = order_id,
+                product_id = id
+            )
+            db.session.add(order_item)
+            i += 1
+
         db.session.commit()
         return order.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -92,6 +106,7 @@ def update_orders(order_id):
 
     if form.validate_on_submit():
         order.order_number = form.data['order_number']
+        order.shipping_method = form.data['shipping_method']
         order.tracking_number = form.data['tracking_number']
         order.shipped = form.data['shipped']
         db.session.commit()

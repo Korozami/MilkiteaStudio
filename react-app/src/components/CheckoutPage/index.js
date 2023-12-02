@@ -5,6 +5,7 @@ import { fetchCart, fetchCartItem, updateCartItem } from '../../store/cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import Popup from '../BoughtItemPopup/popup';
 
 
 function CheckoutPage() {
@@ -19,18 +20,20 @@ function CheckoutPage() {
     const allPayment = paymentData ? Object.values(paymentData.payments) : []
 
     const [ changeAddress, setChangeAddress ] = useState(false)
-    const [ city, setCity ] = useState("");
-    const [ address, setAddress ] = useState("");
-    const [ state, setState ] = useState("");
-    const [ zip, setZip ] = useState("");
+    const [ city, setCity ] = useState(allAddress[0]?.city || "");
+    const [ address, setAddress ] = useState(allAddress[0]?.address || "");
+    const [ state, setState ] = useState(allAddress[0]?.state || "");
+    const [ zip, setZip ] = useState(allAddress[0]?.zip || "");
     const [ selectedAddress, setSelectedAddress ] = useState(false)
 
     const [changePayment, setChangePayment] = useState(false)
-    const [selectedPaymentCard, setSelectedPaymentCard] = useState("")
+    const [selectedPaymentCard, setSelectedPaymentCard] = useState(allPayment[0]?.card_number || "")
     const [paymentSelected, setPaymentSelected] = useState(false)
-    const [selectedPaymentAddress, setSelectedPaymentAddress] = useState("")
+    const [selectedPaymentAddress, setSelectedPaymentAddress] = useState(allPayment[0]?.billing_address || "")
     const card_name = ["American Express", "Visa", "Mastercard", "Discover"];
     const [ errors, setErrors] = useState({});
+
+    const [alertPopup, setAlertPopup] = useState(false)
 
     let number = 0;
 
@@ -85,23 +88,6 @@ function CheckoutPage() {
         }
     }, [dispatch, cartItems])
 
-    //set primary address on render
-    if (city === "" && selectedAddress === false) {
-        for(let i = 1; i < allAddress.length; i++) {
-            setCity(allAddress[0]?.city)
-            setAddress(allAddress[0]?.address)
-            setState(allAddress[0]?.state)
-            setZip(allAddress[0]?.zip)
-            if(allAddress[i]?.primary) {
-                setCity(allAddress[i]?.city)
-                setAddress(allAddress[i]?.address)
-                setState(allAddress[i]?.state)
-                setZip(allAddress[i]?.zip)
-                break
-            }
-        }
-    }
-
     function findCardName (number) {
         if (number === "3" || number === 3) {
             return card_name[0];
@@ -138,27 +124,36 @@ function CheckoutPage() {
         setChangeAddress(!changeAddress)
     }
 
-    //set primary payment on render
-    if(selectedPaymentCard === "" && paymentSelected === false) {
+
+    useEffect(() => {
+        dispatch(fetchCart())
+        dispatch(fetchAddresses())
+        dispatch(fetchPayments())
+        //set primary address on render
+        for(let i = 1; i < allAddress.length; i++) {
+            if(allAddress[i]?.primary) {
+                setCity(allAddress[i]?.city)
+                setAddress(allAddress[i]?.address)
+                setState(allAddress[i]?.state)
+                setZip(allAddress[i]?.zip)
+                break
+            }
+        }
+        //set primary payment on render
         for(let i = 1; i < allPayment.length; i++) {
-            setSelectedPaymentCard(allPayment[0]?.card_number)
-            setSelectedPaymentAddress(allPayment[0]?.billing_address)
             if(allPayment[i]?.primary) {
                 setSelectedPaymentCard(allPayment[i]?.card_number)
                 setSelectedPaymentAddress(allPayment[i]?.billing_address)
                 break
             }
         }
-    }
-
-    useEffect(() => {
-        dispatch(fetchCart())
-        dispatch(fetchAddresses())
-        dispatch(fetchPayments())
     }, [dispatch])
 
     return (
         <div className='checkout-container'>
+            <Popup trigger={alertPopup} setTrigger={setAlertPopup}>
+                <h3>Order Placement Currently Under Maintenance. Sorry for the Inconvience</h3>
+            </Popup>
             <div className='checkout-wrapper'>
                 <div className='checkout-left-content'>
                     <div className='address-checkout-container'>
@@ -299,7 +294,7 @@ function CheckoutPage() {
                         </div>
                     </div>
                     <div className='checkout-bottom-button-container'>
-                        <button>Place Your Order</button>
+                        <button onClick={() => setAlertPopup(true)}>Place Your Order</button>
                     </div>
                 </div>
                 <div className='checkout-right-content'>
@@ -325,7 +320,7 @@ function CheckoutPage() {
                             <div className='order-label'>Order total: </div>
                             <div className='order-value'>${number}.00</div>
                         </div>
-                        <button type='button'>Place Your Order</button>
+                        <button onClick={() => setAlertPopup(true)} type='button'>Place Your Order</button>
                     </div>
                 </div>
             </div>

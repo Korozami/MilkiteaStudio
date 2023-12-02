@@ -9,7 +9,11 @@
 }
 
 .admin-page{
-    margin-left: 260px;
+    margin-left: 220px;
+}
+
+.admin-page-content {
+    margin-left: 40px;
     margin-right: 120px;
     margin-top: 20px;
 }
