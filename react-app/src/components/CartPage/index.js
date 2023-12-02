@@ -11,7 +11,9 @@ function CartPage() {
     const cartItems = useSelector((state) => state.carts.carts)
     const allCartItems = cartItems ? Object.values(cartItems.cart_item) : []
     const [ errors, setErrors] = useState({});
+    const [ disabled, setDisabled ] = useState(false)
     let number = 0;
+
 
     const getDefaultCart = () => {
         let cart = {}
@@ -34,6 +36,9 @@ function CartPage() {
             .catch((err) => {
                 console.error("Error fetching product details", err);
             });
+        }
+        if (cartItems?.cart_item.length === 0) {
+            setDisabled(true)
         }
     }, [dispatch, cartItems])
 
@@ -108,7 +113,7 @@ function CartPage() {
                         Subtotal ${number}.00
                     </div>
                     <NavLink exact to="/checkout">
-                        <button type='button'>CHECKOUT</button>
+                        <button type='button' disabled={disabled}>CHECKOUT</button>
                     </NavLink>
                 </div>
             </div>

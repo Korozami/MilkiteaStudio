@@ -74,3 +74,8 @@
     border: none;
     background-color: #83b0b1;
 }
+
+.add-cart-btn:hover {
+    cursor: pointer;
+    background-color: #9acdcd;
+}
