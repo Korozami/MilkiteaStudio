@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { context } from "../Modal";
 import { useContext, useEffect } from "react";
+import './delete.css'
 import { fetchPayments, deletePayment } from "../../store/payment";
 
 function DeletePayment ({ paymentId }) {

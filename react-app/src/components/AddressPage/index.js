@@ -16,7 +16,7 @@ function AddressPage() {
 
     useEffect(() => {
         dispatch(fetchAddresses())
-    }, [dispatch])
+    }, [dispatch, addressData])
 
     return (
         <div className='address-main-body'>

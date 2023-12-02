@@ -49,13 +49,21 @@ def add_orders(address_id, payment_id):
     if payment.user_id != current_user.id:
         return {'message': 'This payment does not belong to this user'}
     cart_item_data = [items.to_dict() for items in cart_item]
+
+    order_item_data = [items.to_dict() for items in order]
+
     # print(cart_item_data[0]['product'])
     # return str(cart_item_data[0]['product']['id'])
     # print(order)
-    # return(str(len(order)))
+    # return(order_item_data)
 
     if(len(order) > 0):
-        order_id = len(order) + 1
+        j = 0
+        id = 0
+        while j < len(order_item_data):
+            id = order_item_data[j]['id']
+            j += 1
+        order_id = int(id) + 1
 
 
     if form.validate_on_submit():

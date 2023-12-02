@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from 'react-router-dom';
 import './adminpage.css';
+import Popup from '../BoughtItemPopup/popup';
 
 function AdminPage() {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    console.log(sessionUser)
+    const [alertAdminPopupOrder, setAdminAlertPopupOrder] = useState(false)
+
 
     if (!sessionUser) history.push('/login')
 
     return (
         <div className='admin-page'>
+            <Popup trigger={alertAdminPopupOrder} setTrigger={setAdminAlertPopupOrder}>
+                <h3>Still working on it Boss! Trust</h3>
+            </Popup>
             <div className='admin-page-content'>
                 <div className='admin-header'>Dashboard</div>
                 <div className='admin-page-wrapper'>
@@ -30,8 +35,8 @@ function AdminPage() {
                                 <div className='user-info-description'>View, Edit, Add and Delete Products</div>
                             </div>
                         </NavLink>
-                        <NavLink className="user-info-link" exact to="/admin/orders">
-                            <div className='user-info-container'>
+                        <NavLink className="user-info-link" exact to="/admin">
+                            <div onClick={() => setAdminAlertPopupOrder(true)} className='user-info-container'>
                                 <i className="fa-solid fa-box fa-xl"></i>
                                 <div className='user-info-title'>Orders</div>
                                 <div className='user-info-description'>View, Edit, Add and Delete Orders</div>
