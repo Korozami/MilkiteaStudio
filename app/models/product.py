@@ -22,6 +22,8 @@ class Product(db.Model):
     stores = relationship('Store', back_populates='product')
     product_image = relationship('Product_Image', back_populates='product', cascade='all, delete-orphan')
     cart_item = relationship("Cart_Item", back_populates='product', cascade='all, delete-orphan')
+    order_item = relationship("Order_Item", back_populates='product', cascade='all, delete-orphan')
+
 
     def to_dict(self):
         product_image_data = []
