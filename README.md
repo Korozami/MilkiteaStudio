@@ -179,11 +179,6 @@ Remove Search
     *	User should be able to update their shipping address in their account (UPDATE)
     *	User should be able to delete a shipping address in their account (DELETE)
 
-*	Search
-    *	User should be able to view the item name (READ)
-    *	User should be able to search the item (UPDATE)
-    *	User should be able to remove their search (DELETE)
-
 ## <a name="Schema"></a>Schema :rabbit:
 
 ![MilkiTea Studio (3)](https://github.com/Korozami/MilkiteaStudio/assets/104758287/0b746f1c-2a0e-49a2-af81-41b971379b3f)
