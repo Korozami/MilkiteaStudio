@@ -28,16 +28,6 @@ function HomePage() {
                         return (
                             <div key={index} className='product-container'>
                                 <NavLink className='product' exact to={`/store/products/${product?.id}`}>
-                                    {/* {product?.product_images.map((productImg, index) => {
-                                        console.log(productImg);
-                                        if (productImg) {
-                                            return (
-                                                <div key={index} className='product-img'>
-                                                    <img src={productImg?.imageUrl} alt="product image" />
-                                                </div>
-                                            )
-                                        }
-                                    })} */}
                                     <img src={product?.product_images[0].imageUrl} alt='product-image' height={200}/>
                                     <div className='product-name'>{product?.item_name}</div>
                                     <div className='product-price'>${product?.price.toFixed(2)}</div>
