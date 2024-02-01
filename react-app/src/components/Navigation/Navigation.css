@@ -9,7 +9,7 @@
   src: url(../fonts/SuperDessert-EaAyj.ttf);
 }
 
-.main-nav{
+/* .main-nav{
   position: fixed;
   top: 0;
   bottom: 0;
@@ -102,4 +102,98 @@
 
 .user-link{
   margin-top: 30px;
+} */
+
+/* @media screen and (max-width: 800px){
+  .main-nav {
+      min-width: 900px;
+      margin-left: 760px;
+  }
+} */
+
+.main-nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cde1df;
+  min-height: 10vh;
+}
+
+.nav{
+  min-width: 100vw;
+  min-height: 5vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+}
+
+.user-link{
+  display: flex;
+  gap: 20px;
+}
+
+#studio-logo{
+  visibility: hidden;
+  display: none;
+}
+
+.nav i{
+  margin-top: 40px;
+  margin-right: 10px;
+  transition: all .3s ease;
+}
+
+.nav i:hover {
+  color: #83b0b1;
+}
+
+.nav a{
+  color: #4c3125;
+  text-decoration: none;
+  transition: all .3s ease;
+}
+
+.nav a:hover {
+  color: #83b0b1;
+}
+
+.nav a:visited{
+  color: #4c3125;
+}
+
+.user-loggin button{
+  color: white;
+  margin-top: 20px;
+  display: block;
+  height: 40px;
+  width: 100px;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  opacity: 1;
+  border-radius: 10px;
+  transition: all .3s ease;
+  background-color: rgb(137, 124, 91);
+}
+
+.user-loggin button:hover {
+  background-color: #83b0b1;
+}
+
+.link{
+  text-decoration: none;
+  display: block;
+  color: #806a57;
+  font-size: 15px;
+  font-family: 'Courier New', Courier, monospace,"SuperDessert", sans-serif;
+}
+
+.link:hover{
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.icon-link{
+  display: flex;
+  gap: 0px;
 }
