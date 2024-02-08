@@ -22,7 +22,7 @@ function HomePage() {
             <div className='home-title'>
                 <h1>Featured Products</h1>
             </div>
-            <div className='displayed-products'>
+            <div className='displayed-shop-products'>
                 {allProducts.map((product, index) => {
                     if (product.display) {
                         return (

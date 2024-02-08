@@ -51,15 +51,18 @@ function Navigation(){
 						<NavLink className="link" exact to="/signup">Sign Up</NavLink>
 						</div>
 					)}
-					<a href='https://instagram.com/milkiteastudios' target='_blank'>
-						<i class="fa-brands fa-instagram fa-xl"></i>
-					</a>
-					<a href='https://youtube.com/@milkiteastudios' target='_blank'>
-						<i class="fa-brands fa-youtube fa-xl"></i>
-					</a>
-					<NavLink exact to="/cart">
-						<i className="fa-solid fa-cart-shopping fa-xl"></i>
-					</NavLink>
+					<div className='icon-link'>
+						<a href='https://instagram.com/milkiteastudios' className='icon-link' target='_blank'>
+							<i class="fa-brands fa-instagram fa-xl"></i>
+						</a>
+						<a href='https://youtube.com/@milkiteastudios' className='icon-link' target='_blank'>
+							<i class="fa-brands fa-youtube fa-xl"></i>
+						</a>
+						<NavLink exact to="/cart" className='icon-link'>
+							<i className="fa-solid fa-cart-shopping fa-xl"></i>
+						</NavLink>
+					</div>
+
 				</div>
 			</div>
 		</div>
