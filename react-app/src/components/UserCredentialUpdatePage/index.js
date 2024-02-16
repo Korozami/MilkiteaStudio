@@ -21,6 +21,10 @@ function UserCredentialUpdatePage () {
     const handleUpdateUserPassword = async (e) => {
         e.preventDefault();
 
+        if(password != confirmPassword) {
+            errors.password = "Password and ConfirmPassword doesn't match"
+        }
+
         if (Object.values(errors).length) {
             return alert("Error please fix the underlying problems")
         };
