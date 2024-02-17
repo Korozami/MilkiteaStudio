@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useState } from "react";
@@ -18,12 +18,18 @@ function UserCredentialUpdatePage () {
 
     if (!sessionUser) history.push('/login')
 
-    const handleUpdateUserPassword = async (e) => {
-        e.preventDefault();
+    useEffect(() => {
+        const errors = {};
 
         if(password != confirmPassword) {
-            errors.password = "Password and ConfirmPassword doesn't match"
+            errors.confirmPassword = "Password doesn't match Confirm Password"
         }
+
+        setErrors(errors)
+    }, [confirmPassword])
+
+    const handleUpdateUserPassword = async (e) => {
+        e.preventDefault();
 
         if (Object.values(errors).length) {
             return alert("Error please fix the underlying problems")
@@ -61,12 +67,18 @@ function UserCredentialUpdatePage () {
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
                                 />
+                                <div className='error-blocks'>
+                                    {errors.confirmPassword && (<p className="error">*{errors.confirmPassword}</p>)}
+                                </div>
                                 <div className="form-label">Confirm Password</div>
                                 <input className="form-input"
                                     type="password"
                                     onChange={(e) => setConfirmPassword(e.target.value)}
                                     required
                                 />
+                                <div className='error-blocks'>
+                                    {errors.confirmPassword && (<p className="error">*{errors.confirmPassword}</p>)}
+                                </div>
                                 <button id='address-submit-btn' type='submit'>Update Password</button>
                             </form>
                         </div>
